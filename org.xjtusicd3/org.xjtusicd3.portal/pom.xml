@@ -29,6 +29,11 @@
 	    <artifactId>spring-webmvc</artifactId>
 	    <version>4.3.3.RELEASE</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.xjtusicd3</groupId>
+	    <artifactId>org.xjtusicd3.database</artifactId>
+	    <version>0.0.1-SNAPSHOT</version>
+	</dependency>
   </dependencies>
   <build>
     <finalName>org.xjtusicd3.portal</finalName>
