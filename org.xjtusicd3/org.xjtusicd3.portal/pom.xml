@@ -30,6 +30,21 @@
 	    <version>4.3.3.RELEASE</version>
 	</dependency>
 	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-core</artifactId>
+	    <version>4.3.3.RELEASE</version>
+	    </dependency>
+	    <dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>4.3.3.RELEASE</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-beans</artifactId>
+		    <version>4.3.3.RELEASE</version>
+		</dependency>
+	<dependency>
 	    <groupId>org.xjtusicd3</groupId>
 	    <artifactId>org.xjtusicd3.database</artifactId>
 	    <version>0.0.1-SNAPSHOT</version>
@@ -58,8 +73,15 @@
 	    <groupId>org.freemarker</groupId>
 	    <artifactId>freemarker</artifactId>
 	    <version>2.3.23</version>
+	</dependency>	
+	<!-- https://mvnrepository.com/artifact/org.springframework/spring-context-support -->
+	<dependency>
+	    <groupId>org.springframework</groupId>
+	    <artifactId>spring-context-support</artifactId>
+	    <version>4.3.3.RELEASE</version>
 	</dependency>
   </dependencies>
+  
   <build>
     <finalName>org.xjtusicd3.portal</finalName>
   </build>
