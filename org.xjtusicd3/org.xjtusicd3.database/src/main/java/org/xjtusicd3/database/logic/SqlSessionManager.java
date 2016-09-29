@@ -8,6 +8,9 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.xjtusicd3.database.mapper.PersistencePatentMapper;
+import org.xjtusicd3.database.mapper.PersistenceUserMapper;
+import org.xjtusicd3.database.model.PersistencePatent;
 
 
 
@@ -33,7 +36,8 @@ public class SqlSessionManager {
 			Environment environment = new Environment("development", transactionFactory, dataSource);
 			Configuration configuration = new Configuration(environment);
 			configuration.addMapper(IBaseDao.class);
-			
+			configuration.addMapper(PersistencePatentMapper.class);
+			configuration.addMapper(PersistenceUserMapper.class);
 			
 			configuration.addInterceptor(new BasePlugin());
 			bizSqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
