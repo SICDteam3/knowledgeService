@@ -1,43 +1,40 @@
-package org.xjtusicd3.database.model;
+package org.xjtusicd3.partner.view;
 
-import org.xjtusicd3.database.ann.Table;
-import org.xjtusicd3.database.ann.TableField;
-import org.xjtusicd3.database.ann.TableKey;
-import org.xjtusicd3.database.ann.TableKey.Strategy;
+import org.xjtusicd3.database.model.PersistencePatent;
 
-@Table(tablename="patent")
-public class PersistencePatent {
-	@TableKey(strategy = Strategy.NORMAL)
-	@TableField(columnName="patentId")
-	public int patentId;
-	@TableField(columnName="number")
+public class ViewPatent {
+	private int patentId;
 	private String number;
-	@TableField(columnName="name")
 	private String name;
-	@TableField(columnName="patent_inventor")
 	private String patent_inventor;
-	@TableField(columnName="patent_holder")
 	private String patent_holder;
-	@TableField(columnName="date_of_application")
 	private String date_of_application;
-	@TableField(columnName="announcement_date")
 	private String announcement_date;
-	@TableField(columnName="patent_abstract")
 	private String patent_abstract;
-	@TableField(columnName="IPC")
 	private String IPC;
-	@TableField(columnName="type")
-	private String type;
-	@TableField(columnName="address")
 	private String address;
-	@TableField(columnName="patent_agency")
 	private String patent_agency;
-	@TableField(columnName="prinvipal_claim")
 	private String prinvipal_claim;
-	@TableField(columnName="province")
 	private String province;
-	@TableField(columnName="legal_status")
 	private String legal_status;
+	
+	public ViewPatent(PersistencePatent patent){
+		this.patentId = patent.getPatentId();
+		this.name = patent.getName();
+		this.patent_inventor = patent.getPatent_inventor();
+		this.patent_holder = patent.getPatent_holder();
+		this.date_of_application = patent.getDate_of_application();
+		this.announcement_date = patent.getAnnouncement_date();
+		this.patent_abstract = patent.getPatent_abstract();
+		this.IPC = patent.getIPC();
+		this.address = patent.getAddress();
+		this.patent_agency = patent.getPatent_agency();
+		this.prinvipal_claim = patent.getPrinvipal_claim();
+		this.province = patent.getProvince();
+		this.legal_status = patent.getLegal_status();
+	}
+	
+	
 	public int getPatentId() {
 		return patentId;
 	}
@@ -92,12 +89,6 @@ public class PersistencePatent {
 	public void setIPC(String iPC) {
 		IPC = iPC;
 	}
-	public String getType() {
-		return type;
-	}
-	public void setType(String type) {
-		this.type = type;
-	}
 	public String getAddress() {
 		return address;
 	}
@@ -128,6 +119,5 @@ public class PersistencePatent {
 	public void setLegal_status(String legal_status) {
 		this.legal_status = legal_status;
 	}
-	
 	
 }

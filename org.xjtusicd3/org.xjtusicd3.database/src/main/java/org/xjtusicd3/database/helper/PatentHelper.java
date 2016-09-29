@@ -18,4 +18,17 @@ public class PatentHelper {
 		session.close();
 		return records;
 	}
+	/*
+	 * 
+	 */
+	public static List<PersistencePatent> query(String number,String name,String IPC){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newNumber = "%" + number + "%";
+		String newName = "%" + name + "%";
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatent> patents =  mapper.select(newNumber, newName, newIPC);
+		session.close();
+		return patents;
+	}
 }
