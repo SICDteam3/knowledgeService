@@ -7,9 +7,9 @@ import org.xjtusicd3.partner.view.ViewUser;
 
 public class UserService {
 	/*
-	 * 
+	 * ÓÃ»§µÄ×¢²á
 	 */
-	public void save(ViewUser users) throws Exception{
+	public static void save(ViewUser users) throws Exception{
 		PersistenceUser persistenceUser = new PersistenceUser();
 		persistenceUser.setUsername(users.getUsername());
 		persistenceUser.setPassword(users.getPassword());
@@ -22,7 +22,7 @@ public class UserService {
 	/*
 	 * 
 	 */
-	public void update(ViewUser user) throws Exception{
+	public static void update(ViewUser user) throws Exception{
 		PersistenceUser persistenceUser = convert(user);
 		UserHelper.update(persistenceUser);
 	}
@@ -46,6 +46,14 @@ public class UserService {
 		return viewUser;
 		
 	}
+	public static ViewUser getByEmail(String email) throws Exception{
+		PersistenceUser puser = UserHelper.getUser(email);
+		if (puser == null) {
+			return null;
+		}
+		ViewUser vuser = new ViewUser(puser);
+		return vuser;
+	}
 	/*
 	 * 
 	 */
@@ -57,20 +65,6 @@ public class UserService {
 		persistenceUser.setUsername(user.getUsername());
 		UserHelper.update(persistenceUser);
 	}
-	/*
-	 * 
-	 */
 	
-	
-	public static void main(String[] args) throws Exception {
-		UserService userService = new UserService();
-		PersistenceUser persistenceUser = new PersistenceUser();
-		persistenceUser.setIdNumber(1);
-		persistenceUser.setUsername("zhao");
-		
-		ViewUser users = new ViewUser(persistenceUser);
-		
-		
-		userService.save(users);
-	}
+
 }
