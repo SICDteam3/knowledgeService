@@ -84,5 +84,6 @@
   
   <build>
     <finalName>org.xjtusicd3.portal</finalName>
+    
   </build>
 </project>

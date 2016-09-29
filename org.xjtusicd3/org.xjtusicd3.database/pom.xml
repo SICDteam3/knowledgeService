@@ -29,6 +29,13 @@
 	    <groupId>org.xjtusicd3</groupId>
 	    <artifactId>org.xjtusicd3.common</artifactId>
 	    <version>0.0.1-SNAPSHOT</version>
-	</dependency>   
+	</dependency> 
+	<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+	<dependency>
+	    <groupId>mysql</groupId>
+	    <artifactId>mysql-connector-java</artifactId>
+	    <version>5.1.38</version>
+	</dependency>
+	  
   </dependencies>
 </project>
