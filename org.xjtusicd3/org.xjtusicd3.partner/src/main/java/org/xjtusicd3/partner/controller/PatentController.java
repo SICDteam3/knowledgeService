@@ -71,9 +71,25 @@ public class PatentController {
 		  List<ViewPatentVisual> listPatent1 = PatentService.InventorVisual(IPC);
 		  mv.addObject("inventorVisiual",listPatent1);
 		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
-		  
-		  
-		  
+		  mv.addObject("holderVisiual",listPatent2);
+		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);
+		  mv.addObject("ApplicationVisiual",listPatent3);
+		  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(IPC);
+		  mv.addObject("AnnouncementVisiual",listPatent4);
+		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
+		  mv.addObject("PopoVisiual",listPatent5);
+		
 		return mv;
+	  }
+	  /*
+	   * 企业专利数量虚拟化
+	   */
+	  @RequestMapping(value={"/holderVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
+	  public ModelAndView holderVisiual(HttpServletRequest request){
+		  String holder = request.getParameter("holder");
+		  ModelAndView mv = new ModelAndView("holderVisiual");
+		  List<ViewPatentVisual> listPatent = PatentService.Number_holderpatent(holder);
+		  mv.addObject("holderVisiual",listPatent);
+		  return mv;
 	  }
 }

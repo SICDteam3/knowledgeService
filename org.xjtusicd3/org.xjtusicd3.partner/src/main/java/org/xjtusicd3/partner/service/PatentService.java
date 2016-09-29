@@ -147,9 +147,9 @@ public class PatentService {
 	/*
 	 * IPC形成企业专利数量图
 	 */
-	public static List<ViewPatentVisual> Number_holderpatent(String IPC){
+	public static List<ViewPatentVisual> Number_holderpatent(String holder){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_HolderPatentNumber(IPC);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_HolderPatentNumber(holder);
 		if (persistencePatentcount == null) {
 			return null;
 		}
