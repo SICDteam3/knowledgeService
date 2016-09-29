@@ -19,7 +19,7 @@ public class PatentHelper {
 		return records;
 	}
 	/*
-	 * 
+	 * 专利查询
 	 */
 	public static List<PersistencePatent> query(String number,String name,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
@@ -31,4 +31,7 @@ public class PatentHelper {
 		session.close();
 		return patents;
 	}
+	/*
+	 * 
+	 */
 }
