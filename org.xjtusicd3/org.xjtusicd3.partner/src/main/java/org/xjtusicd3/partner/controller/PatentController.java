@@ -26,8 +26,7 @@ public class PatentController {
 	    {
 	      List<ViewPatent> listPatent = PatentService.select(number, name, IPC);
 	      mv.addObject("listPatent", listPatent);
-	      Page localPage = new Page();
-	    }
+    }
 	    catch (Exception e)
 	    {
 	      e.printStackTrace();
@@ -35,7 +34,7 @@ public class PatentController {
 	    return mv;
 	  }
 	  /*
-	   * ×¨Àû²éÕÒ
+	   * ×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	   */
 	  @RequestMapping(value={"/selectByNumber"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView selectByNumber(HttpServletRequest request){
@@ -62,7 +61,7 @@ public class PatentController {
 		return mv;
 	  }
 	  /*
-	   * ×¨ÀûÐéÄâ»¯
+	   * ×¨ï¿½ï¿½ï¿½ï¿½ï¿½â»¯
 	   */
 	  @RequestMapping(value={"/patentVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView patentVisiual(HttpServletRequest request){
