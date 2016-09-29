@@ -19,6 +19,9 @@ public class ViewPatent {
 	private String legal_status;
 	
 	public ViewPatent(PersistencePatent patent){
+		if(patent==null){
+			return;
+		}
 		this.patentId = patent.getPatentId();
 		this.name = patent.getName();
 		this.patent_inventor = patent.getPatent_inventor();

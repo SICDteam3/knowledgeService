@@ -8,9 +8,7 @@ public class ViewUser {
 	private String password;
 	private String email;
 	private int phone;
-	 public ViewUser(){
-	    	
-	    }
+	
 	
 	public String getUsername() {
 		return username;
