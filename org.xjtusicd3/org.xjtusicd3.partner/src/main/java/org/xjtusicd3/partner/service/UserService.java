@@ -38,7 +38,7 @@ public class UserService {
 	 * 
 	 */
 	public static ViewUser check(ViewUser user) throws Exception{
-		PersistenceUser persistenceUser = UserHelper.checkUser(user.getEmail(), user.getPassword());
+		PersistenceUser persistenceUser = UserHelper.checkUser(user.getUsername(), user.getPassword());
 		if(persistenceUser==null){
 			return null;
 		}
