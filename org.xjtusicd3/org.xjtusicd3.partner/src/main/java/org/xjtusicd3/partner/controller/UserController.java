@@ -69,7 +69,7 @@ public class UserController {
 				mv = new ModelAndView("index");
 				mv.addObject(viewUser);
 				session.setAttribute("session_email", viewUser.getEmail());
-				session.setAttribute("session_username", viewUser.getUsername());
+				session.setAttribute("session_password", viewUser.getPassword());
 			}
 			
 		} catch (Exception e) {
