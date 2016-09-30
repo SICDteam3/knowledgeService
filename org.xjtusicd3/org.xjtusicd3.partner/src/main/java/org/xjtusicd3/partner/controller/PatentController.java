@@ -11,8 +11,20 @@ import org.xjtusicd3.partner.service.PatentService;
 import org.xjtusicd3.partner.view.ViewPatent;
 import org.xjtusicd3.partner.view.ViewPatentVisual;
 @Controller
+@RequestMapping("patent")
 public class PatentController {
-	 
+		@RequestMapping("analyse")
+		 public String getAnalysePage() {
+			return "patent/analyse";
+		}
+		
+		@RequestMapping("companymap")
+		 public String getCompanyMap() {
+			return "patent/companyMap";
+		}
+		
+		
+		
 	  @RequestMapping(value={"patentquery"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView query(HttpServletRequest request)
 	  {
@@ -80,7 +92,7 @@ public class PatentController {
 		return mv;
 	  }
 	  /*
-	   * 企业专利数量虚拟化
+	   * 锟斤拷业专锟斤拷锟斤拷锟斤拷锟斤拷锟解化
 	   */
 	  @RequestMapping(value={"/holderVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView holderVisiual(HttpServletRequest request){
