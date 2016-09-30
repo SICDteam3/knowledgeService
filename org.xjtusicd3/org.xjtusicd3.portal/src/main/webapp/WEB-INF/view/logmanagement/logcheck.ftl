@@ -32,23 +32,23 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
               <!-- Example Horizontal Form --> 
               <h4 class="example-title" style="font-size: 20px!important;">查看用户日志：</h4>
-                 <form class="form-horizontal" action="release.html" method="post" style="font-family:Roboto,sans-serif;font-size:18px;">
+                 <form class="form-horizontal" action="userLog.html" method="post" style="font-family:Roboto,sans-serif;font-size:18px;">
                     <div class="form-group">
                         <label class="col-sm-3 control-label">用户名：</label>
                         <div class="col-sm-9">
-                            <input type="text" class="form-control" id="demand_id" name="demand_id" placeholder="需求名" auto="" complete="off">
+                            <input type="text" name="name" class="form-control" id="userName" placeholder="用户名" auto="" complete="off">
                          </div>
                     </div>
                     <div class="form-group">
                          <label class="col-sm-3 control-label">起始时间：</label>
                          <div class="col-sm-9">
-                              <input class="form-control" type="datetime-local" name="demand_date" autocomplete="off">
+                              <input class="form-control" name="StartTime" id="beginning"  autocomplete="off">
                          </div>
                     </div>
                     <div class="form-group">
                          <label class="col-sm-3 control-label">截止时间：</label>
                          <div class="col-sm-9">
-                              <input class="form-control" type="datetime-local" name="demand_date"  autocomplete="off">
+                              <input class="form-control" name="EndTime"  id="deadline"  autocomplete="off">
                          </div>
                     </div>
                     <div class="form-group">
@@ -62,17 +62,17 @@
             <div class="col-sm-12 col-md-6 col-lg-6">
               <!-- Example Horizontal Form --> 
               <h4 class="example-title" style="font-size: 20px!important;">按时间查询日志：</h4>
-                 <form class="form-horizontal" action="release.html" method="post" style="font-family:Roboto,sans-serif;font-size:18px;">
+                 <form class="form-horizontal" action="timeLog.html" method="get" style="font-family:Roboto,sans-serif;font-size:18px;">
                     <div class="form-group">
                          <label class="col-sm-3 control-label">起始时间：</label>
                          <div class="col-sm-9">
-                              <input class="form-control" type="datetime-local" name="demand_date" autocomplete="off">
+                              <input class="form-control" name="StartTime" id="beginning" autocomplete="off">
                          </div>
                     </div>
                     <div class="form-group">
                          <label class="col-sm-3 control-label">截止时间：</label>
                          <div class="col-sm-9">
-                              <input class="form-control" type="datetime-local" name="demand_date"  autocomplete="off">
+                              <input class="form-control"  name="EndTime" id="deadline"  autocomplete="off">
                          </div>
                     </div>
                     <div class="form-group">
@@ -93,7 +93,7 @@
       
       <header class="panel-heading">
           <div class="panel-actions"></div>
-          <h3 class="panel-title">后台日志：</h3>
+          <h3 class="panel-title">用户日志：</h3>
         </header>
       
       <div class="panel-body">
@@ -106,80 +106,77 @@
           <tr role="row">
             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">用户名
             </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 200px;" aria-label="Position: activate to sort column ascending">密码
+            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 350px;" aria-label="Position: activate to sort column ascending">访问界面
             </th>
             
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Start date: activate to sort column ascending">禁用
+            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 350px;" aria-label="Start date: activate to sort column ascending">请求参数
             </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">恢复
-            </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">修改密码
-            </th>
+          
           </tr>    
           </thead>
-          <tbody><tr class="odd">
-              <td class="sorting_1">1</td> 
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              
+          <tbody>
+          <#list log as log>
+          <tr class="odd">
+              <td class="sorting_1">${log.userName}</td> 
+              <td>${log.ip}</td>
+              <td>${log.argument}</td>
             </tr>
-          
+          </#list>
           
         </tbody></table>
       </div>
       
           </div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"><i class="icon wb-chevron-left-mini"></i></a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"><i class="icon wb-chevron-right-mini"></i></a></li></ul></div></div></div></div>
+      <!-- pannel end-->
       
+    </div>
+ 
+  <!-- End Page -->
+  
+   <!-- pannel start-->
+     
+      <div class="panel">
       
-        <header class="panel-heading">
+      <header class="panel-heading">
           <div class="panel-actions"></div>
-          <h3 class="panel-title">前台日志：</h3>
+          <h3 class="panel-title">按时间查询日志：</h3>
         </header>
-        <div class="panel-body">
-          <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-12"><table class="table table-hover dataTable table-striped width-full dtr-inline" data-plugin="dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1280px;">
+      
+      <div class="panel-body">
+          <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-12"><div class="col-sm-12">
+        </div><table class="table table-hover dataTable table-striped width-full dtr-inline" data-plugin="dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1280px;">
            
            
-           <div class="col-sm-12">
-        <table class="table table-hover dataTable table-striped width-full dtr-inline" id="exampleTableSearch" role="grid" aria-describedby="exampleTableSearch_info" style="width: 1229px;">
+           </table><table class="table table-hover dataTable table-striped width-full dtr-inline" id="exampleTableSearch" role="grid" aria-describedby="exampleTableSearch_info" style="width: 1229px;">
           <thead>
           <tr role="row">
             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">用户名
             </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 200px;" aria-label="Position: activate to sort column ascending">密码
-            </th>
-            
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Start date: activate to sort column ascending">禁用
-            </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">恢复
-            </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">修改密码
-            </th>
+            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 350px;" aria-label="Position: activate to sort column ascending">访问界面
+            </th>       
+            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 350px;" aria-label="Start date: activate to sort column ascending">请求参数
+            </th>     
           </tr>    
           </thead>
+          <tbody> 
+          <#list timelog as log>
           <tr class="odd">
-              <td class="sorting_1">1</td> 
-              <td>2</td>
-              <td>3</td>
-              <td>4</td>
-              <td>5</td>
-              
+              <td class="sorting_1">${log.userName}</td> 
+              <td>${log.ip}</td>
+              <td>${log.argument}</td>
             </tr>
+          </#list>
           
-          
-        </table>
+        </tbody></table>
       </div>
       
-          </table></div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"><i class="icon wb-chevron-left-mini"></i></a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"><i class="icon wb-chevron-right-mini"></i></a></li></ul></div></div></div></div>
-        </div>
-		</div>
-	
+          </div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"><i class="icon wb-chevron-left-mini"></i></a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"><i class="icon wb-chevron-right-mini"></i></a></li></ul></div></div></div></div>
       <!-- pannel end-->
       
     </div>
   </div>
   <!-- End Page -->
+ </div> 
 
 
   <#include "footer.ftl">

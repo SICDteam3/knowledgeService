@@ -31,7 +31,7 @@
             <div class="col-sm-12 col-md-6">
               <!-- Example Horizontal Form --> 
               
-              <form action="query.html" method="get">      
+              <form action="patentSearch.html" method="get">      
               <div class="example-wrap">
                 <h4 class="example-title" style="font-size: 18px!important;">请输入搜索关键字和年份：</h4>
               <div class="form-group">

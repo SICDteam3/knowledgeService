@@ -1,25 +1,33 @@
 package org.xjtusicd3.portal.service;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.xjtusicd3.database.helper.LogHelper;
 import org.xjtusicd3.database.model.PersistenceLog;
+import org.xjtusicd3.portal.controller.LogController;
 
 public class LogService {
 
+	public static void main1(String[] args) {
+		LogController lh=new LogController();
+		System.out.println(lh.userLog("21",1, 23434324));
+	}
 	
 	/*
 	 * 根據用戶名查找用戶日誌
 	 * */
-	public ArrayList<PersistenceLog> userLogByName(String name, String startTime, String endTime) {
+	public static List<PersistenceLog> userLogByName(String name, long startTime, long endTime) {
 		LogHelper lh=new LogHelper();
-		return lh.userLogByName(name,startTime,endTime);
+		List<PersistenceLog> al=new ArrayList<PersistenceLog>();
+		al=lh.userLogByName(name,startTime,endTime);
+		return al;
 	}
 
 	/*
 	 * 根據用戶登錄IP找用戶日誌
 	 * */
-	public ArrayList<PersistenceLog> userLogByIp(String ip, String startTime, String endTime) {
+	public static ArrayList<PersistenceLog> userLogByIp(String ip, long startTime, long endTime) {
         LogHelper lh=new LogHelper();
 		return lh.userLogByIp(ip,startTime,endTime);
 	}
@@ -27,7 +35,7 @@ public class LogService {
 	/*
 	 * 按時間查詢日誌
 	 * */
-	public ArrayList<PersistenceLog> timeLog(String startTime, String endTime) {
+	public static List<PersistenceLog> timeLog(long startTime, long endTime) {
 		 LogHelper lh=new LogHelper();
 		 return lh.timeLog(startTime,endTime);
 	}

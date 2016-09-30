@@ -17,7 +17,7 @@ import org.xjtusicd3.portal.view.ViewPatent;
 public class PatentMangmentController {
     @RequestMapping(value="patentSearch",method=RequestMethod.GET)
 	public ModelAndView patentSearch(String patentName,String patentTime){
-		  ModelAndView mv=new ModelAndView();
+		  ModelAndView mv=new ModelAndView("resourcemanagement/patentmamagement");
 		  PatentService ps=new PatentService();
 		  List<ViewPatent> listPatent = ps.getByname(patentName,patentTime);
 		  mv.addObject("lp",listPatent);
@@ -28,7 +28,7 @@ public class PatentMangmentController {
      * */
     @RequestMapping(value="patentDetail",method=RequestMethod.GET)
     public ModelAndView patentDetail(String IPC){
-		ModelAndView mv=new ModelAndView();
+		ModelAndView mv=new ModelAndView("resourcemanagement/patentmamagement");
 	    PatentService ps=new PatentService();
     	mv.addObject("dc",ps.detailCheck(IPC));
     	return mv;

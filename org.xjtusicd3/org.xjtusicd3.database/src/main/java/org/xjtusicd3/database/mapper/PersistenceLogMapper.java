@@ -1,6 +1,7 @@
 package org.xjtusicd3.database.mapper;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.apache.ibatis.annotations.Select;
 import org.xjtusicd3.database.logic.IBaseDao;
@@ -16,12 +17,13 @@ public interface PersistenceLogMapper extends IBaseDao<PersistencePatent, String
 	public  ArrayList loginCount(long time3);
 
 	@Select(" SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log where userName=#{0} AND time>=#{1} AND time<=#{2}")
-	public ArrayList<PersistenceLog> userLogByName(String name, String startTime, String endTime);
-	@Select(" SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log where ip=#{0} AND time>=#{1} AND time<=#{2}")
-	public ArrayList<PersistenceLog> userLogByIp(String ip, String startTime, String endTime);
-
-	@Select(" SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log where  AND time>=#{0} AND time<=#{1}")
-	public ArrayList<PersistenceLog> timeLog(String startTime, String endTime);
+	public List<PersistenceLog> userLogByName(String name, long startTime, long endTime);
+	
 
 	
+	@Select(" SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log where ip=#{0} AND time>=#{1} AND time<=#{2}")
+	public ArrayList<PersistenceLog> userLogByIp(String ip, long startTime, long endTime);
+
+	@Select(" SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log where   time>=#{0} AND time<=#{1}")
+	public ArrayList<PersistenceLog> timeLog(long startTime, long endTime);	
 }
