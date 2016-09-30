@@ -10,7 +10,7 @@ public class ViewUser {
 	private String passWord;
 	private String userType;
 	private int flag;
-	private int phone;
+	private String phone;
 	
 	 public ViewUser(){
 	    	
@@ -72,13 +72,13 @@ public class ViewUser {
 	public void setFlag(int i) {
 		this.flag = i;
 	}
-
-	public int getPhone() {
+	public String getPhone() {
 		return phone;
 	}
-
-	public void setPhone(int i) {
-		this.phone = i;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
+
+	
 	 
 }
