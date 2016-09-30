@@ -7,7 +7,7 @@ public class ViewUser {
 	private String username;
 	private String password;
 	private String email;
-	private int phone;
+	private String phone;
 	
 	
 	public String getUsername() {
@@ -28,10 +28,11 @@ public class ViewUser {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public int getPhone() {
+	
+	public String getPhone() {
 		return phone;
 	}
-	public void setPhone(int phone) {
+	public void setPhone(String phone) {
 		this.phone = phone;
 	}
 	public ViewUser(PersistenceUser persistenceUser){
@@ -41,6 +42,7 @@ public class ViewUser {
 		this.phone = persistenceUser.getPhone();
 	}
 	
-	
-
+	public ViewUser(){
+		
+	}	
 }

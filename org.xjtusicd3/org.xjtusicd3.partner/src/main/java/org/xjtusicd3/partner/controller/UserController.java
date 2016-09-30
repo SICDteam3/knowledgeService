@@ -10,12 +10,12 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import org.xjtusicd3.partner.service.UserService;
 import org.xjtusicd3.partner.view.ViewUser;
-
+@RequestMapping("user")
 @Controller
 public class UserController {
 	@RequestMapping(value="/register",method=RequestMethod.GET)
 	public ModelAndView getRegisterPage(){
-		ModelAndView mv = new ModelAndView("register");
+		ModelAndView mv = new ModelAndView("user/register");
 		return mv;
 	}
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
@@ -31,7 +31,7 @@ public class UserController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return "login";
+		return "user/login";
 	}
 	@RequestMapping(value="/getupdate",method=RequestMethod.GET)
 	public ModelAndView getupdatePage(){
@@ -55,7 +55,7 @@ public class UserController {
 	}
 	@RequestMapping(value="login",method=RequestMethod.GET)
 	public ModelAndView login() {
-		ModelAndView mv = new ModelAndView("user/login3");
+		ModelAndView mv = new ModelAndView("user/login");
 		return mv;
 	}
 	@RequestMapping(value="login_check",method=RequestMethod.POST)

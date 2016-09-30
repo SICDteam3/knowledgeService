@@ -7,7 +7,7 @@ import org.xjtusicd3.partner.view.ViewUser;
 
 public class UserService {
 	/*
-	 * ÓÃ»§µÄ×¢²á
+	 * ï¿½Ã»ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 	 */
 	public static void save(ViewUser users) throws Exception{
 		PersistenceUser persistenceUser = new PersistenceUser();
@@ -15,7 +15,7 @@ public class UserService {
 		persistenceUser.setPassword(users.getPassword());
 		persistenceUser.setEmail(users.getEmail());
 		persistenceUser.setPhone(users.getPhone());
-		
+		persistenceUser.setType("common");
 		UserHelper.save(persistenceUser);
 		
 	}
