@@ -1,63 +1,14 @@
-<!DOCTYPE html>
-<html>
-<head lang="en">
-    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>西安交通大学社会智能实验室</title>
-
-    <meta name="robots" content="INDEX,FOLLOW">
-    <meta name="keywords" content="专利分析">
-    <meta name="description" content="西安交通大学社会智能实验室知识服务小组 专利分析">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap.min.css">
-    <link rel="stylesheet" type="text/css" media="screen" href="css/bootstrap-theme.min.css">
-    <script src="css/jquery.min.js"></script>
-    <script src="css/bootstrap.min.js"></script>
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/xxzl.css">
-    <!-- 可选的Bootstrap主题文件（一般不用引入） -->
-    <link rel="stylesheet" href="http://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css">
-
-    <!-- jQuery文件。务必在bootstrap.min.js 之前引入 -->
-    <script src="http://cdn.bootcss.com/jquery/1.11.1/jquery.min.js"></script>
-    <script src="js/echarts-all.js"></script>
-    <!-- 最新的 Bootstrap 核心 JavaScript 文件 -->
-    <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
-</head>
-<body>
 <div class="container-fluid" style="width: 1170px">
     <div class="row">
-        <div class="col-lg-12 col-sm-12 col-md-12">
+        <div class="col-lg-12 col-sm-12 col-md-12" style="border-bottom: 1px dotted #ccc;">
             <h1 class="gallery-title">专利列表</h1>
 
             <h3 class="gallery-subtitle">专利分析，报表生成，企业地图，专家地图。</h3>
         </div>
     </div>
     <div class="row gallery-row content content-search clear">
-        <div class="col-sm-12 right">
-            <div class="tab-sort clear">
-                <span class="limited-group  narrow-item clear">
-                    <a href=""
-                       class="highlight_all">全部</a>
-                    <a href="" class=""
-                       title="已购文献">已购文献</a>
-                </span>
-
-                <span class="sortby narrow-item ">
-                    <span class="lb">申请日期优先<i class="icon iconfont icon-arrow-down"></i></span>
-
-                        <span class="sort-list">
-                            <a href="" title="">相关度优先</a>
-
-                            <a href=""  title="仅以专利关键词价值作为排序依据">仅相关度</a>
-
-                            <a href="" title="仅以专利申请时间作为排序依据">仅申请日期</a>
-
-                        </span>
-                </span>
-            </div>
-
+        <div class="col-sm-12 right">           
             <div class="record-item-list">
                 <div class="record-item">
                     <div class="left-record">
@@ -78,9 +29,20 @@
 
                 </div>
             </div>
+           
+            <nav>
+              <span style="display: inline-block;float: left;width: 80px;margin-top: 27px;margin-left: 30px;">共有16页</span>
+			  <ul class="pagination pagination-md">
+			    <li><a href="#">&laquo;</a></li>
+			    <li><a href="#">1</a></li>
+			    <li><a href="#">2</a></li>
+			    <li class="active"><a href="#">3</a></li>
+			    <li><a href="#">4</a></li>
+			    <li><a href="#">5</a></li>
+			    <li ><a href="#">&raquo;</a></li>
+			  </ul>
+			</nav>
+            
         </div>
     </div>
-
 </div>
-</body>
-</html>
