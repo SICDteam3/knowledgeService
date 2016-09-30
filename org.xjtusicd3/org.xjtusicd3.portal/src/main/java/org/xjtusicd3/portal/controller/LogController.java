@@ -14,7 +14,7 @@ public class LogController {
 	 * */
 	@RequestMapping(value="userLog",method=RequestMethod.GET)
 	public ModelAndView userLog(String name,String ip,String StartTime,String EndTime){
-		ModelAndView mv=new ModelAndView();
+		ModelAndView mv=new ModelAndView("logmanagement/logcheck");
 		LogService ls=new LogService();
 		mv.addObject("log", ls.userLogByName(name,StartTime,EndTime));
 		mv.addObject("log", ls.userLogByIp(ip,StartTime,EndTime));

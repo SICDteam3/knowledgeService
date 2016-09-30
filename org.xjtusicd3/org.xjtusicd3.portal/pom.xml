@@ -80,10 +80,16 @@
 	    <artifactId>spring-context-support</artifactId>
 	    <version>4.3.3.RELEASE</version>
 	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
+	<dependency>
+	    <groupId>org.apache.tomcat</groupId>
+	    <artifactId>tomcat-catalina</artifactId>
+	    <version>8.5.3</version>
+	</dependency>
+	
   </dependencies>
   
   <build>
-    <finalName>org.xjtusicd3.portal</finalName>
-    
+    <finalName>org.xjtusicd3.portal</finalName> 
   </build>
 </project>
