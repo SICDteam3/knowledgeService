@@ -25,4 +25,9 @@ public class LTestController {
 	public String login() {
 		return "user/login";
 	}
+	
+	@RequestMapping(value="register",method=RequestMethod.GET)
+	public String register() {
+		return "user/register";
+	}
 }

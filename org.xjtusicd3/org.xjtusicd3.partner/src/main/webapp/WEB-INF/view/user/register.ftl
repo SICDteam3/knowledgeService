@@ -43,7 +43,7 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><a href=""><strong>XXZL</strong> 专利分析平台登录</a></h1>
+                            <h1><a href=""><strong>XXZL</strong> 专利分析平台注册</a></h1>
                             <div class="description">
                             	<p>
 	                            	西安交通大学  <a href=""><strong> / </strong></a>社会智能与复杂数据处理实验室
@@ -55,8 +55,8 @@
                         <div class="col-sm-6 col-sm-offset-3 form-box">
                         	<div class="form-top">
                         		<div class="form-top-left">
-                        			<h3>登录我们的平台</h3>
-                            		<p>请输入用户名和密码来登录：</p>
+                        			<h3>注册我们的平台</h3>
+                            		<p>请输入个人账号信息来注册</p>
                         		</div>
                         		<div class="form-top-right">
                         			<i class="fa fa-key"></i>
@@ -65,14 +65,22 @@
                             <div class="form-bottom">
 			                    <form role="form" action="" method="post" class="login-form">
 			                    	<div class="form-group">
-			                    		<label class="sr-only" for="form-username">Username</label>
-			                        	<input type="text" name="form-username" placeholder="用户名..." class="form-username form-control" id="form-username">
+			                    		<label class="sr-only" for="form-username">用户名</label>
+			                        	<input type="text" name="username" placeholder="用户名..." class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
-			                        	<label class="sr-only" for="form-password">Password</label>
-			                        	<input type="password" name="form-password" placeholder="密码..." class="form-password form-control" id="form-password">
+			                        	<label class="sr-only" for="form-password">密码</label>
+			                        	<input type="password" name="password" placeholder="密码..." class="form-password form-control" id="form-password">
+			                        </div>		                        
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">邮箱</label>
+			                        	<input type="text" name="email" placeholder="邮箱" class="form-password form-control" id="form-password">
 			                        </div>
-			                        <button type="submit" class="btn">登录</button>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">联系方式</label>
+			                        	<input type="text" name="phone" placeholder="联系方式" class="form-password form-control" id="form-password">
+			                        </div>
+			                        <button type="submit" class="btn">注册</button>
 			                    </form>
 		                    </div>
                         </div>

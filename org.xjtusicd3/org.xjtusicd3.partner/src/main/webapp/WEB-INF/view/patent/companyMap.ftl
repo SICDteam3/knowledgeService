@@ -31,7 +31,7 @@
 <body>
 	<#include "header.ftl">
 	<#include "searchbar.ftl">
-	<#include "patent/analyse-body.ftl">
+	<#include "patent/companyMap-body.ftl">
 	<#include "footer.ftl">
 </body>
 </html>

@@ -31,7 +31,7 @@
 <body>
 	<#include "header.ftl">
 	<#include "searchbar.ftl">
-	<#include "searchList-body.ftl">
+	<#include "patent/searchList-body.ftl">
 	<#include "footer.ftl">
 </body>
 </html>
