@@ -2,14 +2,14 @@
 <div class="container-fluid" style="width: 1170px">
     <div class="row">
         <div class="col-lg-12 col-sm-12 col-md-12">
-            <h1 class="gallery-title">专利分析</h1>
-            <h3 class="gallery-subtitle">专利分析，报表生成，企业地图，专家地图。</h3>
+            <h1 class="gallery-title">企业地图</h1>
+            <h3 class="gallery-subtitle">对企业地图进行分析：</h3>
         </div>
     </div>
     <div class="row gallery-row">
         <form class="form-horizontal" role="form">
         <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">输入ipc号</label>
+            <label for="inputEmail3" class="col-sm-2 control-label">输入企业名：</label>
             <div class="col-sm-6">
                 <input type="text" class="form-control" id="inputEmail3" placeholder="ipc">
             </div>

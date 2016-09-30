@@ -30,4 +30,9 @@ public class LTestController {
 	public String register() {
 		return "user/register";
 	}
+	
+	@RequestMapping(value="usercenter",method=RequestMethod.GET)
+	public String usercenter() {
+		return "user/user_center";
+	}
 }
