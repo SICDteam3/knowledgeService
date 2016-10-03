@@ -61,5 +61,11 @@ public class ViewPatentVisual {
 		this.date_of_application = patentcount.getDate_of_application();
 		this.annoucement_date = patentcount.getAnnouncement_date();
 	}
+	@Override
+	public String toString() {
+		return "ViewPatentVisual [patent_inventor=" + patent_inventor + ", patent_holder=" + patent_holder + ", counts="
+				+ counts + ", date_of_application=" + date_of_application + ", annoucement_date=" + annoucement_date
+				+ ", IPC=" + IPC + "]";
+	}
 		
 }

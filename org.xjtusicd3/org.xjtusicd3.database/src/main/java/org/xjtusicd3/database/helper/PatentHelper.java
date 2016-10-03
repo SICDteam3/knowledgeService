@@ -101,7 +101,8 @@ public class PatentHelper {
 	public static List<PersistencePatentcount> rank_Inventor(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> rank_inventor = mapper.patent_inventor_desc(IPC);
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatentcount> rank_inventor = mapper.patent_inventor_desc(newIPC);
 		session.close();
 		return rank_inventor;
 	}

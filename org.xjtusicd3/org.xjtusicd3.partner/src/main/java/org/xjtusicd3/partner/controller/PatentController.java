@@ -4,12 +4,15 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 import org.xjtusicd3.partner.service.PatentService;
 import org.xjtusicd3.partner.view.ViewPatent;
 import org.xjtusicd3.partner.view.ViewPatentVisual;
+
+import com.alibaba.fastjson.JSONArray;
 @Controller
 @RequestMapping("patent")
 public class PatentController {
@@ -74,23 +77,60 @@ public class PatentController {
 	  /*
 	   * 专锟斤拷锟斤拷锟解化
 	   */
-	  @RequestMapping(value={"/patentVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
-	  public ModelAndView patentVisiual(HttpServletRequest request){
+	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
+	 
+	  public ModelAndView inventorVisiual(HttpServletRequest request){
 		  String IPC = request.getParameter("IPC");
-		  ModelAndView mv = new ModelAndView("patentVisiual");
+		  ModelAndView mv = new ModelAndView("patent/analyse");
 		  List<ViewPatentVisual> listPatent1 = PatentService.InventorVisual(IPC);
-		  mv.addObject("inventorVisiual",listPatent1);
-		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
-		  mv.addObject("holderVisiual",listPatent2);
-		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);
-		  mv.addObject("ApplicationVisiual",listPatent3);
-		  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(IPC);
-		  mv.addObject("AnnouncementVisiual",listPatent4);
-		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
-		  mv.addObject("PopoVisiual",listPatent5);
+		  int length = listPatent1.size();
+		  String date1 = null;
+		  String date2 = "'";
+		  for (ViewPatentVisual viewPatentVisual : listPatent1) {
+			  	length--;
+			   date1 = viewPatentVisual.getPatent_inventor();
+			  
+			   date2  += date1;
+			   if(length>=1)
+			   {
+				   date2 += "','";
+			   }
+			   else{
+				   date2 += "'";
+			   }
+			  
+		}
+		  mv.addObject("data1",date2);
+//		  JSONArray jsonArray1 = new JSONArray();
+//		  jsonArray1.add(listPatent1);
+		 
+		//String str ="'1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'";
+//		  mv.addObject("date",str);
+		 // mv.addObject("date1", date1);
+//		  mv.addObject("inventorVisiual",listPatent1);
+//		  String result = "[";
+//		  for (ViewPatentVisual viewPatentVisual : listPatent1) {
+//			result =result+ viewPatentVisual.getPatent_inventor()+",";
+//		  }
+//		  result.subSequence(0, result.length()-1);
+//		  result = result + "]";
+		  
+		  
+//		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
+//		  mv.addObject("holderVisiual",listPatent2);
+//		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);
+//		  mv.addObject("ApplicationVisiual",listPatent3);
+//		  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(IPC);
+//		  mv.addObject("AnnouncementVisiual",listPatent4);
+//		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
+//		  mv.addObject("PopoVisiual",listPatent5);
+		  
+//		  
+//		  mv.addObject("result",result);
 		
 		return mv;
 	  }
+	 
 	  /*
 	   * 锟斤拷业专锟斤拷锟斤拷锟斤拷锟斤拷锟解化
 	   */

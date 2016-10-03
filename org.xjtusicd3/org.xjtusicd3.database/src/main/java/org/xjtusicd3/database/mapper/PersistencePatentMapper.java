@@ -54,9 +54,9 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	@Select({"SELECT patentId as patentId,number as number,name as name,patent_invertor as patent_invertor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE IPC like #{0}"})
 	public abstract List<PersistencePatent> selectByIPC(String paramString);
 	/*
-	 * 发明人排名由大到小前30
+	 * 发明人排名由大到小前10
 	 */
-	@Select({"SELECT patent_inventor as patent_inventor,count(*) as counts FROM patent WHERE IPC LIKE #{0} GROUP BY patent_inventor ORDER BY counts DESC LIMIT 30"})
+	@Select({"SELECT patent_inventor as patent_inventor,count(*) as counts FROM patent WHERE IPC LIKE #{0} GROUP BY patent_inventor ORDER BY counts DESC LIMIT 10"})
 	public List<PersistencePatentcount> patent_inventor_desc(String paramString);
 	/*
 	 * 专利权人排名由大到小前30
