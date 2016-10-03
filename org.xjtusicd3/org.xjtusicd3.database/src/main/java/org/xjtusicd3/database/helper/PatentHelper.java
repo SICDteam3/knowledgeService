@@ -63,7 +63,7 @@ public class PatentHelper {
 		return patents;
 	}
 	/*
-	 * 专利查询-专利号
+	 * 专利查询——专利号
 	 */
 	public static List<PersistencePatent> queryByNumber(String number){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
@@ -74,29 +74,29 @@ public class PatentHelper {
 		return patents;
 	}
 	/*
-	 * 专利查询-名称
+	 * 专利查询——名称
 	 */
 	public static List<PersistencePatent> queryByName(String name){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		String newName = "%" + name + "%";
-		List<PersistencePatent> patents =  mapper.selectByName(name);
+		List<PersistencePatent> patents =  mapper.selectByName(newName);
 		session.close();
 		return patents;
 	}
 	/*
-	 * 专利查询-IPC
+	 * 专利查询——IPC
 	 */
 	public static List<PersistencePatent> queryByIPC(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		String newIPC = "%" + IPC + "%";
-		List<PersistencePatent> patents =  mapper.selectByIPC(IPC);
+		List<PersistencePatent> patents =  mapper.selectByIPC(newIPC);
 		session.close();
 		return patents;
 	}
 	/*
-	 * IPC-专利可视化-发明人
+	 * IPC——专利可视化——发明人
 	 */
 	public static List<PersistencePatentcount> rank_Inventor(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
@@ -107,52 +107,57 @@ public class PatentHelper {
 		return rank_inventor;
 	}
 	/*
-	 * IPC-专利可视化-专权人
+	 * IPC——专利可视化——专权人
 	 */
 	public static List<PersistencePatentcount> rank_Holder(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> rank_holder = mapper.patent_holder_desc(IPC);
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatentcount> rank_holder = mapper.patent_holder_desc(newIPC);
 		session.close();
 		return rank_holder;
 	}
 	/*
-	 * IPC-专利可视化-申请时间
+	 * IPC——专利可视化——申请时间
 	 */
 	public static List<PersistencePatentcount> rank_Application(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(IPC);
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(newIPC);
 		session.close();
 		return rank_application;
 	}
 	/*
-	 * IPC-专利可视化-申请时间
+	 * IPC——专利可视化——发布时间
 	 */
 	public static List<PersistencePatentcount> rank_Announcement(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(IPC);
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(newIPC);
 		session.close();
 		return rank_announcement;
 	}
 	/*
-	 * IPC-专利可视化-省市和专权人气泡图
+	 * IPC——专利可视化——省市和专权人气泡图
 	 */
 	public static List<PersistencePatentcount> popo_ProvinceHolder(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> popo_provinceholder = mapper.popo(IPC);
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatentcount> popo_provinceholder = mapper.popo(newIPC);
 		session.close();
 		return popo_provinceholder;
 	}
 	/*
-	 * IPC-专利可视化-企业专利数量
+	 * IPC——专利可视化——企业专利数量
 	 */
 	public static List<PersistencePatentcount> rank_HolderPatentNumber(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> rank_holderpatentnumber = mapper.number_holderpatent(IPC);
+		String newIPC = "%" + IPC + "%";
+		List<PersistencePatentcount> rank_holderpatentnumber = mapper.number_holderpatent(newIPC);
 		session.close();
 		return rank_holderpatentnumber;
 	}

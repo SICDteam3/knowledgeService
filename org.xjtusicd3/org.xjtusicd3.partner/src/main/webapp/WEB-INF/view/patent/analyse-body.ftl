@@ -149,14 +149,14 @@
         yAxis : [
             {
                 type : 'category',
-                data : [${data1}]
+                data : [${date_inventor}]
             }
         ],
         series : [
             {
-                name:'2011年',
+                name:'发明人',
                 type:'bar',
-                data:[18203, 23489, 29034, 104970, 131744, 630230]
+                data:[${date_inventor_number}]
             },
             {
                 name:'2012年',

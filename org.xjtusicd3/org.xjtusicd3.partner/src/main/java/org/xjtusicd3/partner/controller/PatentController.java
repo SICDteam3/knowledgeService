@@ -48,7 +48,7 @@ public class PatentController {
 	    return mv;
 	  }
 	  /*
-	   * ×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+	   * ä¸“åˆ©æŸ¥è¯¢
 	   */
 	  @RequestMapping(value={"/selectByNumber"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView selectByNumber(HttpServletRequest request){
@@ -75,7 +75,7 @@ public class PatentController {
 		return mv;
 	  }
 	  /*
-	   * ×¨ï¿½ï¿½ï¿½ï¿½ï¿½â»¯
+	   * ä¸“åˆ©å¯è§†åŒ–â€”â€”å‘æ˜äºº
 	   */
 	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	 
@@ -84,27 +84,30 @@ public class PatentController {
 		  ModelAndView mv = new ModelAndView("patent/analyse");
 		  List<ViewPatentVisual> listPatent1 = PatentService.InventorVisual(IPC);
 		  int length = listPatent1.size();
+		  int date_inventor_number = (Integer) null;
 		  String date1 = null;
-		  String date2 = "'";
+		  String date_inventor = "'";
 		  for (ViewPatentVisual viewPatentVisual : listPatent1) {
 			  	length--;
-			   date1 = viewPatentVisual.getPatent_inventor();
-			  
-			   date2  += date1;
-			   if(length>=1)
+			  	date_inventor_number = viewPatentVisual.getCounts_inventor();
+			  	date1 = viewPatentVisual.getPatent_inventor();
+			  	date_inventor  += date1;
+			  	if(length>=1)
 			   {
-				   date2 += "','";
+				   date_inventor += "','";
 			   }
 			   else{
-				   date2 += "'";
+				   date_inventor += "'";
 			   }
 			  
 		}
-		  mv.addObject("data1",date2);
+		  //mv.addObject("date_inventor_number", date_inventor_number);
+		  mv.addObject("date_inventor",date_inventor);
+		  System.out.println(date_inventor_number);
 //		  JSONArray jsonArray1 = new JSONArray();
 //		  jsonArray1.add(listPatent1);
 		 
-		//String str ="'1ÔÂ','2ÔÂ','3ÔÂ','4ÔÂ','5ÔÂ','6ÔÂ','7ÔÂ','8ÔÂ','9ÔÂ','10ÔÂ','11ÔÂ','12ÔÂ'";
+		//String str ="'1ï¿½ï¿½','2ï¿½ï¿½','3ï¿½ï¿½','4ï¿½ï¿½','5ï¿½ï¿½','6ï¿½ï¿½','7ï¿½ï¿½','8ï¿½ï¿½','9ï¿½ï¿½','10ï¿½ï¿½','11ï¿½ï¿½','12ï¿½ï¿½'";
 //		  mv.addObject("date",str);
 		 // mv.addObject("date1", date1);
 //		  mv.addObject("inventorVisiual",listPatent1);
@@ -132,7 +135,7 @@ public class PatentController {
 	  }
 	 
 	  /*
-	   * ï¿½ï¿½Òµ×¨ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½â»¯
+	   * ä¸“åˆ©å¯è§†åŒ–â€”â€”ä¸“æƒäºº
 	   */
 	  @RequestMapping(value={"/holderVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView holderVisiual(HttpServletRequest request){
