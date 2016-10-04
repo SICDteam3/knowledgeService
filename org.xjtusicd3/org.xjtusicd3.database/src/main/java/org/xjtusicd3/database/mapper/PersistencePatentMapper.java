@@ -36,22 +36,22 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	/*
 	 * 搜索
 	 */
-	@Select({"SELECT patentId as patentId,number as number,name as name,patent_invertor as patent_invertor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{0} AND name like #{1} AND IPC like #{2}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{0} AND name like #{1} AND IPC like #{2}"})
 	public  List<PersistencePatent> select(String paramString1,String paramString2,String paramString3);
 	/*
 	 * 搜索-名称
 	 */
-	@Select({"SELECT patentId as patentId,number as number,name as name,patent_invertor as patent_invertor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE name like #{0}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE name like #{0}"})
 	public abstract List<PersistencePatent> selectByName(String paramString);
 	/*
 	 * 搜索-专利号
 	 */
-	@Select({"SELECT patentId as patentId,number as number,name as name,patent_invertor as patent_invertor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{0}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{0}"})
 	public abstract List<PersistencePatent> selectByNumber(String paramString);
 	/*
 	 * 搜索-IPC
 	 */
-	@Select({"SELECT patentId as patentId,number as number,name as name,patent_invertor as patent_invertor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE IPC like #{0}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE IPC like #{0}"})
 	public abstract List<PersistencePatent> selectByIPC(String paramString);
 	/*
 	 * 发明人排名由大到小前10

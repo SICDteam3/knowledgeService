@@ -12,17 +12,24 @@ import org.xjtusicd3.partner.view.ViewPatent;
 
 @Controller
 public class IndexController {
+	
 	@RequestMapping("index")
 	public String index() {
 		return "index";
 	}
 	
 	@RequestMapping(value={"/search"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
-	  public ModelAndView search(HttpServletRequest request){
-		  String number = request.getParameter("number");
-		  ModelAndView mv = new ModelAndView("selectByNumber");
-		  List<ViewPatent> listPatent = PatentService.selectByNumber(number);
-		  mv.addObject("listPatentByNumber",listPatent);
+	 public ModelAndView search(String context,String searchType){
+		ModelAndView mv = new ModelAndView("searchResult");
+		List<ViewPatent> listPatent = null;
+		//专利名搜索
+		if (searchType.equals("1")) {
+			listPatent = PatentService.selectByName(context);
+		//专利号搜索
+		}else if (searchType.equals("2")) {
+			listPatent = PatentService.selectByNumber(context);
+		}		  
+		mv.addObject("listPatent",listPatent);
 		return mv;
 	 }
 	

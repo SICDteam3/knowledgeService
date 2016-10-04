@@ -1,6 +1,6 @@
 <div class="container-fluid" style="width: 1170px;">
     <div class="row">
-    <form action="search.html" method="post">
+    <form action="${path}/search.html" method="post">
     	<div class="col-lg-2">
             <select class="form-control" name="searchType">
 				  <option value="1">专利名搜索</option>
@@ -8,7 +8,7 @@
 			</select>
         </div>
         <div class="col-lg-8">                          
-            <input type="text" class="form-control">           
+            <input type="text" name="context" class="form-control">           
         </div>
         <div class="col-lg-2">
             <button type="submit" class="btn btn-default">搜索</button>
