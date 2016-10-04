@@ -158,8 +158,9 @@
                 type:'bar',
                 data:[${date_inventor_number}]
             },
+            
             {
-                name:'2012年',
+                name:'专权人',
                 type:'bar',
                 data:[19325, 23438, 31000, 121594, 134141, 681807]
             }

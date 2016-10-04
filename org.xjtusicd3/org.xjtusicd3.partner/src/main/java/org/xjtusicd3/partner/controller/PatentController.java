@@ -84,17 +84,20 @@ public class PatentController {
 		  ModelAndView mv = new ModelAndView("patent/analyse");
 		  List<ViewPatentVisual> listPatent1 = PatentService.InventorVisual(IPC);
 		  int length = listPatent1.size();
-		  int date_inventor_number = (Integer) null;
+		  String date2;
 		  String date1 = null;
 		  String date_inventor = "'";
-		  for (ViewPatentVisual viewPatentVisual : listPatent1) {
+		  String date_inventor_number = "";
+		for (ViewPatentVisual viewPatentVisual : listPatent1) {
 			  	length--;
-			  	date_inventor_number = viewPatentVisual.getCounts_inventor();
+			  	date2 = viewPatentVisual.getCounts_inventor();
 			  	date1 = viewPatentVisual.getPatent_inventor();
 			  	date_inventor  += date1;
+			  	date_inventor_number += date2;
 			  	if(length>=1)
 			   {
 				   date_inventor += "','";
+				   date_inventor_number += ",";
 			   }
 			   else{
 				   date_inventor += "'";
@@ -103,6 +106,7 @@ public class PatentController {
 		}
 		  //mv.addObject("date_inventor_number", date_inventor_number);
 		  mv.addObject("date_inventor",date_inventor);
+		  mv.addObject("date_inventor_number", date_inventor_number);
 		  System.out.println(date_inventor_number);
 //		  JSONArray jsonArray1 = new JSONArray();
 //		  jsonArray1.add(listPatent1);

@@ -5,38 +5,42 @@ import org.xjtusicd3.database.model.PersistencePatentcount;
 public class ViewPatentVisual {
 	private String patent_inventor;
 	private String patent_holder;
-	private int counts_inventor;
-	private int counts_holder;
-	private int counts_application;
-	private int counts_announcement;
+	private String counts_inventor;
+	private String counts_holder;
+	private String counts_application;
+	private String counts_announcement;
 	private String date_of_application;
 	private String annoucement_date;
 	private String IPC;
 	
 	
 	
-	public int getCounts_inventor() {
+	
+	
+	
+	
+	public String getCounts_inventor() {
 		return counts_inventor;
 	}
-	public void setCounts_inventor(int counts_inventor) {
+	public void setCounts_inventor(String counts_inventor) {
 		this.counts_inventor = counts_inventor;
 	}
-	public int getCounts_holder() {
+	public String getCounts_holder() {
 		return counts_holder;
 	}
-	public void setCounts_holder(int counts_holder) {
+	public void setCounts_holder(String counts_holder) {
 		this.counts_holder = counts_holder;
 	}
-	public int getCounts_application() {
+	public String getCounts_application() {
 		return counts_application;
 	}
-	public void setCounts_application(int counts_application) {
+	public void setCounts_application(String counts_application) {
 		this.counts_application = counts_application;
 	}
-	public int getCounts_announcement() {
+	public String getCounts_announcement() {
 		return counts_announcement;
 	}
-	public void setCounts_announcement(int counts_announcement) {
+	public void setCounts_announcement(String counts_announcement) {
 		this.counts_announcement = counts_announcement;
 	}
 	public String getIPC() {
