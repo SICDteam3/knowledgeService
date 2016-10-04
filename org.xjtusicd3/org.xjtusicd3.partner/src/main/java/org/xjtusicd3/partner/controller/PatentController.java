@@ -4,7 +4,6 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
-import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -12,7 +11,6 @@ import org.xjtusicd3.partner.service.PatentService;
 import org.xjtusicd3.partner.view.ViewPatent;
 import org.xjtusicd3.partner.view.ViewPatentVisual;
 
-import com.alibaba.fastjson.JSONArray;
 @Controller
 @RequestMapping("patent")
 public class PatentController {
@@ -40,7 +38,7 @@ public class PatentController {
 	    {
 	      List<ViewPatent> listPatent = PatentService.select(number, name, IPC);
 	      mv.addObject("listPatent", listPatent);
-    }
+	    }
 	    catch (Exception e)
 	    {
 	      e.printStackTrace();
