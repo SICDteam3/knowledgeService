@@ -20,7 +20,7 @@ public class IndexController {
 	
 	@RequestMapping(value={"/search"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	 public ModelAndView search(String context,String searchType){
-		ModelAndView mv = new ModelAndView("searchResult");
+		ModelAndView mv = new ModelAndView("patent/searchResult");
 		List<ViewPatent> listPatent = null;
 		//专利名搜索
 		if (searchType.equals("1")) {

@@ -10,26 +10,26 @@
     <div class="row gallery-row content content-search clear">
         <div class="col-sm-12 right">           
             <div class="record-item-list">
+            	<#list listPatent as patent>
                 <div class="record-item">
                     <div class="left-record">
                         <div class="record-title">
                             <span class="index">1.</span>
                             <a class="fulltext" href="" target="_blank">全文</a>
-                            <a class="title" href="" target="_blank">基于物联网的任务触发的公共<em>自行车</em>自调度方法及系统</a>
+                            <a class="title" href="" target="_blank">${patent.name}</a>
                         </div>
                         <div class="record-subtitle">
-                            [发明专利]
-                            CN201510499920.7_&nbsp;&nbsp;郭今戈
-                            2015年8月16日
+                            [${patent.type}]
+                            ${patent.number}&nbsp;&nbsp;${patent.patent_inventor}
+                            ${patent.date_of_application}
                         </div>
                         <div class="record-desc">
-                            本发明提供一种基于物联网的任务触发的公共<em>自行车</em>自调度方法及系统，主要包括：公共<em>自行车</em>控制中心、智能手机、APP程序、公共<em>自行车</em>调度中心。通过将公共<em>自行车</em>IC卡与用户的手机号码绑定；公共<em>自行车</em>控制中心实时采集公共自行...
+                        	${patent.patent_abstract}
                         </div>
                     </div>
-
                 </div>
-            </div>
-           
+                </#list>
+            </div>          
             <nav>
               <span style="display: inline-block;float: left;width: 80px;margin-top: 27px;margin-left: 30px;">共有16页</span>
 			  <ul class="pagination pagination-md">
@@ -41,8 +41,7 @@
 			    <li><a href="#">5</a></li>
 			    <li ><a href="#">&raquo;</a></li>
 			  </ul>
-			</nav>
-            
+			</nav>            
         </div>
     </div>
 </div>
