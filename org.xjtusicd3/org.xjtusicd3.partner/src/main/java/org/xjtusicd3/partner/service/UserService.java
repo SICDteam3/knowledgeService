@@ -7,7 +7,7 @@ import org.xjtusicd3.partner.view.ViewUser;
 
 public class UserService {
 	/*
-	 * 锟矫伙拷锟斤拷注锟斤拷
+	 * 用户的注册
 	 */
 	public static void save(ViewUser users) throws Exception{
 		PersistenceUser persistenceUser = new PersistenceUser();
@@ -20,7 +20,7 @@ public class UserService {
 		
 	}
 	/*
-	 * 
+	 * 用户的更改
 	 */
 	public static void update(ViewUser user) throws Exception{
 		PersistenceUser persistenceUser = convert(user);
@@ -35,7 +35,7 @@ public class UserService {
 		
 	}	
 	/*
-	 * 
+	 * 用户登录检查
 	 */
 	public static ViewUser check(ViewUser user) throws Exception{
 		PersistenceUser persistenceUser = UserHelper.checkUser(user.getUsername(), user.getPassword());
@@ -55,7 +55,7 @@ public class UserService {
 		return vuser;
 	}
 	/*
-	 * 
+	 * 用户的登录
 	 */
 	public static void apply(ViewUser user,String email) throws Exception{
 		PersistenceUser persistenceUser = UserHelper.getUser(email);

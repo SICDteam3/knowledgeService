@@ -10,6 +10,7 @@ import org.springframework.web.servlet.ModelAndView;
 import org.xjtusicd3.partner.service.PatentService;
 import org.xjtusicd3.partner.view.ViewPatent;
 import org.xjtusicd3.partner.view.ViewPatentVisual;
+
 @Controller
 @RequestMapping("patent")
 public class PatentController {
@@ -45,7 +46,7 @@ public class PatentController {
 	    return mv;
 	  }
 	  /*
-	   * ר������
+	   * 专利查询
 	   */
 	  @RequestMapping(value={"/selectByNumber"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView selectByNumber(HttpServletRequest request){
@@ -72,27 +73,67 @@ public class PatentController {
 		return mv;
 	  }
 	  /*
-	   * ר�����⻯
+	   * 专利可视化——发明人
 	   */
-	  @RequestMapping(value={"/patentVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
-	  public ModelAndView patentVisiual(HttpServletRequest request){
+	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
+	 
+	  public ModelAndView inventorVisiual(HttpServletRequest request){
 		  String IPC = request.getParameter("IPC");
-		  ModelAndView mv = new ModelAndView("patentVisiual");
+		  ModelAndView mv = new ModelAndView("patent/analyse");
 		  List<ViewPatentVisual> listPatent1 = PatentService.InventorVisual(IPC);
-		  mv.addObject("inventorVisiual",listPatent1);
-		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
-		  mv.addObject("holderVisiual",listPatent2);
-		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);
-		  mv.addObject("ApplicationVisiual",listPatent3);
-		  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(IPC);
-		  mv.addObject("AnnouncementVisiual",listPatent4);
-		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
-		  mv.addObject("PopoVisiual",listPatent5);
+		  int length = listPatent1.size();
+		  int date_inventor_number = (Integer) null;
+		  String date1 = null;
+		  String date_inventor = "'";
+		  for (ViewPatentVisual viewPatentVisual : listPatent1) {
+			  	length--;
+			  	date_inventor_number = viewPatentVisual.getCounts_inventor();
+			  	date1 = viewPatentVisual.getPatent_inventor();
+			  	date_inventor  += date1;
+			  	if(length>=1)
+			   {
+				   date_inventor += "','";
+			   }
+			   else{
+				   date_inventor += "'";
+			   }
+			  
+		}
+		  //mv.addObject("date_inventor_number", date_inventor_number);
+		  mv.addObject("date_inventor",date_inventor);
+		  System.out.println(date_inventor_number);
+//		  JSONArray jsonArray1 = new JSONArray();
+//		  jsonArray1.add(listPatent1);
+		 
+		//String str ="'1��','2��','3��','4��','5��','6��','7��','8��','9��','10��','11��','12��'";
+//		  mv.addObject("date",str);
+		 // mv.addObject("date1", date1);
+//		  mv.addObject("inventorVisiual",listPatent1);
+//		  String result = "[";
+//		  for (ViewPatentVisual viewPatentVisual : listPatent1) {
+//			result =result+ viewPatentVisual.getPatent_inventor()+",";
+//		  }
+//		  result.subSequence(0, result.length()-1);
+//		  result = result + "]";
+		  
+		  
+//		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
+//		  mv.addObject("holderVisiual",listPatent2);
+//		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);
+//		  mv.addObject("ApplicationVisiual",listPatent3);
+//		  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(IPC);
+//		  mv.addObject("AnnouncementVisiual",listPatent4);
+//		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
+//		  mv.addObject("PopoVisiual",listPatent5);
+		  
+//		  
+//		  mv.addObject("result",result);
 		
 		return mv;
 	  }
+	 
 	  /*
-	   * ��ҵר���������⻯
+	   * 专利可视化——专权人
 	   */
 	  @RequestMapping(value={"/holderVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView holderVisiual(HttpServletRequest request){
