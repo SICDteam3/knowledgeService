@@ -37,7 +37,7 @@ public class PatentController {
 	    {
 	      List<ViewPatent> listPatent = PatentService.select(number, name, IPC);
 	      mv.addObject("listPatent", listPatent);
-    }
+	    }
 	    catch (Exception e)
 	    {
 	      e.printStackTrace();
