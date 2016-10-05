@@ -30,6 +30,10 @@ public class IndexController {
 			listPatent = PatentService.selectByNumber(context);
 		}		  
 		mv.addObject("listPatent",listPatent);
+		
+		//分页处理,每页10行数据
+		int count = listPatent.size();
+		int pageNum = (int) Math.ceil(count/10.0);
 		return mv;
 	 }
 	
