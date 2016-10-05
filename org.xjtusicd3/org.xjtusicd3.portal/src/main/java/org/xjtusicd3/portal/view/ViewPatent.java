@@ -37,7 +37,7 @@ public class ViewPatent {
 		this.setPatent_holder(pure.getPatent_holder());
 		this.setPatentId(pure.getPatentId());
 		this.setPatent_inventor(pure.getPatent_inventor());
-		this.setPrincipal_claim(pure.getPrinvipal_claim());
+		this.setPrincipal_claim(pure.getPrincipal_claim());
 		this.setProvince(pure.getProvince());
 		this.setType(pure.getType());
 	    }

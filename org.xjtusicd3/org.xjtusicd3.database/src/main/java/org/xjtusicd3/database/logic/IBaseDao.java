@@ -32,4 +32,7 @@ public interface IBaseDao<T, PK> {
 
 	@Select(SqlHelper.BASE_SELECT_ONE)
 	public T selectOne(Class<T> object, String where);
+	
+	@Select(SqlHelper.BASE_LIST_PAGE)
+	public List<T> list_page(Class<T> cls, Page<T> page);
 }

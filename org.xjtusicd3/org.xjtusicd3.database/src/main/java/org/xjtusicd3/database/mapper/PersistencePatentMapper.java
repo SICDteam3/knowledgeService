@@ -85,7 +85,19 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	public List<PersistencePatentcount> number_holderpatent(String paramString);
 
 
+	@Select({"SELECT count(*) FROM patent WHERE name like #{0}"})
+	public int selectByNameCount(String newName);
 
+
+	@Select({"SELECT count(*) FROM patent WHERE number like #{0}"})
+	public int selectByNumberCount(String newName);
+
+
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE name like #{2} limit #{0},#{1}"})
+	public List<PersistencePatent> selectPageByName(int pageNo, int pageSize, String context);
+	
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{2} limit #{0},#{1}"})
+	public List<PersistencePatent> selectPageByName2(int pageNo, int pageSize, String context);
 
 }
 
