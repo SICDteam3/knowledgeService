@@ -32,20 +32,20 @@ public class PatentHelper {
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		    String patentName1 = "%" + patentName + "%";
 		    String patentTime1 = "%" + patentTime + "%";
-		    session.close();
-		 return mapper.getByname(patentName1, patentTime1);
+		  
+		  return mapper.getByname(patentName1, patentTime1);
 	}
 
-	public  PersistencePatent detailCheck(String IPC) {
+	public  PersistencePatent detailCheck(String patentId) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		return mapper.detailCheck(IPC);
+		return mapper.detailCheck(patentId);
 	}
 
-	public void delete(String iPC) {
+	public void delete(String patentId) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		mapper.deleteByIPC(iPC);
+		mapper.deleteByUnmber(patentId);
 		return;
 	}
 

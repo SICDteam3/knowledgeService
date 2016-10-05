@@ -14,7 +14,7 @@ public class SystemStateController {
 	 * */
 	@RequestMapping(value="patentUpdateState",method=RequestMethod.GET)
 	public ModelAndView patentUpdateState(int time){
-		ModelAndView mv=new ModelAndView("");
+		ModelAndView mv=new ModelAndView("systemstate/patentupdate");
 		SystemStateService ss=new SystemStateService();
 		mv.addObject("puc",ss.patentUpdateCount(time));
 		return mv;
@@ -24,9 +24,9 @@ public class SystemStateController {
 	 * */
 	@RequestMapping(value="loginCount",method=RequestMethod.GET)
 	public ModelAndView loginCount(){
-		ModelAndView mv=new ModelAndView();
+		ModelAndView mv=new ModelAndView("systemstate/onlineusers");
 		SystemStateService ss=new SystemStateService();
-		mv.addObject("lc",ss.loginCount());
+		//mv.addObject("lc",ss.loginCount());
 		return mv;
 	}
 	
