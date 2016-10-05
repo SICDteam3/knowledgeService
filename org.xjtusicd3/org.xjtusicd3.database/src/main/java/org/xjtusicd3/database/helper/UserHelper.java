@@ -26,11 +26,11 @@ public class UserHelper {
 		
 	}
 
-	public static PersistenceUser checkUser(String email, String password) throws Exception{
+	public static PersistenceUser checkUser(String name, String password) throws Exception{
 		
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistenceUserMapper mapper = session.getMapper(PersistenceUserMapper.class);
-		PersistenceUser user = (PersistenceUser)mapper.findByEmail(email);
+		PersistenceUser user = (PersistenceUser)mapper.findByName(name);
 		session.close();
 		if (user == null) {
 			return null;

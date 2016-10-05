@@ -7,14 +7,14 @@
         </div>
     </div>
     <div class="row gallery-row">
-        <form class="form-horizontal" role="form">
+        <form class="form-horizontal" role="form" action="inventorVisiual.html" method="post">
         <div class="form-group">
             <label for="inputEmail3" class="col-sm-2 control-label">输入ipc号</label>
             <div class="col-sm-6">
-                <input type="text" class="form-control" id="inputEmail3" placeholder="ipc">
+                <input type="text" class="form-control" name="IPC" placeholder="ipc">
             </div>
             <div class="col-sm-4">
-                <button type="button" class="btn btn-default">查询</button>
+                <button type="submit" class="btn btn-default">查询</button>
             </div>
         </div>
         </form>
@@ -52,14 +52,14 @@
 
     var option1 = {
         title : {
-            text: '某地区蒸发量和降水量',
-            subtext: '纯属虚构'
+            text: '专利申请日期与发布日期',
+            subtext: '数据来自中国知网'
         },
         tooltip : {
             trigger: 'axis'
         },
         legend: {
-            data:['蒸发量','降水量']
+            data:['申请日期','发布日期']
         },
         toolbox: {
             show : true,
@@ -120,14 +120,14 @@
     };
     var option = {
         title : {
-            text: '世界人口总量',
-            subtext: '数据来自网络'
+            text: '发明人申请人排名',
+            subtext: '数据来自中国知网'
         },
         tooltip : {
             trigger: 'axis'
         },
         legend: {
-            data:['2011年', '2012年']
+            data:['发明人', '申请人']
         },
         toolbox: {
             show : true,
@@ -149,17 +149,22 @@
         yAxis : [
             {
                 type : 'category',
-                data : ['巴西','印尼','美国','印度','中国','世界人口(万)']
+<<<<<<< HEAD
+                data :['巴西','印尼','美国','印度','中国','世界人口(万)']
+=======
+                data : [${date_inventor}]
+>>>>>>> refs/remotes/origin/master
             }
         ],
         series : [
             {
-                name:'2011年',
+                name:'发明人',
                 type:'bar',
-                data:[18203, 23489, 29034, 104970, 131744, 630230]
+                data:[${date_inventor_number}]
             },
+            
             {
-                name:'2012年',
+                name:'专权人',
                 type:'bar',
                 data:[19325, 23438, 31000, 121594, 134141, 681807]
             }

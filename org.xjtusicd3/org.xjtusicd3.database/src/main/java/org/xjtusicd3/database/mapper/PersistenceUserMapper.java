@@ -11,6 +11,9 @@ import org.xjtusicd3.database.model.PersistenceUser;
 
 
 public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>{
+	@Select("select userEmail as email,userName as username,passWord as password,user_type as type,flag as flag,userId as idNumber,phone as phone from user where username=#{email};")
+	PersistenceUser findByName(String name);
+	
 	@Select("select userEmail as email,userName as username,passWord as password,user_type as type,flag as flag,userId as idNumber,phone as phone from user where email=#{email};")
 	PersistenceUser findByEmail(String email);
 	

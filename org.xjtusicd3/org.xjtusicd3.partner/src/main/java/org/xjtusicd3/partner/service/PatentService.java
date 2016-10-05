@@ -24,7 +24,7 @@ public class PatentService {
 		
 	} 
 	/*
-	 * ¸ù¾İ×¨ÀûºÅ²éÑ¯
+	 * ä¸“åˆ©æŸ¥è¯¢â€”â€”ä¸“åˆ©å·
 	 */
 	public static List<ViewPatent> selectByNumber(String number){
 		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
@@ -39,7 +39,7 @@ public class PatentService {
 		return listPatent;
 	}
 	/*
-	 * ¸ù¾İ×¨ÀûÃû³Æ²éÑ¯
+	 * ä¸“åˆ©æŸ¥è¯¢â€”â€”åç§°
 	 */
 	public static List<ViewPatent> selectByName(String name){
 		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
@@ -55,7 +55,7 @@ public class PatentService {
 	}
 
 	/*
-	 * ¸ù¾İIPC²éÑ¯
+	 * ä¸“åˆ©æŸ¥è¯¢â€”â€”IPC
 	 */
 	public static List<ViewPatent> selectByIPC(String IPC){
 		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
@@ -70,7 +70,7 @@ public class PatentService {
 		return listPatent;
 	}
 	/*
-	 * IPCĞÎ³É·¢Ã÷ÈËÍ¼
+	 * IPCâ€”â€”ä¸“åˆ©å¯è§†åŒ–â€”â€”å‘æ˜äºº
 	 */
 	public static List<ViewPatentVisual> InventorVisual(String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
@@ -85,7 +85,7 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
-	 * IPCĞÎ³É×¨ÀûÈ¨ÈËÍ¼
+	 * IPCâ€”â€”ä¸“åˆ©å¯è§†åŒ–â€”â€”ä¸“æƒäºº
 	 */
 	public static List<ViewPatentVisual> HolderVisual(String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
@@ -100,7 +100,7 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
-	 * IPCĞÎ³ÉÉêÇëÊ±¼äÍ¼
+	 * IPCâ€”â€”ä¸“åˆ©å¯è§†åŒ–â€”â€”ç”³è¯·æ—¶é—´
 	 */
 	public static List<ViewPatentVisual> ApplicationVisual(String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
@@ -115,7 +115,7 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
-	 * IPCĞÎ³ÉĞû²¼Ê±¼äÍ¼
+	 * IPCâ€”â€”ä¸“åˆ©å¯è§†åŒ–â€”â€”å‘å¸ƒæ—¶é—´
 	 */
 	public static List<ViewPatentVisual> AnnouncementVisual(String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
@@ -130,7 +130,7 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
-	 * IPCĞÎ³ÉÊ¡ÊĞ¡¢×¨È¨ÈËÆøÅİÍ¼
+	 * IPCâ€”â€”ä¸“åˆ©å¯è§†åŒ–â€”â€”çœå¸‚å’Œä¸“æƒäººæ°”æ³¡å›¾
 	 */
 	public static List<ViewPatentVisual> PopoVisual(String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
@@ -145,7 +145,7 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
-	 * IPCĞÎ³ÉÆóÒµ×¨ÀûÊıÁ¿Í¼
+	 * IPCâ€”â€”ä¸“åˆ©å¯è§†åŒ–â€”â€”ä¼ä¸šä¸“åˆ©æ•°é‡
 	 */
 	public static List<ViewPatentVisual> Number_holderpatent(String holder){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();

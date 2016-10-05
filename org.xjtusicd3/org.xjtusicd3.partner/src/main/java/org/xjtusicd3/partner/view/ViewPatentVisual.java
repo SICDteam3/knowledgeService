@@ -5,13 +5,44 @@ import org.xjtusicd3.database.model.PersistencePatentcount;
 public class ViewPatentVisual {
 	private String patent_inventor;
 	private String patent_holder;
-	private int counts;
+	private String counts_inventor;
+	private String counts_holder;
+	private String counts_application;
+	private String counts_announcement;
 	private String date_of_application;
 	private String annoucement_date;
 	private String IPC;
 	
 	
 	
+	
+	
+	
+	
+	public String getCounts_inventor() {
+		return counts_inventor;
+	}
+	public void setCounts_inventor(String counts_inventor) {
+		this.counts_inventor = counts_inventor;
+	}
+	public String getCounts_holder() {
+		return counts_holder;
+	}
+	public void setCounts_holder(String counts_holder) {
+		this.counts_holder = counts_holder;
+	}
+	public String getCounts_application() {
+		return counts_application;
+	}
+	public void setCounts_application(String counts_application) {
+		this.counts_application = counts_application;
+	}
+	public String getCounts_announcement() {
+		return counts_announcement;
+	}
+	public void setCounts_announcement(String counts_announcement) {
+		this.counts_announcement = counts_announcement;
+	}
 	public String getIPC() {
 		return IPC;
 	}
@@ -42,12 +73,6 @@ public class ViewPatentVisual {
 	public void setPatent_holder(String patent_holder) {
 		this.patent_holder = patent_holder;
 	}
-	public int getCounts() {
-		return counts;
-	}
-	public void setCounts(int counts) {
-		this.counts = counts;
-	}
 	
 	
 	
@@ -57,9 +82,20 @@ public class ViewPatentVisual {
 		}
 		this.patent_inventor = patentcount.getPatent_inventor();
 		this.patent_holder = patentcount.getPatent_holder();
-		this.counts = patentcount.getCounts();
+		this.counts_inventor = patentcount.getCounts_inventor();
+		this.counts_holder = patentcount.getCounts_holder();
+		this.counts_application = patentcount.getCounts_application();
+		this.counts_announcement = patentcount.getCounts_announcement();
 		this.date_of_application = patentcount.getDate_of_application();
 		this.annoucement_date = patentcount.getAnnouncement_date();
 	}
+	@Override
+	public String toString() {
+		return "ViewPatentVisual [patent_inventor=" + patent_inventor + ", patent_holder=" + patent_holder
+				+ ", counts_inventor=" + counts_inventor + ", counts_holder=" + counts_holder + ", counts_application="
+				+ counts_application + ", counts_announcement=" + counts_announcement + ", date_of_application="
+				+ date_of_application + ", annoucement_date=" + annoucement_date + ", IPC=" + IPC + "]";
+	}
+	
 		
 }
