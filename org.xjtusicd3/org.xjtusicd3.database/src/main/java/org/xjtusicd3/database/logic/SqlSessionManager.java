@@ -8,6 +8,7 @@ import org.apache.ibatis.session.SqlSessionFactory;
 import org.apache.ibatis.session.SqlSessionFactoryBuilder;
 import org.apache.ibatis.transaction.TransactionFactory;
 import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
+import org.xjtusicd3.database.mapper.PersistenceDictionaryMapper;
 import org.xjtusicd3.database.mapper.PersistenceLogMapper;
 import org.xjtusicd3.database.mapper.PersistencePatentMapper;
 import org.xjtusicd3.database.mapper.PersistenceUserMapper;
@@ -28,7 +29,7 @@ public class SqlSessionManager {
 		return bizSqlSessionFactory;
 	}
 	
-	private static SqlSessionFactory convertSqlSession(Dbconfig dbConfig) throws Exception {
+	private static SqlSessionFactory convertSqlSession(Dbconfig dbConfig) throws Exception { 
 		
 			DataSource dataSource = ConnectionManager.getProxoolDataSource(dbConfig.getDriver(), dbConfig.getUrl(), dbConfig.getUsername(),
 					dbConfig.getPassword(), dbConfig.getAlias(), dbConfig.getMaxConnection(), dbConfig.getMinConnection(),
@@ -40,7 +41,7 @@ public class SqlSessionManager {
 			configuration.addMapper(PersistencePatentMapper.class);
 			configuration.addMapper(PersistenceUserMapper.class);
 			configuration.addMapper(PersistenceLogMapper.class);
-			
+			configuration.addMapper(PersistenceDictionaryMapper.class);
 			configuration.addInterceptor(new BasePlugin());
 			bizSqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
 		

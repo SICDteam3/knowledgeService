@@ -9,28 +9,51 @@ import org.springframework.web.servlet.ModelAndView;
 import org.xjtusicd3.portal.service.PatentService;
 import org.xjtusicd3.portal.view.ViewPatent;
 
-  /*
-   * 根据专利关键字和年份查找专利
-   */
+ 
 @RequestMapping(value="patent")
 @Controller
 public class PatentMangmentController {
+	
+//	  @RequestMapping(value="toPatentSearch",method=RequestMethod.GET)
+//		public ModelAndView toPatentSearch(){
+//			  ModelAndView mv=new ModelAndView("resourcemanagement/patentManagement");
+//			  return mv;
+//		}
+	
+	@RequestMapping(value="toPatentSearch",method=RequestMethod.GET)
+	public ModelAndView toPatentSearch(){
+		  ModelAndView mv=new ModelAndView("resourcemanagement/patentManagement");
+		  
+		  return mv;
+	}
+	  
+	  @RequestMapping(value="toPatentDetail",method=RequestMethod.GET)
+		public ModelAndView toPatentDetail(){
+			  ModelAndView mv=new ModelAndView("resourcemanagement/patentDetail");
+			  
+			  return mv;
+		}
+	  
+	  /*
+	   * 根据专利关键字和年份查找专利
+	   */
     @RequestMapping(value="patentSearch",method=RequestMethod.GET)
 	public ModelAndView patentSearch(String patentName,String patentTime){
-		  ModelAndView mv=new ModelAndView("resourcemanagement/patentmamagement");
+		  ModelAndView mv=new ModelAndView("resourcemanagement/patentManagement");
 		  PatentService ps=new PatentService();
 		  List<ViewPatent> listPatent = ps.getByname(patentName,patentTime);
 		  mv.addObject("lp",listPatent);
+		 
 		  return mv;
 	}
     /*
      * 查找专利详情
      * */
     @RequestMapping(value="patentDetail",method=RequestMethod.GET)
-    public ModelAndView patentDetail(String IPC){
-		ModelAndView mv=new ModelAndView("resourcemanagement/patentmamagement");
+    public ModelAndView patentDetail(String patentId){
+		ModelAndView mv=new ModelAndView("resourcemanagement/patentDetail");
 	    PatentService ps=new PatentService();
-    	mv.addObject("dc",ps.detailCheck(IPC));
+    	mv.addObject("dc",ps.detailCheck(patentId));
     	return mv;
     }
     
@@ -38,9 +61,12 @@ public class PatentMangmentController {
      * 删除专利
      */
     @RequestMapping(value="patentDelete",method=RequestMethod.GET)
-    public void patentDelete(String IPC){
+    public ModelAndView patentDelete(String patentId){
+         ModelAndView mv=new ModelAndView("resourcemanagement/patentManagement");
 	    PatentService ps=new PatentService();
-    	ps.pantentDelete(IPC);
+    	ps.pantentDelete(patentId);
+    	System.out.println(patentId);
+    	return mv;
     }
     
     

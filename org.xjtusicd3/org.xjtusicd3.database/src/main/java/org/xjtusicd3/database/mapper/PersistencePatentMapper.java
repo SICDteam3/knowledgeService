@@ -18,18 +18,18 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	@Select("select count(time) from scrapy where time>=#{0} group by time ")
 	public int count(long time2);
 
-	@Select({"SELECT patent_id as patent_id,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder "
-			+ "date_of_application as date_of_application，announcement_date as announcement_date，patent_abstract as patent_abstract，type as type，patent_agency as patent_agency，patent_agency as patent_agency "
-			+ "principal_claim as principal_claim， province as province， legal_status as legal_status FROM patent WHERE patentName  like #{0} AND patentTime like #{1}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder,"
+			+"date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,type as type,patent_agency as patent_agency,patent_agency as patent_agency,"
+			+"principal_claim as principal_claim, province as province,legal_status as legal_status FROM patent WHERE name like #{0} AND date_of_application like #{1} "})
 	public List<PersistencePatent> getByname(String patentName,String patentTime);
 
-	@Select({"SELECT patent_id as patent_id,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder "
-			+ "date_of_application as date_of_application，announcement_date as announcement_date，patent_abstract as patent_abstract，type as type，patent_agency as patent_agency，patent_agency as patent_agency "
-			+ "principal_claim as principal_claim， province as province， legal_status as legal_status FROM patent WHERE patentName  IPC=#{0}"})
-	public PersistencePatent detailCheck(String IPC);
+	@Select({"SELECT patentId as patentId,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder,"
+			+"date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,type as type,patent_agency as patent_agency,patent_agency as patent_agency,"
+			+"principal_claim as principal_claim, province as province,legal_status as legal_status FROM patent WHERE  patentId=#{0}"})
+	public PersistencePatent detailCheck(String patentId);
 
-	@Delete("DELETE FROM patent WHERE IPC = #{iPC}")
-	public void deleteByIPC(String iPC);
+	@Delete("DELETE FROM patent WHERE patentId = #{patentId}")
+	public void deleteByUnmber(String patentId);
 	
 	
 

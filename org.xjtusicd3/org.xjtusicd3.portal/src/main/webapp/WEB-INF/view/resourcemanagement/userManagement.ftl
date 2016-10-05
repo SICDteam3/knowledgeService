@@ -8,7 +8,7 @@
   <meta name="description" content="bootstrap admin template">
   <meta name="author" content="">
 
-  <title>Dashboard | Remark Admin Template</title>
+  <title>用户管理</title>
 
   <#include "css.ftl">
 </head>
@@ -31,12 +31,12 @@
           <div class="row">
             <div class="col-sm-12 col-md-6 col-lg-6">
               <!-- Example Horizontal Form --> 
-              <form action="query.html" method="get">      
+              <form action="userSearch1.html" method="get">      
               <div class="example-wrap">
                 <h4 class="example-title" style="font-size: 18px!important;">请输入用户名：</h4>
                     <div class="form-group">
                   <div class="input-group">
-                    <input type="text" class="form-control" name="" placeholder="请输入用户名...">
+                    <input type="text" class="form-control" name="name" placeholder="请输入用户名...">
                     <span class="input-group-btn">
                       <button type="submit" class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>
                     </span>
@@ -49,13 +49,13 @@
             
              <div class="col-sm-12 col-md-6 col-lg-6">
               <!-- Example Horizontal Form --> 
-              <form action="query.html" method="get">      
-              <div class="example-wrap">
-        		 <div class="form-group">
-                      <button type="button" class="btn btn-primary" style="float: right;margin-top: -28px;">查看黑名单</button>
-                    </div>                    
-      	       </div>
-      	       </form>     
+              <form action="userBlack.html" method="get">      
+              	<div class="example-wrap">
+        			<div class="form-group">
+                    	<input onclick="userBlack"  type="submit" class="btn btn-primary" style="float: right;margin-top: -28px;" value="查看黑名单">                             
+                 	</div>                    
+      	      	</div>
+      	      </form>     
               <!-- End Example Horizontal Form -->
             </div>
             
@@ -93,59 +93,18 @@
           </tr>    
           </thead>
           <tbody><tr class="odd">
-              <td class="sorting_1">1</td> 
-              <td>2</td>
-              <td>3</td>
+              <td class="sorting_1">${us.username}</td> 
+              <td>${us.password}</td>
+              <td></td>
               <td>4</td>
-           
-              
-            </tr>
-          
-          
-        </tbody></table>
-      </div>    
-          </div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"><i class="icon wb-chevron-left-mini"></i></a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"><i class="icon wb-chevron-right-mini"></i></a></li></ul></div></div></div></div>
-       </div>
-       <div class="panel">
-      
-      <header class="panel-heading">
-          <div class="panel-actions"></div>
-          <h3 class="panel-title">黑名单 ：</h3>
-        </header>
-      
-      <div class="panel-body">
-          <div id="DataTables_Table_0_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-12"><div class="col-sm-12">
-        </div><table class="table table-hover dataTable table-striped width-full dtr-inline" data-plugin="dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1280px;">
-           
-           
-           </table><table class="table table-hover dataTable table-striped width-full dtr-inline" id="exampleTableSearch" role="grid" aria-describedby="exampleTableSearch_info" style="width: 1229px;">
-          <thead>
-          <tr role="row">
-            <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">用户名
-            </th>
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 200px;" aria-label="Position: activate to sort column ascending">密码
-            </th>          
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">恢复
-            </th>           
-          </tr>    
-          </thead>
-          <tbody><tr class="odd">
-              <td class="sorting_1">1</td> 
-              <td>2</td>
-              <td>3</td>
-              
-              
-            </tr>
-          
+
+            </tr>          
           
         </tbody></table>
       </div>    
           </div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"><i class="icon wb-chevron-left-mini"></i></a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"><i class="icon wb-chevron-right-mini"></i></a></li></ul></div></div></div></div>
        </div>
        
-		
-	
-      <!-- pannel end-->
       </div>
        <!-- pannel start-->
      

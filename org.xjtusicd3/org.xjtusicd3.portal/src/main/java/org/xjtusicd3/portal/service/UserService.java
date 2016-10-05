@@ -9,6 +9,12 @@ import org.xjtusicd3.portal.view.ViewUser;
 
 public class UserService {
 
+	public static void main(String[] args) {
+		UserService ps=new UserService();
+		
+	    System.out.println(ps.blackSearch());
+	}
+	
 	/*
 	 * 查找所有用戶
 	 * */
