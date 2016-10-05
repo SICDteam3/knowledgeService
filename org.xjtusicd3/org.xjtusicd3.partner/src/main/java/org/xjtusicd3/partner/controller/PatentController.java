@@ -23,9 +23,7 @@ public class PatentController {
 		 public String getCompanyMap() {
 			return "patent/companyMap";
 		}
-		
-		
-		
+						
 	  @RequestMapping(value={"patentquery"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView query(HttpServletRequest request)
 	  {

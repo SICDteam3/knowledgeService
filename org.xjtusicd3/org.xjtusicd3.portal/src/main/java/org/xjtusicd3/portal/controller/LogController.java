@@ -12,10 +12,8 @@ public class LogController {
 	@RequestMapping(value="toUserLog",method=RequestMethod.GET)
 	public ModelAndView toUserLog(){
 		ModelAndView mv=new ModelAndView("logmanagement/logcheck");
-	
 		return mv;
 	}
-     
 	/*
 	 * 按用戶名或者IP地址查詢訪問日誌
 	 * */

@@ -3,7 +3,7 @@ package org.xjtusicd3.portal.view;
 import org.xjtusicd3.database.model.PersistencePatent;
 
 public class ViewPatent {
-	private int patent_id;
+	private int patentId;
 	private String number;
 	private String name;
 	private String IPC;
@@ -35,19 +35,22 @@ public class ViewPatent {
 		this.setPatent_abstract(pure.getPatent_abstract());
 		this.setPatent_agency(pure.getPatent_agency());
 		this.setPatent_holder(pure.getPatent_holder());
-		this.setPatent_id(pure.getPatentId());
+		this.setPatentId(pure.getPatentId());
 		this.setPatent_inventor(pure.getPatent_inventor());
 		this.setPrincipal_claim(pure.getPrinvipal_claim());
 		this.setProvince(pure.getProvince());
 		this.setType(pure.getType());
 	    }
 	
-	public int getPatent_id() {
-		return patent_id;
+	
+	public int getPatentId() {
+		return patentId;
 	}
-	public void setPatent_id(int patent_id) {
-		this.patent_id = patent_id;
+
+	public void setPatentId(int patentId) {
+		this.patentId = patentId;
 	}
+
 	public String getNumber() {
 		return number;
 	}

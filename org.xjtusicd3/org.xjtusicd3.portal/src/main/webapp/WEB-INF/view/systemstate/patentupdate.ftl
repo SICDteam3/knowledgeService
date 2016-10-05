@@ -8,7 +8,7 @@
   <meta name="description" content="bootstrap admin template">
   <meta name="author" content="">
 
-  <title>Dashboard | Remark Admin Template</title>
+  <title>专利更新</title>
 
   <#include "css.ftl">
 </head>

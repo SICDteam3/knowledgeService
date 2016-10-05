@@ -1,75 +1,190 @@
-<!DOCTYPE html>
-<html class="no-js css-menubar" lang="en">
-<#assign path="${rc.contextPath}">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
-  <meta name="description" content="bootstrap admin template">
-  <meta name="author" content="">
 
-  <title>Dashboard | Remark Admin Template</title>
-
-  <#include "css.ftl">
-</head>
-<body class="dashboard" style="font-family: 'Arial','Hiragino Sans GB', \5fae\8f6f\96c5\9ed1, 'Helvetica', 'sans-serif';">
-  <!--[if lt IE 8]>
-        <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
-    <![endif]-->
-  <#include "topbar.ftl">
-  <#include "menubar.ftl">
-  <!-- Page -->
-  <div class="page animsition">
-	<div class="page-header">
-      <h1 class="page-title">系统更新状态</h1>    
+<div class="container-fluid" style="width: 1170px">
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 col-md-12">
+            <h1 class="gallery-title">专利分析</h1>
+            <h3 class="gallery-subtitle">专利分析，报表生成，企业地图，专家地图。</h3>
+        </div>
     </div>
-    <div class="page-content">
-      <!-- pannel start-->
-      <div class="panel">
-        <div class="panel-body container-fluid">
-         
-        </div>                    
-      </div>
-      <!-- pannel end-->
-      
-      <!-- pannel start--> 
-     <div class="panel">
- 		<div class="panel-body">
-        
-      	</div>   
-	</div>
-      <!-- pannel end-->
-      
+    <div class="row gallery-row">
+        <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="inputEmail3" class="col-sm-2 control-label">输入ipc号</label>
+            <div class="col-sm-6">
+                <input type="text" class="form-control" id="inputEmail3" placeholder="ipc">
+            </div>
+            <div class="col-sm-4">
+                <button type="button" class="btn btn-default">查询</button>
+            </div>
+        </div>
+        </form>
     </div>
-  </div>
-  <!-- End Page -->
+    <div class="row gallery-row">
+        <div class="col-sm-6">
+            <div id="main" style="width: 100%;height: 600px;"></div>
+        </div>
+        <div class="col-sm-6">
+            <div id="main1" style="width: 100%;height: 600px;"></div>
+        </div>
 
+    </div>
+    <div class="row gallery-row">
 
-  <#include "footer.ftl">
-  <!-- Core  -->
-  <#include "scriptimport.ftl">
-</body>
-<script src="/knowledge/js/jquery-1.7.2.min.js"></script>
-<script>
-	function submitquery(){
-		
-		var keyword = document.getElementById("queryKeyword").value;
-		alert(keyword);
-		$.ajax({
-			type: "get",
-			url: "query.html?query="+keyword,
-			dataType:'json',
-			success: function(result){
-				alert(result);
-			},
-			error: function(){
-				alert("错误！");
-				return false;
-			}
-	 });
-				
-	};
-	
-	function printTable(){}
+        <div class="col-sm-12">
+            <div id="main2" style="width: 100%;height: 600px;"></div>
+        </div>
+    </div>
+    <div class="row gallery-row">
+
+        <div class="col-sm-12">
+            <button type="button" class="btn btn-default btn-lg btn-block">导出生成报表</button>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'));
+   
+    // 指定图表的配置项和数据
+
+    
+
+    var option1 = {
+        title : {
+            text: '某地区蒸发量和降水量',
+            subtext: '纯属虚构'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['蒸发量','降水量']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType : {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'category',
+                data : ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月']
+            }
+        ],
+        yAxis : [
+            {
+                type : 'value'
+            }
+        ],
+        series : [
+            {
+                name:'蒸发量',
+                type:'bar',
+                data:[2.0, 4.9, 7.0, 23.2, 25.6, 76.7, 135.6, 162.2, 32.6, 20.0, 6.4, 3.3],
+                markPoint : {
+                    data : [
+                        {type : 'max', name: '最大值'},
+                        {type : 'min', name: '最小值'}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name: '平均值'}
+                    ]
+                }
+            },
+            {
+                name:'降水量',
+                type:'bar',
+                data:[2.6, 5.9, 9.0, 26.4, 28.7, 70.7, 175.6, 182.2, 48.7, 18.8, 6.0, 2.3],
+                markPoint : {
+                    data : [
+                        {name : '年最高', value : 182.2, xAxis: 7, yAxis: 183, symbolSize:18},
+                        {name : '年最低', value : 2.3, xAxis: 11, yAxis: 3}
+                    ]
+                },
+                markLine : {
+                    data : [
+                        {type : 'average', name : '平均值'}
+                    ]
+                }
+            }
+        ]
+    };
+    var option = {
+        title : {
+            text: '世界人口总量',
+            subtext: '数据来自网络'
+        },
+        tooltip : {
+            trigger: 'axis'
+        },
+        legend: {
+            data:['2011年', '2012年']
+        },
+        toolbox: {
+            show : true,
+            feature : {
+                mark : {show: true},
+                dataView : {show: true, readOnly: false},
+                magicType: {show: true, type: ['line', 'bar']},
+                restore : {show: true},
+                saveAsImage : {show: true}
+            }
+        },
+        calculable : true,
+        xAxis : [
+            {
+                type : 'value',
+                boundaryGap : [0, 0.01]
+            }
+        ],
+        yAxis : [
+            {
+                type : 'category',
+                data : ['巴西','印尼','美国','印度','中国','世界人口(万)']
+            }
+        ],
+        series : [
+            {
+                name:'2011年',
+                type:'bar',
+                data:[18203, 23489, 29034, 104970, 131744, 630230]
+            },
+            {
+                name:'2012年',
+                type:'bar',
+                data:[19325, 23438, 31000, 121594, 134141, 681807]
+            }
+        ]
+    };
+
+    function random(){
+        var r = Math.round(Math.random() * 100);
+        return (r * (r % 2 == 0 ? 1 : -1));
+    }
+
+    function randomDataArray() {
+        var d = [];
+        var len = 100;
+        while (len--) {
+            d.push([
+                random(),
+                random(),
+                Math.abs(random()),
+            ]);
+        }
+        return d;
+    }
+
+  
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+   
 </script>
-</html>

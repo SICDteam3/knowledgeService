@@ -8,6 +8,15 @@ import org.xjtusicd3.portal.service.UserService;
 @RequestMapping(value="user")
 @Controller
 public class UserController {
+	
+	 
+	 @RequestMapping(value="toUserSearch",method=RequestMethod.GET)
+     public ModelAndView  toUserSearch(){
+  	   ModelAndView mv=new ModelAndView("resourcemanagement/userManagement");
+  	  
+  	   return mv;
+     }
+	
 	/*
 	 * 查找所有用户
 	 * */
@@ -23,9 +32,9 @@ public class UserController {
 		 * */
 	   @RequestMapping(value="userSearch1",method=RequestMethod.GET)
        public ModelAndView  userSearch1(String name){
-    	   ModelAndView mv=new ModelAndView();
+    	   ModelAndView mv=new ModelAndView("resourcemanagement/userManagement");
     	   UserService us=new UserService();
-    	   mv.addObject("us1",us.userSearch1(name));
+    	   mv.addObject("us",us.userSearch1(name));
     	   return mv;
        }
 	   
@@ -34,9 +43,9 @@ public class UserController {
 	    * */
 	   @RequestMapping(value="userBlack",method=RequestMethod.GET)
        public ModelAndView  userBlack(){
-    	   ModelAndView mv=new ModelAndView();
+    	   ModelAndView mv=new ModelAndView("resourcemanagement/blackList");
     	   UserService us=new UserService();
-    	   mv.addObject("bs",us.blackSearch());
+    	   mv.addObject("us",us.blackSearch());
     	   return mv;
        }
 	   
