@@ -40,6 +40,11 @@
             <div id="main4" style="width: 100%;height: 600px;"></div>
         </div>
     </div>
+     <div class="row gallery-row">
+        <div class="col-sm-12">
+            <div class="haha-body" ></div>
+        </div>
+    </div>
     <div class="row gallery-row">
 
         <div class="col-sm-12">
@@ -380,4 +385,94 @@ option4 = {
     myChart2.setOption(option2);
     myChart3.setOption(option3);
     myChart4.setOption(option4);
+</script>
+<script>
+	var width  = 800;
+	var height = 1000;
+	//数据转换，布局
+	var pack = d3.layout.pack()//打包图的布局
+	    			.size([ width, height ])//设定装换的范围，转换后顶点的坐标
+	    			.radius(20);//转换后最小的圆的半径
+	
+	var svg = d3.select(".haha-body").append("svg")
+	    .attr("width", width)
+	    .attr("height", height)
+	    .append("g")
+	    .attr("transform", "translate(0,0)");
+	
+	
+	d3.json("${path}/data/city2.json", function(error, root) {
+		//读取数据并转换
+		var nodes = pack.nodes(root);
+		var links = pack.links(nodes);
+		
+		console.log(nodes);
+		console.log(links);
+		
+		svg.selectAll("circle")
+			.data(nodes)
+			.enter()
+			.append("circle")
+			.attr("fill","rgb(31, 119, 180)")//颜色
+			.attr("fill-opacity","0.4")//透明度级别
+			.attr("cx",function(d){
+				return d.x;
+			})
+			.attr("cy",function(d){
+				return d.y;
+			})
+			.attr("r",function(d){
+				return d.r;
+			})
+			.on("mouseover",function(d,i){//鼠标指针位于元素上方时，改变元素的背景色
+				d3.select(this)
+					.attr("fill","yellow");
+			})
+			.on("mouseout",function(d,i){//鼠标指针离开元素上方时，还原元素的背景色
+				d3.select(this)
+					.attr("fill","rgb(31, 119, 180)");
+			});
+		
+		svg.selectAll("text")
+					  .data(nodes)
+					  .enter()
+					  .append("text")
+					  .attr("font-size","10px")
+					  .attr("fill","white")
+					  .attr("fill-opacity",function(d){
+						  if(d.depth == 2)
+							  return "0.9";
+						  else
+							  return "0";
+					  })
+					  .attr("x",function(d){ return d.x; })
+					  .attr("y",function(d){ return d.y; })
+					  .attr("dx",-12)
+					  .attr("dy",1)
+					  .text(function(d){ return d.name; });
+		
+	});
+
+</script>
+<script>
+	function submitquery(){
+		
+		var keyword = document.getElementById("queryKeyword").value;
+		alert(keyword);
+		$.ajax({
+			type: "get",
+			url: "query.html?query="+keyword,
+			dataType:'json',
+			success: function(result){
+				alert(result);
+			},
+			error: function(){
+				alert("错误！");
+				return false;
+			}
+	 });
+				
+	};
+	
+	function printTable(){}
 </script>
