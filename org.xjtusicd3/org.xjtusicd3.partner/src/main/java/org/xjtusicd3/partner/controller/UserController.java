@@ -92,7 +92,13 @@ public class UserController {
 		}
 		return mv;
 	}
-	
+	/*
+	 * 用户的更新
+	 */
+	@RequestMapping("change")
+	 public String getAnalysePage() {
+		return "user/change";
+	}
 	@RequestMapping(value="saveupdate",method=RequestMethod.POST)
 	public ModelAndView myinfo(ViewUser user,HttpSession session) {
 		ModelAndView mv = null;

@@ -6,11 +6,11 @@
             </div>
         </div>
         <div class="row">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="saveupdate">
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">邮箱</label>
                     <div class="col-sm-4">
-                        <input type="email" class="form-control"  placeholder="abc@163.com">
+                        <input type="email" class="form-control"  placeholder="请输入邮箱">
                     </div>
                 </div>
 
