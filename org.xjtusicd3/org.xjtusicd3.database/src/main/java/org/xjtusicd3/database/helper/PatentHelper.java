@@ -120,22 +120,24 @@ public class PatentHelper {
 	/*
 	 * IPC——专利可视化——申请时间
 	 */
-	public static List<PersistencePatentcount> rank_Application(String IPC){
+	public static List<PersistencePatentcount> rank_Application(String year,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newyear = "%" + year+"%";
 		String newIPC = "%" + IPC + "%";
-		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(newIPC);
+		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(newyear,newIPC);
 		session.close();
 		return rank_application;
 	}
 	/*
 	 * IPC——专利可视化——发布时间
 	 */
-	public static List<PersistencePatentcount> rank_Announcement(String IPC){
+	public static List<PersistencePatentcount> rank_Announcement(String year,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newyear = "%" + year + "%";
 		String newIPC = "%" + IPC + "%";
-		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(newIPC);
+		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(newyear,newIPC);
 		session.close();
 		return rank_announcement;
 	}
@@ -153,11 +155,11 @@ public class PatentHelper {
 	/*
 	 * IPC——专利可视化——企业专利数量
 	 */
-	public static List<PersistencePatentcount> rank_HolderPatentNumber(String IPC){
+	public static List<PersistencePatentcount> rank_HolderPatentNumber(String patent_holder){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC = "%" + IPC + "%";
-		List<PersistencePatentcount> rank_holderpatentnumber = mapper.number_holderpatent(newIPC);
+		String newpatent_holder = patent_holder;
+		List<PersistencePatentcount> rank_holderpatentnumber = mapper.number_holderpatent(newpatent_holder);
 		session.close();
 		return rank_holderpatentnumber;
 	}

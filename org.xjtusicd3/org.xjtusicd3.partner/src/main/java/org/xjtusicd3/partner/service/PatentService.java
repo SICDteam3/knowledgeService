@@ -102,9 +102,9 @@ public class PatentService {
 	/*
 	 * IPC——专利可视化——申请时间
 	 */
-	public static List<ViewPatentVisual> ApplicationVisual(String IPC){
+	public static List<ViewPatentVisual> ApplicationVisual(String year,String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Application(IPC);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Application(year,IPC);
 		if (persistencePatentcount == null) {
 			return null;
 		}
@@ -117,9 +117,9 @@ public class PatentService {
 	/*
 	 * IPC——专利可视化——发布时间
 	 */
-	public static List<ViewPatentVisual> AnnouncementVisual(String IPC){
+	public static List<ViewPatentVisual> AnnouncementVisual(String year,String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Announcement(IPC);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Announcement(year,IPC);
 		if (persistencePatentcount == null) {
 			return null;
 		}
@@ -147,9 +147,9 @@ public class PatentService {
 	/*
 	 * IPC——专利可视化——企业专利数量
 	 */
-	public static List<ViewPatentVisual> Number_holderpatent(String holder){
+	public static List<ViewPatentVisual> Number_holderpatent(String patent_holder){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_HolderPatentNumber(holder);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_HolderPatentNumber(patent_holder);
 		if (persistencePatentcount == null) {
 			return null;
 		}

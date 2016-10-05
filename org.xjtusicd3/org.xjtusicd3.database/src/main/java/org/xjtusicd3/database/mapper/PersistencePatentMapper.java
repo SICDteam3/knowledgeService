@@ -66,23 +66,22 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	/*
 	 * 申请日期
 	 */
-	@Select({"SELECT SUBSTRING(date_of_application,1,7),count(*) as counts_application FROM patent WHERE IPC LIKE #{0} GROUP BY date_of_application ORDER BY ASC"})
-	public List<PersistencePatentcount> date_of_application_asc(String paramString);
+	@Select({"SELECT count(*) as counts_application FROM patent WHERE date_of_application LIKE #{0} AND IPC LIKE #{1}"})
+	public List<PersistencePatentcount> date_of_application_asc(String paramString1,String paramString2);
 	/*
 	 * 公告日期
 	 */
-	
-	@Select({"SELECT SUBSTRING(announcement_date,1,7),count(*) as counts_announcement FROM patent WHERE IPC LIKE #{0} GROUP BY announcement_date ORDER BY ASC"})
-	public List<PersistencePatentcount> announcement_date_asc(String paramString);
+	@Select({"SELECT count(*) as counts_announcement FROM patent WHERE announcement_date LIKE #{0} AND IPC LIKE #{1}"})
+	public List<PersistencePatentcount> announcement_date_asc(String paramString1,String paramString2);
 	/*
 	 * 省市、专权人气泡图
 	 */
-	@Select({"SELECT patent_holder as patent_holder,count(*) as counts_holder FROM patent WHERE IPC LIKE #{0} GROUP BY province "})
+	@Select({"SELECT patent_holder as patent_holder,province as province,count(*) as counts_holder FROM patent WHERE IPC LIKE #{0} GROUP BY province ORDER BY patent_holder DESC "})
 	public List<PersistencePatentcount> popo(String paramString);
 	/*
 	 * 企业专利数量
 	 */
-	@Select({"SELECT patent_holder as patent_holder,province as province,count(*) as counts_holder FROM patent WHERE patent_holder LIKE #{0} GROUP BY province"})
+	@Select({"SELECT SUBSTRING(announcement_date FROM 1 FOR 5) AS date_year,count(*) as counts_year FROM patent WHERE patent_holder=#{0} GROUP BY date_year"})
 	public List<PersistencePatentcount> number_holderpatent(String paramString);
 
 

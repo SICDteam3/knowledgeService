@@ -3,15 +3,36 @@ package org.xjtusicd3.database.model;
 public class PersistencePatentcount {
 	private String patent_inventor;
 	private String patent_holder;
+	private String date_year;
+	private String counts_year;
 	private String counts_inventor;
 	private String counts_holder;
 	private String counts_application;
 	private String counts_announcement;
 	private String date_of_application;
 	private String announcement_date;
+	private String province;
 	
 	
 	
+	public String getDate_year() {
+		return date_year;
+	}
+	public void setDate_year(String date_year) {
+		this.date_year = date_year;
+	}
+	public String getCounts_year() {
+		return counts_year;
+	}
+	public void setCounts_year(String counts_year) {
+		this.counts_year = counts_year;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
 	public String getCounts_inventor() {
 		return counts_inventor;
 	}
@@ -61,5 +82,6 @@ public class PersistencePatentcount {
 	public void setPatent_holder(String patent_holder) {
 		this.patent_holder = patent_holder;
 	}
+	
 	
 }
