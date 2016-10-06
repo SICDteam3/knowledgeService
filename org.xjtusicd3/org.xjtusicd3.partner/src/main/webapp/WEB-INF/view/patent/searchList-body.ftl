@@ -46,8 +46,9 @@
         		<div id="relatedResearchers" class="md">
         			<div class="hd"><span class="title">相关专家</span></div>
         			<ul class="bd clear">
-        			<li><a target="_blank" href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=tyky200502017&amp;Name=%E6%9D%8E%E4%B9%8B%E4%BF%8A">李之俊</a>
-        			</li>
+        			<#list patentPage.results as patent>
+        				<li><a target="_blank" href="javascript:void;">${patent.patent_inventor}</a></li>
+        			</#list>
         			</ul>
         		</div>
         	</div>
@@ -55,8 +56,9 @@
         		<div id="relatedResearchers" class="md">
         			<div class="hd"><span class="title">相关企业</span></div>
         			<ul class="bd clear">
-        			<li><a target="_blank" href="http://social.wanfangdata.com.cn/Locate.ashx?ArticleId=tyky200502017&amp;Name=%E6%9D%8E%E4%B9%8B%E4%BF%8A">华为无线</a>
-        			</li>
+        			<#list patentPage.results as patent>
+        				<li><a target="_blank" href="">${patent.patent_holder}</a></li>
+        			</#list>
         			</ul>
         		</div>
         	</div>
