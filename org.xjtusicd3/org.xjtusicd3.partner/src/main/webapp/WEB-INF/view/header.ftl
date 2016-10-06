@@ -32,6 +32,16 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a href="${path}/user/login.html">登录</a></li>
                 <li><a href="${path}/user/register.html">注册</a></li>
+                <li class="dropdown">
+                    <a href="${path}/patent/analyse.html" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">我的账户<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="${path}/user/userDetail.html">个人信息</a></li>
+
+                        <li class="divider"></li>
+                        <li><a href="${path}/user/change.html">信息修改</a></li>
+                        <li class="divider"></li>
+                    </ul>
+                </li>
             </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->

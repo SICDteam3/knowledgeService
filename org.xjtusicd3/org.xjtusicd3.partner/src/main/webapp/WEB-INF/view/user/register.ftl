@@ -27,7 +27,7 @@
 
         <!-- Favicon and touch icons -->
         <link rel="shortcut icon" href="${path}/assets/ico/favicon.png">
-        <link rel="apple-touch-icon-precomposed" sizes="144x144" href="${path}/assets/ico/apple-touch-icon-144-precomposed.png">
+        <link rel="apple-tou ch-icon-precomposed" sizes="144x144" href="${path}/assets/ico/apple-touch-icon-144-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="114x114" href="${path}/assets/ico/apple-touch-icon-114-precomposed.png">
         <link rel="apple-touch-icon-precomposed" sizes="72x72" href="${path}/assets/ico/apple-touch-icon-72-precomposed.png">
         <link rel="apple-touch-icon-precomposed" href="${path}/assets/ico/apple-touch-icon-57-precomposed.png">
@@ -66,7 +66,7 @@
 			                    <form role="form" action="save.html" method="post" class="login-form">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">用户名</label>
-			                        	<input type="text" name="username" placeholder="用户名..." class="form-username form-control" id="form-username">
+			                        	<input type="text" name="username" value="${session_name}" placeholder="用户名..." class="form-username form-control" id="form-username">
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">密码</label>
