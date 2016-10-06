@@ -20,6 +20,11 @@ public class IndexController {
 		return "index";
 	}
 	
+	@RequestMapping("ipcselect")
+	public String ipcSelect() {
+		return "patent/ipcSelect";
+	}
+	
 	@RequestMapping(value={"/search"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	 public ModelAndView search(String context,String searchType){
 		ModelAndView mv = new ModelAndView("patent/searchResult");
@@ -30,11 +35,37 @@ public class IndexController {
 		//专利号搜索
 		}else if (searchType.equals("2")) {
 			page = PatentService.selectByNumber(context,page);
-		}		  
-		mv.addObject("listPatent",page);		
-		//分页处理,每页10行数据		
+		}
+						
+		mv.addObject("patentPage",page);
+		mv.addObject("content",context);
+		mv.addObject("currentpage",page.getPageNo());
+		mv.addObject("searchtype",searchType);
+		//分页处理,每页15行数据		
 		return mv;
 	 }
+	
+	@RequestMapping(value={"/searchpage"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	 public ModelAndView searchpage(String content,String searchtype,int currentpage){
+		ModelAndView mv = new ModelAndView("patent/searchResult");
+		Page<PersistencePatent> page = new Page<PersistencePatent>();
+		page.setPageNo(currentpage);
+		//专利名搜索
+		if (searchtype.equals("1")) {
+			page = PatentService.selectByName(content,page);
+		//专利号搜索
+		}else if (searchtype.equals("2")) {
+			page = PatentService.selectByNumber(content,page);
+		}
+						
+		mv.addObject("patentPage",page);		
+		//分页处理,每页15行数据		
+		mv.addObject("content",content);
+		mv.addObject("currentpage",currentpage);
+		mv.addObject("searchtype",searchtype);
+		return mv;
+	 }
+	
 	
 	@RequestMapping(value={"/selectByNumber"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	  public ModelAndView selectByNumber2(HttpServletRequest request){

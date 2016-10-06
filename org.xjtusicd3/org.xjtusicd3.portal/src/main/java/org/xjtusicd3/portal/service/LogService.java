@@ -9,10 +9,7 @@ import org.xjtusicd3.portal.controller.LogController;
 
 public class LogService {
 
-	public static void main1(String[] args) {
-		LogController lh=new LogController();
-		System.out.println(lh.userLog("21",1, 23434324));
-	}
+	
 	
 	/*
 	 * 根據用戶名查找用戶日誌

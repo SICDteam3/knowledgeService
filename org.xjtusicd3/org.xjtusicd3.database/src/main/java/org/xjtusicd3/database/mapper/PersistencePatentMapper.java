@@ -16,7 +16,7 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 
 	
 	@Select("select count(time) from scrapy where time>=#{0} group by time ")
-	public int count(long time2);
+	public int[] count(long time2);
 
 	@Select({"SELECT patentId as patentId,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder,"
 			+"date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,type as type,patent_agency as patent_agency,patent_agency as patent_agency,"

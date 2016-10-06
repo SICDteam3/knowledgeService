@@ -242,7 +242,7 @@
           </li>
           <#if !session_email??>          
           	<li>                      
-               <a class="navbar-avatar dropdown-toggle" href="/knowledge/user/login.html">登录 </a>                   
+               <a class="navbar-avatar dropdown-toggle" href="/org.xjtusicd3.portal/user/login3.html">登录 </a>                   
             </li>
             <li>
                 <a class="navbar-avatar dropdown-toggle" href="/knowledge/user/register.html">注册</a>               

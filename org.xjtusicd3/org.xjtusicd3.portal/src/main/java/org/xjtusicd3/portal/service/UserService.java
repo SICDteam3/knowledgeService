@@ -29,10 +29,13 @@ public class UserService {
 	/*
 	 * 按用戶名查找用戶
 	 * */
-	public PersistenceUser userSearch1(String name) {
+	public List<PersistenceUser> userSearch1(String name) {
 	    UserHelper uh=new UserHelper();
 		return uh.searchUser1(name);
 	}
+	
+	
+	
   /*
    *查找黑名單用戶 
    * */
