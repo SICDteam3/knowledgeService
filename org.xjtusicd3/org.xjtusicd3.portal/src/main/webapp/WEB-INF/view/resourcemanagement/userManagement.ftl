@@ -28,7 +28,7 @@
       <!-- pannel start-->
       <div class="panel">
         <div class="panel-body container-fluid">
-          <div class="row">
+          <div class="row" >
             <div class="col-sm-12 col-md-6 col-lg-6">
               <!-- Example Horizontal Form --> 
               <form action="userSearch1.html" method="get">      
@@ -47,7 +47,7 @@
               <!-- End Example Horizontal Form -->
             </div>
             
-             <div class="col-sm-12 col-md-6 col-lg-6">
+             <div class="col-sm-12 col-md-6 col-lg-6" >
               <!-- Example Horizontal Form --> 
               <form action="userBlack.html" method="get">      
               	<div class="example-wrap">
@@ -61,11 +61,11 @@
             
           </div>
         </div>                    
-      </div>
+     
       <!-- pannel end-->
       <!-- pannel start-->
      
-      <div class="panel">
+      
       
       <header class="panel-heading">
           <div class="panel-actions"></div>
@@ -84,22 +84,30 @@
             </th>
             <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 200px;" aria-label="Position: activate to sort column ascending">密码
             </th>
-            
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Start date: activate to sort column ascending">禁用
+             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">邮箱
             </th>
+             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">用户类型
+            </th>
+             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">电话号码
+            </th>
+           
             
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">修改密码
+            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">详情
             </th>
           </tr>    
           </thead>
-          <tbody><tr class="odd">
+          <tbody>
+          <#list us as us>
+          <tr class="odd">
               <td class="sorting_1">${us.username}</td> 
               <td>${us.password}</td>
-              <td></td>
-              <td>4</td>
-
-            </tr>          
-          
+               <td>${us.email}</td>
+               <td>${us.type}</td>
+               <td>${us.phone}</td>
+             
+                <td><a href="http://localhost:8080/org.xjtusicd3.portal/user/toUserDetail.html?userId=${us.idNumber}">详情</a></td>
+            </tr>  
+            </#list>                 
         </tbody></table>
       </div>    
           </div></div><div class="row"><div class="col-sm-5"></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="DataTables_Table_0_previous"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="0" tabindex="0"><i class="icon wb-chevron-left-mini"></i></a></li><li class="paginate_button active"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button next" id="DataTables_Table_0_next"><a href="#" aria-controls="DataTables_Table_0" data-dt-idx="6" tabindex="0"><i class="icon wb-chevron-right-mini"></i></a></li></ul></div></div></div></div>

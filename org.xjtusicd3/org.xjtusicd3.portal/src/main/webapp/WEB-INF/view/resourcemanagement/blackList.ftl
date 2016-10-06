@@ -8,7 +8,7 @@
   <meta name="description" content="bootstrap admin template">
   <meta name="author" content="">
 
-  <title>用户管理</title>
+  <title>用户管理——黑名单</title>
 
   <#include "css.ftl">
 </head>
@@ -22,7 +22,10 @@
   <div class="page animsition">
 	<div class="page-header">
       <h1 class="page-title">用户管理——黑名单</h1>
-     
+     <div class="page-header-actions">
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round" onclick=" location.href='userSearch1.html?name='"
+           data-toggle="tooltip" >返回</button>
+      </div>
     </div>
     <div class="page-content">
 
@@ -40,21 +43,32 @@
            <form class="form-horizontal" action="blackList.html" method="post">
         <table class="table table-hover dataTable table-striped width-full dtr-inline" id="exampleTableSearch" role="grid" aria-describedby="exampleTableSearch_info" style="width: 1229px;">
           <thead>
-          <tr role="row">
+           <tr role="row">
             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">用户名
             </th>
             <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 200px;" aria-label="Position: activate to sort column ascending">密码
-            </th>          
-            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Salary: activate to sort column ascending">恢复
-            </th>           
-          </tr>    
+            </th>
+             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">邮箱
+            </th>
+             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">用户类型
+            </th>
+             <th class="sorting_asc" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width:200px;" aria-sort="ascending" aria-label="Name: activate to sort column descending">电话号码
+            </th>
+            <th class="sorting" tabindex="0" aria-controls="exampleTableSearch" rowspan="1" colspan="1" style="width: 50px;" aria-label="Start date: activate to sort column ascending">移出
+            </th>
+            
+            
+          </tr>       
           </thead>
           <tbody>
             <#list us as usa>
             <tr role="row" class="odd">
               <td class="sorting_1">${usa.username}</td> 
-              <td>${usa.password}</td>
-              <td>4444</td>
+               <td>${usa.password}</td>
+               <td>${usa.email}</td>
+               <td>${usa.type}</td>
+               <td>${usa.phone}</td>
+              <td><a href="http://localhost:8080/org.xjtusicd3.portal/user/userRecover.html?userId=${usa.idNumber}">恢复</a></td>
             </tr>
               </#list>      
         </tbody></table>

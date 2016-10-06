@@ -1,5 +1,12 @@
 package org.xjtusicd3.portal.controller;
 
+
+
+
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -18,14 +25,21 @@ public class LogController {
 	 * 按用戶名或者IP地址查詢訪問日誌
 	 * */
 	@SuppressWarnings("static-access")
-	@RequestMapping(value="userLog",method=RequestMethod.POST)
-	public ModelAndView userLog(String name,Integer StartTime,Integer EndTime){
+	@RequestMapping(value="userLog",method=RequestMethod.GET)
+	public ModelAndView userLog(String name,String StartTime,String EndTime) throws ParseException{
 		ModelAndView mv=new ModelAndView("logmanagement/logcheck");
 		LogService ls=new LogService();
 		if(name==null||StartTime==null||EndTime==null){
 			return mv;
 		}
-		mv.addObject("log", ls.userLogByName(name,StartTime,EndTime));
+		 SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
+		 if(StartTime!=""&&EndTime!=""){
+		 Date date=simpleDateFormat .parse(StartTime);
+		 Date date1=simpleDateFormat .parse(EndTime);
+		 long timeStemp = date.getTime();
+		 long timeStemp1 = date1.getTime();
+		mv.addObject("log", ls.userLogByName(name,timeStemp,timeStemp1));
+		}
 		//mv.addObject("log", ls.userLogByIp(ip,StartTime,EndTime));
 		return mv;
 	}

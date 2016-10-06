@@ -28,36 +28,33 @@
       <div class="panel">
         <div class="panel-body container-fluid">
           <div class="row row-lg">
-            <div class="col-sm-12 col-md-6">
-              <!-- Example Horizontal Form --> 
-              
-              <form action="patentSearch.html" method="get">      
-              <div class="example-wrap">
-                <h4 class="example-title" style="font-size: 18px!important;">请输入搜索关键字和年份：</h4>
-              <div class="form-group">
-                  <div class="input-group">
-                    <input type="text" class="form-control" name="patentName" placeholder="关键字">                   
-                  </div>
-                </div>               
-                <div class="form-group">
-                  <div class="input-group">                 
-                    <input type="text" class="form-control" name="patentTime" placeholder="年份">                    
-                  </div>
-                </div> 
-                 <button type="submit"  class="btn btn-primary"><i class="icon wb-search" aria-hidden="true"></i></button>                           
-      	       </div>
-      	       </form>   
-      	         
+            <div class="col-sm-12 col-md-12">
+            <!-- Example Horizontal Form --> 
+              <h4 class="example-title" style="font-size: 18px!important;">请输入搜索关键字和年份：</h4>
+                 <form class="form-horizontal" action="patentSearch.html" method="get" style="font-family:Roboto,sans-serif;font-size:18px;">
+                    <div class="form-group">
+                        <div class="col-sm-3">
+                           <input type="text" class="form-control" name="patentName" placeholder="关键字" auto="" complete="off">
+                         </div>
+                         <div class="col-sm-3">
+                          <input type="text" class="form-control" name="patentTime" placeholder="年份"> 
+                         </div>                    
+                         <div class="col-sm-3">
+                           <button type="submit" style="float:left" class="btn btn-primary" >提交 </button>
+                         </div>
+                    </div>                  
+                </form>  
               <!-- End Example Horizontal Form -->
+             
             </div>
           </div>
         </div>                    
-      </div>
+    
       <!-- pannel end-->
    
       <!-- pannel start-->
      
-      <div class="panel">
+    
         <header class="panel-heading">
           <div class="panel-actions"></div>
           <h3 class="panel-title">搜索结果：</h3>
@@ -71,14 +68,14 @@
           <table class="table table-hover mytable dataTable table-striped width-full dtr-inline" data-plugin="dataTable" id="DataTables_Table_0" role="grid" aria-describedby="DataTables_Table_0_info" style="width: 1280px;">
             <thead>
               <tr role="row">
-              <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;" aria-label="Name: activate to sort column descending" aria-sort="ascending">标题</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 200px;" aria-label="Position: activate to sort column ascending">发明人</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 250px;" aria-label="Office: activate to sort column ascending">IPC</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 150px;" aria-label="Age: activate to sort column ascending">申请日期</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 150px;" aria-label="Date: activate to sort column ascending">发行日期</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 120px;" aria-label="Salary: activate to sort column ascending">专利号</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;" aria-label="Salary: activate to sort column ascending">详情</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 100px;" aria-label="Salary: activate to sort column ascending">删除</th>
+              <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 35%;" aria-label="Name: activate to sort column descending" aria-sort="ascending">标题</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 35%;" aria-label="Position: activate to sort column ascending">发明人</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 35%;" aria-label="Office: activate to sort column ascending">IPC</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 15%;" aria-label="Age: activate to sort column ascending">申请日期</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:15%;" aria-label="Date: activate to sort column ascending">发行日期</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:15%;" aria-label="Salary: activate to sort column ascending">专利号</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:10%;" aria-label="Salary: activate to sort column ascending">详情</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 10%;" aria-label="Salary: activate to sort column ascending">删除</th>
               </tr>
             </thead>
             
@@ -92,7 +89,7 @@
                 <td style="width: 120px">${patent.announcement_date}</td>
                 <td>${patent.patentId}</td>
                 <td><a href="http://localhost:8080/org.xjtusicd3.portal/patent/patentDetail.html?patentId=${patent.patentId}">详情</a></td>               
-                <td><a href="http://localhost:8080/org.xjtusicd3.portal/patent/patentDelete.html?number=${patent.number}">删除</a></td>
+                <td><a href="http://localhost:8080/org.xjtusicd3.portal/patent/patentDelete.html?patentId=${patent.patentId}">删除</a></td>
               </tr>            
             </#list>            
             </tbody>
