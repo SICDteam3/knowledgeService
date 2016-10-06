@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xjtusicd3.database.helper.PatentHelper;
+import org.xjtusicd3.database.model.Page;
 import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.database.model.PersistencePatentcount;
 import org.xjtusicd3.partner.view.ViewPatent;
@@ -158,5 +159,22 @@ public class PatentService {
 			listPatentVisual.add(viewPatentVisual);
 		}
 		return listPatentVisual;
+	}
+	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
+		int count = PatentHelper.getCount(context);
+		List<PersistencePatent> results = PatentHelper.getPageList(page.getPageNo(),page.getPageSize(),context);
+		page.setResults(results);
+		page.setTotalRecord(count);
+		return page;
+	}
+	
+	public static Page<PersistencePatent> selectByNumber(String context, Page<PersistencePatent> page) {
+		int count = PatentHelper.getCount2(context);
+		
+		List<PersistencePatent> results = PatentHelper.getPageList2(page.getPageNo(),page.getPageSize(),context);
+		page.setResults(results);
+		
+		page.setTotalRecord(count);
+		return page;
 	}
 }

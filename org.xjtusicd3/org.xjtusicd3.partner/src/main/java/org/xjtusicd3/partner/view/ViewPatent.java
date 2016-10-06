@@ -32,7 +32,7 @@ public class ViewPatent {
 		this.IPC = patent.getIPC();
 		this.address = patent.getAddress();
 		this.patent_agency = patent.getPatent_agency();
-		this.prinvipal_claim = patent.getPrinvipal_claim();
+		this.prinvipal_claim = patent.getPrincipal_claim();
 		this.province = patent.getProvince();
 		this.legal_status = patent.getLegal_status();
 	}

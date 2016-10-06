@@ -11,6 +11,7 @@ public class Page<T> {
 	private int totalPage;// 总页数
 	private List<T> results;// 对应的当前页记录
 	private Map<String, Object> params = new HashMap<String, Object>();// 其他的参数我们把它分装成一个Map对象
+	private String searchCondition ="";// 查询条件参数
 
 	public T getT() {
 		return null;
@@ -63,4 +64,16 @@ public class Page<T> {
 	public void setParams(Map<String, Object> params) {
 		this.params = params;
 	}
+
+	public String getSearchCondition() {
+		return searchCondition;
+	}
+
+	public void setSearchCondition(String searchCondition) {
+		this.searchCondition = searchCondition;
+	}
+
+	
+	
+	
 }
