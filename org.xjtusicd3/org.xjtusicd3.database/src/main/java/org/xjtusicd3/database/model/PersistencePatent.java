@@ -32,8 +32,8 @@ public class PersistencePatent {
 	private String address;
 	@TableField(columnName="patent_agency")
 	private String patent_agency;
-	@TableField(columnName="prinvipal_claim")
-	private String prinvipal_claim;
+	@TableField(columnName="principal_claim")
+	private String principal_claim;
 	@TableField(columnName="province")
 	private String province;
 	@TableField(columnName="legal_status")
@@ -110,11 +110,12 @@ public class PersistencePatent {
 	public void setPatent_agency(String patent_agency) {
 		this.patent_agency = patent_agency;
 	}
-	public String getPrinvipal_claim() {
-		return prinvipal_claim;
+	
+	public String getPrincipal_claim() {
+		return principal_claim;
 	}
-	public void setPrinvipal_claim(String prinvipal_claim) {
-		this.prinvipal_claim = prinvipal_claim;
+	public void setPrincipal_claim(String principal_claim) {
+		this.principal_claim = principal_claim;
 	}
 	public String getProvince() {
 		return province;

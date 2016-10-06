@@ -5,6 +5,7 @@ import java.util.List;
 import org.apache.ibatis.session.SqlSession;
 import org.xjtusicd3.database.logic.SqlSessionManager;
 import org.xjtusicd3.database.mapper.PersistencePatentMapper;
+import org.xjtusicd3.database.model.Page;
 import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.database.model.PersistencePatentcount;
 
@@ -120,22 +121,24 @@ public class PatentHelper {
 	/*
 	 * IPC——专利可视化——申请时间
 	 */
-	public static List<PersistencePatentcount> rank_Application(String IPC){
+	public static List<PersistencePatentcount> rank_Application(String year,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newyear = "%" + year+"%";
 		String newIPC = "%" + IPC + "%";
-		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(newIPC);
+		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(newyear,newIPC);
 		session.close();
 		return rank_application;
 	}
 	/*
 	 * IPC——专利可视化——发布时间
 	 */
-	public static List<PersistencePatentcount> rank_Announcement(String IPC){
+	public static List<PersistencePatentcount> rank_Announcement(String year,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newyear = "%" + year + "%";
 		String newIPC = "%" + IPC + "%";
-		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(newIPC);
+		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(newyear,newIPC);
 		session.close();
 		return rank_announcement;
 	}
@@ -153,14 +156,68 @@ public class PatentHelper {
 	/*
 	 * IPC——专利可视化——企业专利数量
 	 */
-	public static List<PersistencePatentcount> rank_HolderPatentNumber(String IPC){
+	public static List<PersistencePatentcount> rank_HolderPatentNumber(String patent_holder){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC = "%" + IPC + "%";
-		List<PersistencePatentcount> rank_holderpatentnumber = mapper.number_holderpatent(newIPC);
+		String newpatent_holder = patent_holder;
+		List<PersistencePatentcount> rank_holderpatentnumber = mapper.number_holderpatent(newpatent_holder);
 		session.close();
 		return rank_holderpatentnumber;
 	}
 	
+	public static Page<PersistencePatent> getPage() {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		Page<PersistencePatent> page = new Page<PersistencePatent>();
+		page.setSearchCondition("name like '%一种%'");
+		List<PersistencePatent>list = mapper.list_page(PersistencePatent.class, page);
+		page.setResults(list);
+		//TODO 分页模板报错
+		session.close();
+		return page;
+	}
+	
+	public static void main(String[] args) {
+		getPage();
+	}
 
+
+	public static int getCount(String context) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newName = "%" + context + "%";
+		int count =  mapper.selectByNameCount(newName);
+		session.close();
+		
+		return count;
+	}
+
+
+	public static int getCount2(String context) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newName = "%" + context + "%";
+		int count =  mapper.selectByNameCount(newName);
+		session.close();
+		
+		return count;
+	}
+
+
+	public static List<PersistencePatent> getPageList(int pageNo, int pageSize, String context) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newName = "%" + context + "%";
+		List<PersistencePatent> patents =  mapper.selectPageByName(pageNo,pageSize,newName);
+		session.close();
+		return patents;
+	}
+	public static List<PersistencePatent> getPageList2(int pageNo, int pageSize, String context) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newName = "%" + context + "%";
+		List<PersistencePatent> patents =  mapper.selectPageByName2(pageNo,pageSize,newName);
+		session.close();
+		return patents;
+	}
 }

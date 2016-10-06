@@ -14,7 +14,7 @@
                 <div class="record-item">
                     <div class="left-record">
                         <div class="record-title">
-                            <span class="index">1.</span>
+                            <span class="index">${patent_index}.</span>
                             <a class="fulltext" href="" target="_blank">全文</a>
                             <a class="title" href="" target="_blank">${patent.name}</a>
                         </div>

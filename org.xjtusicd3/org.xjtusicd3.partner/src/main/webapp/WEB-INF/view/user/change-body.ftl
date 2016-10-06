@@ -6,32 +6,32 @@
             </div>
         </div>
         <div class="row">
-            <form class="form-horizontal" role="form">
+            <form class="form-horizontal" role="form" action="saveupdate.html" method="post">
                 <div class="form-group">
-                    <label  class="col-sm-2 control-label">邮箱</label>
+                    <label  class="col-sm-2 control-label">用户名</label>
                     <div class="col-sm-4">
-                        <input type="email" class="form-control"  placeholder="abc@163.com">
+                        <input type="text" name="username" value="${session_username}" class="form-control"  placeholder="请输入用户名">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">原密码</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control"  placeholder="原密码">
+                        <input type="text" name="password1" value="${session_password}" class="form-control"  placeholder="原密码">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label  class="col-sm-2 control-label">新密码</label>
                     <div class="col-sm-4">
-                        <input type="password" class="form-control"  placeholder="新密码">
+                        <input type="text" name="password" class="form-control"  placeholder="新密码">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="inputPassword3" class="col-sm-2 control-label">手机号</label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control" id="inputPassword3" placeholder="手机号">
+                        <input type="text"  name="phone" value="${session_phone}" class="form-control"  placeholder="手机号">
                     </div>
                 </div>
 

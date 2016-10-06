@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
+import org.xjtusicd3.database.model.Page;
+import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.partner.service.PatentService;
 import org.xjtusicd3.partner.view.ViewPatent;
 
@@ -21,15 +23,25 @@ public class IndexController {
 	@RequestMapping(value={"/search"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	 public ModelAndView search(String context,String searchType){
 		ModelAndView mv = new ModelAndView("patent/searchResult");
-		List<ViewPatent> listPatent = null;
+		Page<PersistencePatent> page = new Page<PersistencePatent>();
 		//专利名搜索
 		if (searchType.equals("1")) {
-			listPatent = PatentService.selectByName(context);
+			page = PatentService.selectByName(context,page);
 		//专利号搜索
 		}else if (searchType.equals("2")) {
-			listPatent = PatentService.selectByNumber(context);
+			page = PatentService.selectByNumber(context,page);
 		}		  
-		mv.addObject("listPatent",listPatent);
+		mv.addObject("listPatent",page);		
+		//分页处理,每页10行数据		
+		return mv;
+	 }
+	
+	@RequestMapping(value={"/selectByNumber"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView selectByNumber2(HttpServletRequest request){
+		  String number = request.getParameter("number");
+		  ModelAndView mv = new ModelAndView("selectByNumber");
+		  List<ViewPatent> listPatent = PatentService.selectByNumber(number);
+		  mv.addObject("listPatentByNumber",listPatent);
 		return mv;
 	 }
 	

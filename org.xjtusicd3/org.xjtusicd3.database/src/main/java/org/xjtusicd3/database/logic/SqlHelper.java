@@ -33,6 +33,7 @@ public class SqlHelper {
 	public static final String BASE_LIST = "base_list";
 	public static final String BASE_SEQ = "base_seq";
 	public static final String BASE_SELECT_ONE = "base_select_one";
+	public static final String BASE_LIST_PAGE = "base_list_page";
 	private static SimpleDateFormat df = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
 
 	public static String insert(Object object) {
@@ -163,7 +164,8 @@ public class SqlHelper {
 		// select * from (select u.*, rownum r from (select * from t_user) u  where rownum < 31) where r >= 16
 		return sqlBuffer.toString();
 	}
-
+	
+	
 	@SuppressWarnings("unchecked")
 	private static String selectOne(Object object) {
 		BEGIN();
@@ -201,7 +203,37 @@ public class SqlHelper {
 			return seq(object);
 		} else if (BASE_SELECT_ONE.equals(boundSql)) {
 			return selectOne(object);
+		}else if (BASE_LIST_PAGE.equals(boundSql)) {
+			return selectPage(object);
 		}
 		return boundSql;
+	}
+
+	@SuppressWarnings("unchecked")
+	private static String selectPage(Object object) {
+		Map<String, Object> paraMap = (Map<String, Object>) object;
+		Class<?> cls = (Class<?>) paraMap.get("0");
+		Page<?> page = (Page<?>) paraMap.get("1");
+		
+		int offset = (page.getPageNo() - 1) * page.getPageSize() + 1;		
+		String tablename = ((Table) cls.getAnnotation(Table.class)).tablename();
+		
+		BEGIN();
+		for (Field f : cls.getDeclaredFields()) {
+			TableField tf = f.getAnnotation(TableField.class);
+			if (tf != null) {
+				SELECT(tf.columnName() + " as " + f.getName());
+			} else {
+				SELECT(f.getName());
+			}
+		}
+		
+		FROM(tablename);								
+		String sql = SQL();
+		sql = sql + " where " +page.getSearchCondition();
+		sql = sql + " limit "+offset+"," + page.getPageSize();
+		System.out.println(sql);
+		return sql;
+		
 	}
 }

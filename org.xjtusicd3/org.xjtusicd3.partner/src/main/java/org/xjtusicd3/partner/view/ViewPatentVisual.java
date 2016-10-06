@@ -5,6 +5,8 @@ import org.xjtusicd3.database.model.PersistencePatentcount;
 public class ViewPatentVisual {
 	private String patent_inventor;
 	private String patent_holder;
+	private String date_year;
+	private String counts_year;
 	private String counts_inventor;
 	private String counts_holder;
 	private String counts_application;
@@ -12,6 +14,7 @@ public class ViewPatentVisual {
 	private String date_of_application;
 	private String annoucement_date;
 	private String IPC;
+	private String province;
 	
 	
 	
@@ -19,6 +22,24 @@ public class ViewPatentVisual {
 	
 	
 	
+	public String getDate_year() {
+		return date_year;
+	}
+	public void setDate_year(String date_year) {
+		this.date_year = date_year;
+	}
+	public String getCounts_year() {
+		return counts_year;
+	}
+	public void setCounts_year(String counts_year) {
+		this.counts_year = counts_year;
+	}
+	public String getProvince() {
+		return province;
+	}
+	public void setProvince(String province) {
+		this.province = province;
+	}
 	public String getCounts_inventor() {
 		return counts_inventor;
 	}
@@ -88,14 +109,20 @@ public class ViewPatentVisual {
 		this.counts_announcement = patentcount.getCounts_announcement();
 		this.date_of_application = patentcount.getDate_of_application();
 		this.annoucement_date = patentcount.getAnnouncement_date();
+		this.province = patentcount.getProvince();
+		this.date_year = patentcount.getDate_year();
+		this.counts_year = patentcount.getCounts_year();
 	}
 	@Override
 	public String toString() {
 		return "ViewPatentVisual [patent_inventor=" + patent_inventor + ", patent_holder=" + patent_holder
-				+ ", counts_inventor=" + counts_inventor + ", counts_holder=" + counts_holder + ", counts_application="
-				+ counts_application + ", counts_announcement=" + counts_announcement + ", date_of_application="
-				+ date_of_application + ", annoucement_date=" + annoucement_date + ", IPC=" + IPC + "]";
+				+ ", date_year=" + date_year + ", counts_year=" + counts_year + ", counts_inventor=" + counts_inventor
+				+ ", counts_holder=" + counts_holder + ", counts_application=" + counts_application
+				+ ", counts_announcement=" + counts_announcement + ", date_of_application=" + date_of_application
+				+ ", annoucement_date=" + annoucement_date + ", IPC=" + IPC + ", province=" + province + "]";
 	}
+	
+	
 	
 		
 }

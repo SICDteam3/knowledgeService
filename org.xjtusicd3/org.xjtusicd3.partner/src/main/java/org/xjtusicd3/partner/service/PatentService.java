@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xjtusicd3.database.helper.PatentHelper;
+import org.xjtusicd3.database.model.Page;
 import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.database.model.PersistencePatentcount;
 import org.xjtusicd3.partner.view.ViewPatent;
@@ -102,9 +103,9 @@ public class PatentService {
 	/*
 	 * IPC——专利可视化——申请时间
 	 */
-	public static List<ViewPatentVisual> ApplicationVisual(String IPC){
+	public static List<ViewPatentVisual> ApplicationVisual(String year,String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Application(IPC);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Application(year,IPC);
 		if (persistencePatentcount == null) {
 			return null;
 		}
@@ -117,9 +118,9 @@ public class PatentService {
 	/*
 	 * IPC——专利可视化——发布时间
 	 */
-	public static List<ViewPatentVisual> AnnouncementVisual(String IPC){
+	public static List<ViewPatentVisual> AnnouncementVisual(String year,String IPC){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Announcement(IPC);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Announcement(year,IPC);
 		if (persistencePatentcount == null) {
 			return null;
 		}
@@ -147,9 +148,9 @@ public class PatentService {
 	/*
 	 * IPC——专利可视化——企业专利数量
 	 */
-	public static List<ViewPatentVisual> Number_holderpatent(String holder){
+	public static List<ViewPatentVisual> Number_holderpatent(String patent_holder){
 		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_HolderPatentNumber(holder);
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_HolderPatentNumber(patent_holder);
 		if (persistencePatentcount == null) {
 			return null;
 		}
@@ -158,5 +159,22 @@ public class PatentService {
 			listPatentVisual.add(viewPatentVisual);
 		}
 		return listPatentVisual;
+	}
+	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
+		int count = PatentHelper.getCount(context);
+		List<PersistencePatent> results = PatentHelper.getPageList(page.getPageNo(),page.getPageSize(),context);
+		page.setResults(results);
+		page.setTotalRecord(count);
+		return page;
+	}
+	
+	public static Page<PersistencePatent> selectByNumber(String context, Page<PersistencePatent> page) {
+		int count = PatentHelper.getCount2(context);
+		
+		List<PersistencePatent> results = PatentHelper.getPageList2(page.getPageNo(),page.getPageSize(),context);
+		page.setResults(results);
+		
+		page.setTotalRecord(count);
+		return page;
 	}
 }

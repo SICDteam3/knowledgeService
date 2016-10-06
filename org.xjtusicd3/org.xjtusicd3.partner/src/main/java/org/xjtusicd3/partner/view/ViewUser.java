@@ -8,8 +8,16 @@ public class ViewUser {
 	private String password;
 	private String email;
 	private String phone;
+	private int idNumber;
 	
 	
+	
+	public int getIdNumber() {
+		return idNumber;
+	}
+	public void setIdNumber(int idNumber) {
+		this.idNumber = idNumber;
+	}
 	public String getUsername() {
 		return username;
 	}
@@ -36,6 +44,7 @@ public class ViewUser {
 		this.phone = phone;
 	}
 	public ViewUser(PersistenceUser persistenceUser){
+		this.idNumber = persistenceUser.getIdNumber();
 		this.username = persistenceUser.getUsername();
 		this.password = persistenceUser.getPassword();
 		this.email = persistenceUser.getEmail();
