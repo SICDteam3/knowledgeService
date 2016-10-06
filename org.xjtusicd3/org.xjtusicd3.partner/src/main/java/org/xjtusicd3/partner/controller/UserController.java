@@ -33,21 +33,21 @@ public class UserController {
 		}
 		return "user/login";
 	}
-	@RequestMapping(value="/getupdate",method=RequestMethod.GET)
-	public ModelAndView getupdatePage(){
-		ModelAndView mv = new ModelAndView("update");
-		return mv;
-	}
-	@ResponseBody
-	@RequestMapping(value="/update",method=RequestMethod.POST)
-	public String update(ViewUser viewUser){
-		try {
-			UserService.update(viewUser);;
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-		return "success";
-	}
+//	@RequestMapping(value="/getupdate",method=RequestMethod.GET)
+//	public ModelAndView getupdatePage(){
+//		ModelAndView mv = new ModelAndView("update");
+//		return mv;
+//	}
+//	@ResponseBody
+//	@RequestMapping(value="/update",method=RequestMethod.POST)
+//	public String update(ViewUser viewUser){
+//		try {
+//			UserService.update(viewUser);;
+//		} catch (Exception e) {
+//			e.printStackTrace();
+//		}
+//		return "success";
+//	}
 	@RequestMapping(value="index",method=RequestMethod.GET)
 	public ModelAndView index() {
 		ModelAndView mv = new ModelAndView("index");
@@ -68,8 +68,13 @@ public class UserController {
 			}else {
 				mv = new ModelAndView("index"); 
 				mv.addObject(viewUser);
+				
 				session.setAttribute("session_username", viewUser.getUsername());
 				session.setAttribute("session_password", viewUser.getPassword());
+				session.setAttribute("session_email", viewUser.getEmail());
+				session.setAttribute("session_phone", viewUser.getPhone());
+				session.setAttribute("user_id", viewUser.getIdNumber());
+				
 			}
 			
 		} catch (Exception e) {
@@ -93,25 +98,37 @@ public class UserController {
 		return mv;
 	}
 	/*
-	 * 用户的更新
+	 * 用户信息的修改
 	 */
+	@RequestMapping("userDetail")
+	 public String getuserDetailPage() {
+		return "user/userDetail";
+	}
 	@RequestMapping("change")
-	 public String getAnalysePage() {
+	 public String getchangePage() {
 		return "user/change";
 	}
 	@RequestMapping(value="saveupdate",method=RequestMethod.POST)
-	public ModelAndView myinfo(ViewUser user,HttpSession session) {
+	public ModelAndView myinfo(ViewUser user,HttpSession session) throws Exception {
 		ModelAndView mv = null;
-		try {
-			String email = (String) session.getAttribute("session_email");
-			user.setEmail(email);
-			UserService.update(user);
-			mv = new ModelAndView("success");
+		
+			Object object = session.getAttribute("user_id");
+			if (object==null) {
+				return new ModelAndView("login");
+			}
+			Integer idNumber = (Integer)object;
+			String password = (String) user.getPassword();
+			String phone = (String) user.getPhone();
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-			mv = new ModelAndView("error");
-		}
+			
+			user.setIdNumber(idNumber);
+			user.setPassword(password);
+			user.setPhone(phone);
+			
+			UserService.update(user);
+			mv = new ModelAndView("user/userDetail");
+			
+	
 		return mv;
 	}
 	

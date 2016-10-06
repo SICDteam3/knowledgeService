@@ -58,10 +58,11 @@ public class UserHelper {
 	}
 
 
-	public PersistenceUser searchUser1(String name) {
+	public List<PersistenceUser> searchUser1(String name) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistenceUserMapper mapper = session.getMapper(PersistenceUserMapper.class);
-		return mapper.searchUser1(name);
+		String name1="%"+name+"%";
+		return mapper.searchUser1(name1);
 	}
 
 	

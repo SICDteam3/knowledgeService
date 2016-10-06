@@ -19,7 +19,7 @@ public class LogHelper {
 	public ArrayList loginCount(long time) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistenceLogMapper mapper = session.getMapper(PersistenceLogMapper.class);
-		session.close();
+	
 		return mapper.loginCount(time);
 		
 	}

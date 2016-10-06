@@ -16,6 +16,14 @@ public class UserController {
   	  
   	   return mv;
      }
+	 
+	 @RequestMapping(value="toUserDetail",method=RequestMethod.GET)
+     public ModelAndView  toUserDetail(String userId){
+  	   ModelAndView mv=new ModelAndView("resourcemanagement/userDetail");
+	   UserService us=new UserService();
+	   mv.addObject("us",us.userSearchById(userId));
+  	   return mv;
+     }
 	
 	/*
 	 * 查找所有用户
@@ -53,21 +61,24 @@ public class UserController {
 	    * 用戶拉黑
 	    * */
 	   @RequestMapping(value="defriend",method=RequestMethod.GET)
-       public  void  defriend(String userId){
+       public  ModelAndView  defriend(String userId){
+		   ModelAndView mv=new ModelAndView("resourcemanagement/userManagement");
     	   UserService us=new UserService();
     	   us.defriend(userId);
-    	   
+    	   mv.addObject("us",us.userSearch1(""));
+    	   return mv;
        }
 	   
 	   /*
 	    * 黑名單用戶移出黑名單
 	    * */
 	   @RequestMapping(value="userRecover",method=RequestMethod.GET)
-       public void  userRecover(String userId){
-    	
+       public ModelAndView  userRecover(String userId){
+		   ModelAndView mv=new ModelAndView("resourcemanagement/blackList");
     	   UserService us=new UserService();
     	   us.userRecover(userId);
-    	  
+    	   mv.addObject("us",us.blackSearch());
+    	   return mv;
        }
 	   
 	   /*
@@ -85,10 +96,12 @@ public class UserController {
 	    * 修改密碼
 	    */
 	   @RequestMapping(value="pswAlter",method=RequestMethod.GET)
-       public ModelAndView  pswAlter(String userId,String psw){
-    	   ModelAndView mv=new ModelAndView();
+       public ModelAndView  pswAlter(String userId,String password){
+		   ModelAndView mv=new ModelAndView("resourcemanagement/userDetail");
            UserService us=new UserService();
-           us.pswAlter(userId,psw);
+           us.pswAlter(userId,password);
+    	   mv.addObject("us",us.userSearchById(userId));
+         
     	   return mv;
        }
 }

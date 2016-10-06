@@ -3,7 +3,7 @@
 <#assign path="${rc.contextPath}">
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-<title>demanddetail</title>
+<title>专利详情</title>
  <#include "css.ftl">
  <style type="text/css">
           	.mytable{TABLE-LAYOUT: fixed;}
@@ -16,7 +16,11 @@
   <!-- Page -->
   <div class="page animsition">
 	<div class="page-header">
-      <h1 class="page-title">专利详情</h1>      
+      <h1 class="page-title">专利详情</h1>
+       <div class="page-header-actions">
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round" onclick=" location.href='patentSearch.html?patentName=${dc.name}&patentTime=${dc.date_of_application}'"      
+           data-toggle="tooltip" >返回</button>
+      </div>      
     </div>
     <div class="page-content">
       <div class="panel">
@@ -30,15 +34,15 @@
                   <form class="form-horizontal" action="patentDetail.html" method="post">
                     <div class="form-group">
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label"  style="padding-left:40%;">专利名称：</label>
+                      <label class=" control-label" style="margin-left:40%">专利名称：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class=" control-label">${dc.name}</label>
+                        <label class=" control-label" >${dc.name}</label>
                       </div>
                     </div>
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="padding-left:40%;">专利编号：</label>
+                      <label class=" control-label" style="margin-left:40%" >专利编号：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label">${dc.number}</label>
@@ -47,7 +51,7 @@
                     
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="padding-left:40%;">发明人：</label>
+                      <label class=" control-label" style="margin-left:40%" >发明人：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label">${dc.patent_inventor}</label>
@@ -56,7 +60,7 @@
                    
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="padding-left:40%; " >IPC：</label>
+                      <label class=" control-label" style="margin-left:40%">IPC：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label" style="text-align:left;WORD-WRAP: break-word;overflow:hidded;">${dc.IPC}</label>
@@ -64,7 +68,7 @@
                     </div>
                      <div class="form-group" >
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="padding-left:40%;">申请日期：</label>
+                      <label class=" control-label" style="margin-left:40%">申请日期：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class="control-label">${dc.date_of_application}</label>
@@ -73,7 +77,7 @@
                     
                     <div class="form-group">
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="padding-left:40%;">申请地址：</label>
+                      <label class=" control-label" style="margin-left:40%">申请地址：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class="control-label">${dc.address}</label>
@@ -82,7 +86,7 @@
                     
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="padding-left:40%; ">具体描述：</label>
+                      <label class=" control-label" style="margin-left:40%">具体描述：</label>
                       </div>
                       <div class="col-sm-9" >               
                         <label class=" control-label" style="text-align:left; ">${dc.patent_abstract}</label>                                       

@@ -21,7 +21,7 @@ public class PatentHelper {
 	}
 
 
-	public int count(long time2) {
+	public int[] count(long time2) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		return mapper.count(time2);

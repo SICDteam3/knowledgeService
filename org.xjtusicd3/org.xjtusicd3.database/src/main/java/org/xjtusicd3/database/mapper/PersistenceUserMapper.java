@@ -24,10 +24,10 @@ public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>
 	@Select("select userId as userId ,userName as userName,userEmail as userEmail,passWord as passWord,user_type as user_type,flag as flag,phone as phone from user;")
 	List<PersistenceUser> searchUser();
 
-	@Select("select userId as userId ,userName as userName,userEmail as userEmail,passWord as passWord,user_type as user_type,flag as flag,phone as phone from user where userName=#{name};")
-	PersistenceUser searchUser1(String name);
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where userName like #{name} AND flag=0;")
+	List<PersistenceUser> searchUser1(String name);
 
-	@Select("select userId as userId ,userName as userName,userEmail as userEmail,passWord as passWord,user_type as user_type,flag as flag,phone as phone from user where flag=1;")
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where flag=1;")
 	List<PersistenceUser> blackSearch();
 
 	@Update("UPDATE user SET flag = 1 WHERE userId = #{0}")
@@ -36,10 +36,10 @@ public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>
 	@Update("UPDATE user SET flag = 0 WHERE userId = #{0}")
 	void userRecover(String userId);
 
-	@Select("select userId as userId ,userName as userName,userEmail as userEmail,passWord as passWord,user_type as user_type,flag as flag,phone as phone from user where userId=#{userId};")
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where userId=#{userId};")
 	PersistenceUser searchUserById(String userId);
 
-	@Update("UPDATE user SET flag = #{1} WHERE userId = #{0}")
+	@Update("UPDATE user SET passWord = #{1} WHERE userId = #{0}")
 	void pswAlter(String userId, String psw);
 }
 
