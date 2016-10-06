@@ -162,18 +162,20 @@ public class PatentService {
 	}
 	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
 		int count = PatentHelper.getCount(context);
-		List<PersistencePatent> results = PatentHelper.getPageList(page.getPageNo(),page.getPageSize(),context);
+		List<PersistencePatent> results = PatentHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
 		page.setResults(results);
 		page.setTotalRecord(count);
+		page.setTotalPage(totalPage);
 		return page;
 	}
 	
 	public static Page<PersistencePatent> selectByNumber(String context, Page<PersistencePatent> page) {
 		int count = PatentHelper.getCount2(context);
-		
-		List<PersistencePatent> results = PatentHelper.getPageList2(page.getPageNo(),page.getPageSize(),context);
-		page.setResults(results);
-		
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
+		List<PersistencePatent> results = PatentHelper.getPageList2((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
+		page.setResults(results);		
+		page.setTotalPage(totalPage);
 		page.setTotalRecord(count);
 		return page;
 	}
