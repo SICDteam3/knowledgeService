@@ -75,6 +75,12 @@
 	    <version>4.3.3.RELEASE</version>
 	</dependency>
 	
+	<dependency>
+	    <groupId>org.apache.lucene</groupId>
+	    <artifactId>lucene-core</artifactId>
+	    <version>4.10.4</version>
+	</dependency>
+	
   </dependencies>
   <build>
     <finalName>org.xjtusicd3.partner</finalName>

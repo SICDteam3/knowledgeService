@@ -10,13 +10,11 @@
         <a href="">
             <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="gallery-wrap">
-                    <div class="gallery-item gallery-item-square" style="background-image: url('/img/areas/business_developers.jpg')">
+                    <div class="gallery-item gallery-item-square" style="background-image: url('${path}/image/1.png')">
                         <div class="gallery-item-overlay"></div>
                         <div class="gallery-item-ribbon"></div>
-                        <div class="gallery-item-text text-center">
-                            <p>500万</p>
-
-                            <p>中国专利</p>
+                        <div class="gallery-item-text text-center">                          
+                            <p>200万 中国专利</p>
                         </div>
                     </div>
                 </div>
@@ -26,13 +24,12 @@
         <a href="">
             <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="gallery-wrap">
-                    <div class="gallery-item gallery-item-square" style="background-image: url('/img/areas/business_developers.jpg')">
+                    <div class="gallery-item gallery-item-square" style="background-image: url('${path}/image/2.png')">
                         <div class="gallery-item-overlay"></div>
                         <div class="gallery-item-ribbon"></div>
                         <div class="gallery-item-text text-center">
-                            <p>专利报表生成</p>
-
-                            <p>专利报表生成</p>
+                            
+                            <p>企业地图</p>
                         </div>
                     </div>
                 </div>
@@ -42,13 +39,11 @@
         <a href="">
             <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="gallery-wrap">
-                    <div class="gallery-item gallery-item-square" style="background-image: url('/img/areas/business_developers.jpg')">
+                    <div class="gallery-item gallery-item-square" style="background-image: url('${path}/image/3.png')">
                         <div class="gallery-item-overlay"></div>
                         <div class="gallery-item-ribbon"></div>
-                        <div class="gallery-item-text text-center">
-                            <p>专利报表生成</p>
-
-                            <p>专利报表生成</p>
+                        <div class="gallery-item-text text-center">                           
+                            <p>专利可视化</p>
                         </div>
                     </div>
                 </div>
