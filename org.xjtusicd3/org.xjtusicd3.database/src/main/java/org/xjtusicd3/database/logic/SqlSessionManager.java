@@ -11,6 +11,7 @@ import org.apache.ibatis.transaction.jdbc.JdbcTransactionFactory;
 import org.xjtusicd3.database.mapper.PersistenceDictionaryMapper;
 import org.xjtusicd3.database.mapper.PersistenceForumListMapper;
 import org.xjtusicd3.database.mapper.PersistenceForumReplyMapper;
+import org.xjtusicd3.database.mapper.PersistenceIPCMapper;
 import org.xjtusicd3.database.mapper.PersistenceLogMapper;
 import org.xjtusicd3.database.mapper.PersistencePatentMapper;
 import org.xjtusicd3.database.mapper.PersistenceUserMapper;
@@ -46,6 +47,7 @@ public class SqlSessionManager {
 			configuration.addMapper(PersistenceDictionaryMapper.class);
 			configuration.addMapper(PersistenceForumReplyMapper.class);
 			configuration.addMapper(PersistenceForumListMapper.class);
+			configuration.addMapper(PersistenceIPCMapper.class);
 			configuration.addInterceptor(new BasePlugin());
 			
 			bizSqlSessionFactory = new SqlSessionFactoryBuilder().build(configuration);
