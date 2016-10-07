@@ -184,7 +184,7 @@ public class PatentController {
 			   }
 			  
 		}	
-				
+			System.out.println(date_province);	
 		  mv.addObject("date_inventor",date_inventor);
 		  mv.addObject("date_inventor_number", date_inventor_number);
 		  mv.addObject("date_holder",date_holder);
@@ -230,7 +230,6 @@ public class PatentController {
 				  date_year += "'";
 			}
 		  }
-		  System.out.println(patent_holder);
 		  mv.addObject("patent_holder", patent_holder);
 		  mv.addObject("date_year",date_year);
 		  mv.addObject("date_year_number", date_year_number);
