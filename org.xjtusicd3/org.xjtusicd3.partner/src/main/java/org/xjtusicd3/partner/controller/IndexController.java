@@ -33,8 +33,7 @@ public class IndexController {
 		//专利号搜索
 		}else if (searchType.equals("2")) {
 			page = PatentService.selectByNumber(context,page);
-		}
-						
+		}						
 		mv.addObject("patentPage",page);
 		mv.addObject("content",context);
 		mv.addObject("currentpage",page.getPageNo());

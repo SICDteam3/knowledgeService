@@ -28,7 +28,6 @@
     <script src="http://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
 
 </head>
-<body>
 	<#include "header.ftl">
 	<#include "searchbar.ftl">
 	<#include "index-body.ftl">

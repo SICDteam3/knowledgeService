@@ -74,7 +74,7 @@ public class PatentController {
 	  /*
 	   * 专利可视化
 	   */
-	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
+	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
 	 
 	  public ModelAndView inventorVisiual(HttpServletRequest request){
 		  String IPC = request.getParameter("IPC");

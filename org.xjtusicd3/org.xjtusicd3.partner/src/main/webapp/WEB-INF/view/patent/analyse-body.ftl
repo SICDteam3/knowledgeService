@@ -6,19 +6,7 @@
             <h3 class="gallery-subtitle">专利分析，报表生成，企业地图，专家地图。</h3>
         </div>
     </div>
-    <div class="row gallery-row">
-        <form class="form-horizontal" role="form" action="inventorVisiual.html" method="post">
-        <div class="form-group">
-            <label for="inputEmail3" class="col-sm-2 control-label">输入ipc号</label>
-            <div class="col-sm-6">
-                <input type="text" class="form-control" name="IPC" placeholder="IPC">
-            </div>
-            <div class="col-sm-4">
-                <button type="submit" class="btn btn-default">查询</button>
-            </div>
-        </div>
-        </form>
-    </div>
+    <#include "patent/IPClist.ftl">
     <div class="row gallery-row">
         <div class="col-sm-6">
             <div id="main1" style="width: 100%;height: 600px;"></div>
@@ -455,24 +443,5 @@ option4 = {
 
 </script>
 <script>
-	function submitquery(){
-		
-		var keyword = document.getElementById("queryKeyword").value;
-		alert(keyword);
-		$.ajax({
-			type: "get",
-			url: "query.html?query="+keyword,
-			dataType:'json',
-			success: function(result){
-				alert(result);
-			},
-			error: function(){
-				alert("错误！");
-				return false;
-			}
-	 });
-				
-	};
 	
-	function printTable(){}
 </script>
