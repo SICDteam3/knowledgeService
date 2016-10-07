@@ -99,6 +99,24 @@ public class UserHelper {
 		mapper.pswAlter(userId,psw);
 	}
 
+	public static int getCount(String name) {
+	
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistenceUserMapper mapper = session.getMapper(PersistenceUserMapper.class);
+		 String userName = "%" + name + "%";
+		int count =  mapper.selectByNameCount(userName);
+		session.close();
+		return count;
+	}
+
+	public static List<PersistenceUser> getPageList(int i, int pageSize, String name) {
+	    
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistenceUserMapper mapper = session.getMapper(PersistenceUserMapper.class);
+		String name1="%"+name+"%";
+		return mapper.searchUser3(name1,i,pageSize);
+	}
+
 
 
 

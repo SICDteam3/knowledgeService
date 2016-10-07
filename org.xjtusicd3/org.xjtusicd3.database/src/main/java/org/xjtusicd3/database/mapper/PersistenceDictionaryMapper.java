@@ -22,4 +22,11 @@ public interface PersistenceDictionaryMapper extends IBaseDao<PersistenceBlackLi
 
     @Delete("DELETE FROM data_dictionary WHERE dictionaryId=#{0}")
 	public void deleteDictionary(int id);
+
+    @Select("select count(dictionaryId) from data_dictionary ")
+	public int count();
+
+    
+    @Select("SELECT dictionaryId as dictionaryId ,dictionaryName as dictionaryName, dictionaryValue as dictionaryValue FROM data_dictionary limit #{0},#{1}")
+	public List<PersistenceDictionary> selectPageByName(int i, int pageSize);
 }

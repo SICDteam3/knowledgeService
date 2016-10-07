@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import org.xjtusicd3.database.helper.LogHelper;
+import org.xjtusicd3.database.model.Page;
 import org.xjtusicd3.database.model.PersistenceLog;
-import org.xjtusicd3.portal.controller.LogController;
+
 
 public class LogService {
 
@@ -36,5 +37,18 @@ public class LogService {
 		 LogHelper lh=new LogHelper();
 		 return lh.timeLog(startTime,endTime);
 	}
+
+	public Page<PersistenceLog> userLog(Page<PersistenceLog> page, String name, long timeStemp, long timeStemp1) {
+		int count = LogHelper.getCount1(name,timeStemp,timeStemp1);
+		List<PersistenceLog> results = LogHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),timeStemp,timeStemp1,name);
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
+		page.setResults(results);
+		page.setTotalRecord(count);
+		page.setTotalPage(totalPage);
+		return page;
+	
+	}
+
+	
 
 }

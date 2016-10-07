@@ -6,6 +6,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.xjtusicd3.database.model.Page;
+import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.portal.service.PatentService;
 import org.xjtusicd3.portal.view.ViewPatent;
 
@@ -23,7 +25,6 @@ public class PatentMangmentController {
 	@RequestMapping(value="toPatentSearch",method=RequestMethod.GET)
 	public ModelAndView toPatentSearch(){
 		  ModelAndView mv=new ModelAndView("resourcemanagement/patentManagement");
-		  
 		  return mv;
 	}
 	  
@@ -47,6 +48,42 @@ public class PatentMangmentController {
 		  return mv;
 	}
     /*
+     * 带分页的专利搜索
+     * */
+	@RequestMapping(value={"searchPatent"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	   public ModelAndView searchPatent(String patentName,String patentTime){
+		ModelAndView mv = new ModelAndView("resourcemanagement/patentManagement");
+		Page<PersistencePatent> page = new Page<PersistencePatent>();
+		PatentService ps=new PatentService();
+		//数据字典搜索
+		page = ps.searchPatnet(page,patentName,patentTime);
+		mv.addObject("patentPage",page);
+		mv.addObject("currentpage",page.getPageNo());
+		mv.addObject("name", patentName);
+		mv.addObject("time", patentTime);
+		//分页处理,每页15行数据		
+		return mv;
+	 }
+	
+	
+	/*
+	 * 分页查看
+	 * */
+	@RequestMapping(value={"/searchpage"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	 public ModelAndView checkPatent(int currentpage,String patentName,String patentTime){
+		ModelAndView mv = new ModelAndView("resourcemanagement/patentManagement");
+		Page<PersistencePatent> page = new Page<PersistencePatent>();
+		page.setPageNo(currentpage);
+		PatentService ps=new PatentService();
+		//专利名搜索
+		page = ps.searchPatnet(page,patentName,patentTime);
+		mv.addObject("patentPage",page);		
+		//分页处理,每页15行数据		
+		mv.addObject("currentpage",currentpage);
+		return mv;
+	 }
+    
+    /*
      * 查找专利详情
      * */
     @RequestMapping(value="patentDetail",method=RequestMethod.GET)
@@ -54,6 +91,7 @@ public class PatentMangmentController {
 		ModelAndView mv=new ModelAndView("resourcemanagement/patentDetail");
 	    PatentService ps=new PatentService();
     	mv.addObject("dc",ps.detailCheck(patentId));
+    	mv.addObject("patentName",ps.detailCheck(patentId).getName());
     	return mv;
     }
     

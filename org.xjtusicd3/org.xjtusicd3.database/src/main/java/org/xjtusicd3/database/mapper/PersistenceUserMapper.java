@@ -41,6 +41,12 @@ public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>
 
 	@Update("UPDATE user SET passWord = #{1} WHERE userId = #{0}")
 	void pswAlter(String userId, String psw);
+
+	@Select({"SELECT count(*) FROM user WHERE userName like #{name} AND flag=0"})
+	int selectByNameCount(String userName);
+
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where userName like #{0} AND flag=0 limit #{1},#{2};")
+	List<PersistenceUser> searchUser3(String name1, int i, int pageSize);
 }
 
 

@@ -22,6 +22,11 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 			+"date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,type as type,patent_agency as patent_agency,patent_agency as patent_agency,"
 			+"principal_claim as principal_claim, province as province,legal_status as legal_status FROM patent WHERE name like #{0} AND date_of_application like #{1} "})
 	public List<PersistencePatent> getByname(String patentName,String patentTime);
+	
+	@Select({"SELECT patentId as patentId,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder,"
+			+"date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,type as type,patent_agency as patent_agency,patent_agency as patent_agency,"
+			+"principal_claim as principal_claim, province as province,legal_status as legal_status FROM patent WHERE name like #{0} AND date_of_application like #{1} limit #{2},#{3}"})
+	public List<PersistencePatent> getByname1(String patentName1, String patentTime1, int i, int pageSize);
 
 	@Select({"SELECT patentId as patentId,number as number,name as name,IPC as IPC,address as address,patent_inventor as patent_inventor,patent_holder as patent_holder,"
 			+"date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,type as type,patent_agency as patent_agency,patent_agency as patent_agency,"
@@ -98,6 +103,12 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	
 	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{2} limit #{0},#{1}"})
 	public List<PersistencePatent> selectPageByName2(int pageNo, int pageSize, String context);
+
+
+	@Select({"SELECT count(*) FROM patent WHERE name like #{0} AND date_of_application like #{1}"})
+	public int selectByNameCount1(String patentName, String patentTime);
+
+
 
 }
 

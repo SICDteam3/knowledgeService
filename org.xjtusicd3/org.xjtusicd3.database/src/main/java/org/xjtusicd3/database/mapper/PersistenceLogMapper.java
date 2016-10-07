@@ -25,5 +25,13 @@ public interface PersistenceLogMapper extends IBaseDao<PersistencePatent, String
 	public ArrayList<PersistenceLog> userLogByIp(String ip, long startTime, long endTime);
 
 	@Select(" SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log where   time>=#{0} AND time<=#{1}")
-	public ArrayList<PersistenceLog> timeLog(long startTime, long endTime);	
+	public ArrayList<PersistenceLog> timeLog(long startTime, long endTime);
+
+	@Select({"SELECT count(*) FROM log WHERE userName=#{0} AND time>=#{1} AND time<=#{2}"})
+	public int getCount(String name, long timeStemp, long timeStemp1);
+
+	@Select("SELECT logId as logId ,ip as ip, userName as userName, operation as operation,argument as argument,time as time FROM log WHERE userName=#{0} AND time>=#{1} AND time<=#{2} limit #{3},#{4}")
+	public List<PersistenceLog> getLogByName(String name, long timeStemp, long timeStemp2, int i, int pageSize);
+
+
 }

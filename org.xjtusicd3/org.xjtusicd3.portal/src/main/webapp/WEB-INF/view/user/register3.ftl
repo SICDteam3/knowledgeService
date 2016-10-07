@@ -69,19 +69,19 @@
         <div class="panel-body">
           <div class="brand">
             <img class="brand-img" src="${path}/center/assets/images/logo-blue.png" alt="...">
-            <h2 class="brand-text font-size-18">knowledge</h2>
+            <h2 class="brand-text font-size-18">XXZL</h2>
           </div>
           <form method="post" action="save.html" id="registerForm">
             <div class="form-group form-material floating">
-              <input type="text" class="form-control" name="username" />
+              <input type="text" class="form-control" name="userName" />
               <label class="floating-label">用户名</label>
             </div>
             <div class="form-group form-material floating">
-              <input type="email" class="form-control" name="email" id="email"/>
+              <input type="email" class="form-control" name="userEmail" id="email"/>
               <label class="floating-label">邮箱</label>
             </div>
             <div class="form-group form-material floating">
-              <input type="password" class="form-control" name="password" />
+              <input type="password" class="form-control" name="passWord" />
               <label class="floating-label">密码</label>
             </div>
             <div class="form-group form-material floating">
@@ -89,27 +89,13 @@
               <label class="floating-label">再次输入密码</label>
             </div>
 
-            <button type="button" class="btn btn-primary btn-block btn-lg margin-top-40" onclick="check();">注册</button>
+            <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40" onclick="check();">注册</button>
           </form>
           <p>已经有账号，快去 <a href="login.html">登录</a></p>
         </div>
       </div>
 
-      <footer class="page-copyright page-copyright-inverse">
-        <p>WEBSITE BY </p>
-        <p>© 2016. All RIGHT RESERVED.</p>
-        <div class="social">
-          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
-            <i class="icon bd-twitter" aria-hidden="true"></i>
-          </a>
-          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
-            <i class="icon bd-facebook" aria-hidden="true"></i>
-          </a>
-          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
-            <i class="icon bd-google-plus" aria-hidden="true"></i>
-          </a>
-        </div>
-      </footer>
+    
     </div>
   </div>
   <!-- End Page -->
