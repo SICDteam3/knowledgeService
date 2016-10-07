@@ -47,7 +47,7 @@
         			<div class="hd"><span class="title">相关专家</span></div>
         			<ul class="bd clear">
         			<#list patentPage.results as patent>
-        				<li><a target="_blank" href="javascript:void;">${patent.patent_inventor}</a></li>
+        				<li><a  href="javascript:void;">${patent.patent_inventor}</a></li>
         			</#list>
         			</ul>
         		</div>
@@ -57,7 +57,7 @@
         			<div class="hd"><span class="title">相关企业</span></div>
         			<ul class="bd clear">
         			<#list patentPage.results as patent>
-        				<li><a target="_blank" href="">${patent.patent_holder}</a></li>
+        				<li><a  href="javascript:void;">${patent.patent_holder}</a></li>
         			</#list>
         			</ul>
         		</div>

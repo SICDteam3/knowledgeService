@@ -43,10 +43,10 @@
                 <div class="container">
                     <div class="row">
                         <div class="col-sm-8 col-sm-offset-2 text">
-                            <h1><a href=""><strong>XXZL</strong> 专利分析平台登录</a></h1>
+                            <h1><a href="${path}/index.html"><strong>XXZL</strong> 专利分析平台登录</a></h1>
                             <div class="description">
                             	<p>
-	                            	西安交通大学  <a href=""><strong> / </strong></a>社会智能与复杂数据处理实验室
+	                            	西安交通大学  <a href="${path}/index.html"><strong> / </strong></a>社会智能与复杂数据处理实验室
                             	</p>
                             </div>
                         </div>

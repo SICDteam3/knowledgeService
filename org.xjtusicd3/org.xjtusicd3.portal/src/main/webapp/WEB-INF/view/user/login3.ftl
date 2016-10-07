@@ -8,7 +8,7 @@
   <meta name="description" content="bootstrap admin template">
   <meta name="author" content="">
 
-  <title>登录知识服务平台</title>
+  <title>登录XXZL专利分析平台</title>
   <link rel="apple-touch-icon" href="${path}/center/assets/images/apple-touch-icon.png">
   <link rel="shortcut icon" href="${path}/center/assets/images/favicon.ico">
 
@@ -69,15 +69,15 @@
         <div class="panel-body">
           <div class="brand">
             <img class="brand-img" src="${path}/center/assets/images/logo-blue.png" alt="...">
-            <h2 class="brand-text font-size-18">knowledge</h2>
+            <h2 class="brand-text font-size-18">XXZL</h2>
           </div>
           <form  method="post" action="login_check.html">
             <div class="form-group form-material floating">
-              <input type="email" class="form-control" name="email" />
-              <label class="floating-label">邮箱</label>
+              <input type="text" class="form-control" name="userName" />
+              <label class="floating-label">用户名</label>
             </div>
             <div class="form-group form-material floating">
-              <input type="password" class="form-control" name="password" />
+              <input type="password" class="form-control" name="passWord" />
               <label class="floating-label">密码</label>
             </div>
             <div class="form-group clearfix">
@@ -85,7 +85,7 @@
                 <input type="checkbox" id="inputCheckbox" name="remember">
                 <label for="inputCheckbox">记住密码</label>
               </div>
-              <a class="pull-right" href="forgot-password.html">忘记密码?</a>
+             
             </div>
             <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40">登录</button>
           </form>
@@ -93,21 +93,7 @@
         </div>
       </div>
 
-      <footer class="page-copyright page-copyright-inverse">
-        <p>WEBSITE BY </p>
-        <p>© 2016. All RIGHT RESERVED.</p>
-        <div class="social">
-          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
-            <i class="icon bd-twitter" aria-hidden="true"></i>
-          </a>
-          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
-            <i class="icon bd-facebook" aria-hidden="true"></i>
-          </a>
-          <a class="btn btn-icon btn-pure" href="javascript:void(0)">
-            <i class="icon bd-google-plus" aria-hidden="true"></i>
-          </a>
-        </div>
-      </footer>
+     
     </div>
   </div>
   <!-- End Page -->

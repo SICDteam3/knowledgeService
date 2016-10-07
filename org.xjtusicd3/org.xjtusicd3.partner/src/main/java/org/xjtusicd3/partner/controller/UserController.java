@@ -21,7 +21,7 @@ public class UserController {
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public ModelAndView logout(HttpSession session){
 		session.invalidate();
-		ModelAndView mv = new ModelAndView("login");
+		ModelAndView mv = new ModelAndView("user/login");
 		return mv;
 	}
 	@RequestMapping(value="/save",method=RequestMethod.POST)
@@ -79,7 +79,7 @@ public class UserController {
 			
 		} catch (Exception e) {
 			e.printStackTrace();
-			mv = new ModelAndView("error");
+			mv = new ModelAndView("user/login");
 		}
 		return mv;
 	}
@@ -98,7 +98,7 @@ public class UserController {
 		return mv;
 	}
 	/*
-	 * ÓÃ»§ÐÅÏ¢µÄÐÞ¸Ä
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Ï¢ï¿½ï¿½ï¿½Þ¸ï¿½
 	 */
 	@RequestMapping("userDetail")
 	 public String getuserDetailPage() {

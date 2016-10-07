@@ -44,5 +44,23 @@ public class LogHelper {
 		PersistenceLogMapper mapper = session.getMapper(PersistenceLogMapper.class);
 		return mapper.timeLog(startTime,endTime);
 	}
+
+	public static int getCount1(String name, long timeStemp, long timeStemp1) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistenceLogMapper mapper = session.getMapper(PersistenceLogMapper.class);
+		int count =  mapper.getCount(name,timeStemp,timeStemp1);
+		session.close();
+		return count;
+		
+	}
+
+
+	public static List<PersistenceLog> getPageList(int i, int pageSize, long timeStemp, long timeStemp1, String name) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistenceLogMapper mapper = session.getMapper(PersistenceLogMapper.class);
+		  List<PersistenceLog> l=mapper.getLogByName(name,timeStemp, timeStemp1,i,pageSize);
+		  session.close();
+		  return l;
+	}
 	
 }

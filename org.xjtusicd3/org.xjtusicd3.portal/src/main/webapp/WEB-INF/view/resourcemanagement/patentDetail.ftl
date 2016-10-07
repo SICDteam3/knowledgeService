@@ -18,7 +18,7 @@
 	<div class="page-header">
       <h1 class="page-title">专利详情</h1>
        <div class="page-header-actions">
-        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round" onclick=" location.href='patentSearch.html?patentName=${dc.name}&patentTime=${dc.date_of_application}'"      
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round" onclick=" location.href='searchPatent.html?patentName=${patentName}&patentTime=${dc.date_of_application}'"      
            data-toggle="tooltip" >返回</button>
       </div>      
     </div>

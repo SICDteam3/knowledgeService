@@ -160,6 +160,8 @@ public class PatentService {
 		}
 		return listPatentVisual;
 	}
+	
+	
 	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
 		int count = PatentHelper.getCount(context);
 		List<PersistencePatent> results = PatentHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);

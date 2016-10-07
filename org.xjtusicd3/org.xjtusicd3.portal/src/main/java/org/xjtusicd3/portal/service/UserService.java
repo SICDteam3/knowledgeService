@@ -2,8 +2,8 @@ package org.xjtusicd3.portal.service;
 
 import java.util.ArrayList;
 import java.util.List;
-
 import org.xjtusicd3.database.helper.UserHelper;
+import org.xjtusicd3.database.model.Page;
 import org.xjtusicd3.database.model.PersistenceUser;
 import org.xjtusicd3.portal.view.ViewUser;
 
@@ -74,5 +74,18 @@ public class UserService {
 		UserHelper uh=new UserHelper();
 		uh.pswAlter(userId,psw);
 	}
+
+	
+	public Page<PersistenceUser> userSearch3(Page<PersistenceUser> page, String name) {
+		int count = UserHelper.getCount(name);
+		List<PersistenceUser> results = UserHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),name);
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
+		page.setResults(results);
+		page.setTotalRecord(count);
+		page.setTotalPage(totalPage);
+		return page;
+	}
+
+	
 
 }

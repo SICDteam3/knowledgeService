@@ -11,6 +11,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
+import org.xjtusicd3.database.model.Page;
+import org.xjtusicd3.database.model.PersistenceLog;
 import org.xjtusicd3.portal.service.LogService;
 @RequestMapping(value="log")
 @Controller
@@ -44,6 +46,64 @@ public class LogController {
 		return mv;
 	}
 	
+	  /*
+	    * 带分页的日志查找
+	    * */
+		@RequestMapping(value={"logSearch"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+		 public ModelAndView logSearch(String name,String StartTime,String EndTime) throws ParseException{
+			ModelAndView mv=new ModelAndView("logmanagement/logcheck");
+			Page<PersistenceLog> page = new Page<PersistenceLog>();
+			LogService ls=new LogService();
+			if(name==null||StartTime==null||EndTime==null){
+				return mv;
+			}
+			 SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
+			 if(StartTime!=""&&EndTime!=""){
+			 Date date=simpleDateFormat .parse(StartTime);
+			 Date date1=simpleDateFormat .parse(EndTime);
+			 long timeStemp = date.getTime();
+			 long timeStemp1 = date1.getTime();
+			//数据字典搜索
+			page = ls.userLog(page,name,timeStemp,timeStemp1);
+			mv.addObject("patentPage",page);
+			mv.addObject("currentpage",page.getPageNo());
+			mv.addObject("StartTime", StartTime);
+			mv.addObject("EndTime", EndTime);
+			mv.addObject("name", name);
+			 }
+			//分页处理,每页15行数据		
+			return mv;
+		 }
+		
+		/*
+		    * 分页日志查找
+		    * */
+			@RequestMapping(value={"searchpage"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+			 public ModelAndView logSearch2(int currentpage,String name,String StartTime,String EndTime) throws ParseException{
+				ModelAndView mv=new ModelAndView("logmanagement/logcheck");
+				Page<PersistenceLog> page = new Page<PersistenceLog>();
+				page.setPageNo(currentpage);
+				LogService ls=new LogService();
+				if(name==null||StartTime==null||EndTime==null){
+					return mv;
+				}
+				 SimpleDateFormat simpleDateFormat =new SimpleDateFormat("yyyy-MM-dd");
+				 if(StartTime!=""&&EndTime!=""){
+				 Date date=simpleDateFormat .parse(StartTime);
+				 Date date1=simpleDateFormat .parse(EndTime);
+				 long timeStemp = date.getTime();
+				 long timeStemp1 = date1.getTime();
+				//数据字典搜索
+				page = ls.userLog(page,name,timeStemp,timeStemp1);
+				mv.addObject("patentPage",page);
+				mv.addObject("currentpage",page.getPageNo());
+				mv.addObject("StartTime", StartTime);
+				mv.addObject("EndTime", EndTime);
+				 }
+				//分页处理,每页15行数据		
+				return mv;
+			 }
+		
 	/*
 	 * 按時間查詢日誌
 	 * */

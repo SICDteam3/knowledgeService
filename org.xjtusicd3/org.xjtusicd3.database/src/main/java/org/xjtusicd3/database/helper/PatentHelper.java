@@ -24,7 +24,9 @@ public class PatentHelper {
 	public int[] count(long time2) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		return mapper.count(time2);
+		int[] i=mapper.count(time2);
+		session.close();
+		return i;
 	}
 	
 
@@ -33,20 +35,24 @@ public class PatentHelper {
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		    String patentName1 = "%" + patentName + "%";
 		    String patentTime1 = "%" + patentTime + "%";
-		  
-		  return mapper.getByname(patentName1, patentTime1);
+		    List<PersistencePatent> l=mapper.getByname(patentName1, patentTime1);
+		    session.close();
+		    return l;
 	}
 
 	public  PersistencePatent detailCheck(String patentId) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		return mapper.detailCheck(patentId);
+		PersistencePatent p=mapper.detailCheck(patentId);
+		session.close();
+		return p;
 	}
 
 	public void delete(String patentId) {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		mapper.deleteByUnmber(patentId);
+		session.close();
 		return;
 	}
 
@@ -220,4 +226,30 @@ public class PatentHelper {
 		session.close();
 		return patents;
 	}
+
+
+	public static int getCount1(String patentName, String patentTime) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		 String patentName1 = "%" + patentName + "%";
+		 String patentTime1 = "%" + patentTime + "%";
+		int count =  mapper.selectByNameCount1(patentName1,patentTime1);
+		session.close();
+		return count;
+	}
+
+
+	public static List<PersistencePatent> getPageListhh(int i, int pageSize, String patentName, String patentTime) {
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		    String patentName1 = "%" + patentName + "%";
+		    String patentTime1 = "%" + patentTime + "%";
+		    List<PersistencePatent> l=mapper.getByname1(patentName1, patentTime1,i,pageSize);
+		    session.close();
+		    return l;
+		
+	}
+
+
+	
 }
