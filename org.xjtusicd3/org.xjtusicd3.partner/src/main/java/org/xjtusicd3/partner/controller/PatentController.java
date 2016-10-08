@@ -23,7 +23,10 @@ public class PatentController {
 		 public String getCompanyMap() {
 			return "patent/companyMap";
 		}
-						
+		@RequestMapping("holdermap")
+		public  String getPatentYearnumber(){
+			return "patent/holderMap";
+		}
 	  @RequestMapping(value={"patentquery"}, method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView query(HttpServletRequest request)
 	  {
@@ -161,6 +164,7 @@ public class PatentController {
 			  	}
 			  
 		}
+		
 		  
 		//专利可视化——省市、专权人——气泡图
 		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
@@ -203,6 +207,38 @@ public class PatentController {
 //		  mv.addObject("result",result);
 		return mv;
 	  }
+	  /*
+		 * 专利数据逐年变化
+		 */
+	  @RequestMapping(value={"patentYearNumber"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
+	  public ModelAndView patentYearNumber(HttpServletRequest request){
+		  ModelAndView mv = new ModelAndView("patent/patentYearnumber");
+		  List<ViewPatentVisual> list = PatentService.PatentYearNumber();
+			int length = list.size();
+			String date = null;
+			String date1;
+			String date_year = "'";
+			String date_year_number = "";
+			for(ViewPatentVisual viewPatentVisual:list){
+				length--;
+				date = viewPatentVisual.getDate_year();
+				date1  = viewPatentVisual.getCounts_year();
+				date_year += date;
+				date_year_number +=date1;
+				 if (length>=1) {
+						date_year += "','";
+						date_year_number += ",";
+					}
+					  else {
+						  date_year += "'";
+					}
+			}
+			mv.addObject("date_year",date_year);
+			mv.addObject("date_year_number", date_year_number);
+			return mv;
+		  
+	  }
+		
 	  /*
 	   * 企业专利数量——可视化
 	   */

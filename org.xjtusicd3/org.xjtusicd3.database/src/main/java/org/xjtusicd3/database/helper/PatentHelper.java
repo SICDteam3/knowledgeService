@@ -149,6 +149,16 @@ public class PatentHelper {
 		return rank_announcement;
 	}
 	/*
+	 * 专利数量逐年变化
+	 */
+	public static List<PersistencePatentcount> rank_Patent_yearnumber(){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		List<PersistencePatentcount> rank_patent_yearnumber = mapper.number_year_patent();
+		session.close();
+		return rank_patent_yearnumber;
+	}
+	/*
 	 * IPC——专利可视化——省市和专权人气泡图
 	 */
 	public static List<PersistencePatentcount> popo_ProvinceHolder(String IPC){

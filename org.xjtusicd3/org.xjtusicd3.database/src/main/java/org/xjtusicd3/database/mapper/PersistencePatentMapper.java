@@ -69,6 +69,11 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	@Select({"SELECT patent_holder as patent_holder,count(*) as counts_holder FROM patent WHERE IPC LIKE #{0} GROUP BY patent_holder ORDER BY counts_holder DESC LIMIT 10"})
 	public List<PersistencePatentcount> patent_holder_desc(String paramString);
 	/*
+	 * 逐年专利数量
+	 */
+	@Select({"SELECT SUBSTRING(announcement_date FROM 1 FOR 5) as date_year,count(*) as counts_year FROM patent GROUP BY date_year"})
+	public List<PersistencePatentcount> number_year_patent();
+	/*
 	 * 申请日期
 	 */
 	@Select({"SELECT count(*) as counts_application FROM patent WHERE date_of_application LIKE #{0} AND IPC LIKE #{1}"})

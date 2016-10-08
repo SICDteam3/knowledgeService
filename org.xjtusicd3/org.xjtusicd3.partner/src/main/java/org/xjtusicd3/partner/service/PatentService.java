@@ -131,6 +131,21 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
+	 * 专利数据逐年变化
+	 */
+	public static List<ViewPatentVisual> PatentYearNumber(){
+		List<ViewPatentVisual> list = new ArrayList<ViewPatentVisual>();
+		List<PersistencePatentcount> persistencePatentcounts = PatentHelper.rank_Patent_yearnumber();
+		if(persistencePatentcounts ==null){
+			return null;
+		}
+		for(PersistencePatentcount persistencePatentcount:persistencePatentcounts){
+			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcount);
+			list.add(viewPatentVisual);
+		}
+		return list;
+	}
+	/*
 	 * IPC——专利可视化——省市和专权人气泡图
 	 */
 	public static List<ViewPatentVisual> PopoVisual(String IPC){
