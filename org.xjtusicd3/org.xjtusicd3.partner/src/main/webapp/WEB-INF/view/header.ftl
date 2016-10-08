@@ -38,7 +38,7 @@
                         <li><a href="${path}/user/userDetail.html">个人信息</a></li>
 
                         <li class="divider"></li>
-                        <li><a href="${path}/user/change.html">信息修改</a></li>
+                        <li><a href="${path}/user/userDetail.html">信息修改</a></li>
                         <li class="divider"></li>
                          <li><a href="${path}/user/logout.html">退出</a></li>
                     </ul>

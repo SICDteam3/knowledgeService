@@ -89,6 +89,6 @@ $(document).ready(
 	function submitIPC(){
 		var element = document.getElementById("forth-menu");
 		var classId = element.options[element.selectedIndex].value;
-		location.href="${path}/patent/inventorVisiual.html?IPC="+"A";		
+		location.href="${path}/patent/inventorVisiual.html?IPC="+classId;		
 	}
 </script>
