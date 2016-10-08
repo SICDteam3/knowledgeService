@@ -126,9 +126,7 @@ public class UserController {
 			user.setPhone(phone);
 			
 			UserService.update(user);
-			mv = new ModelAndView("user/userDetail");
-			
-	
+			mv = new ModelAndView("user/userDetail");				
 		return mv;
 	}
 	
