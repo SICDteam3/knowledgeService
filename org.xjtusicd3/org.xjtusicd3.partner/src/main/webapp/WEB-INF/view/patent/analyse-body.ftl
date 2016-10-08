@@ -7,8 +7,10 @@
         </div>
     </div>
     <#include "patent/IPClist.ftl">
+
     <div class="row gallery-row">       
     </div>
+
       <div class="row gallery-row">
 
         <div class="col-sm-12">

@@ -36,7 +36,7 @@
 	function random(){
     var r = Math.round(Math.random() * 100);
     return (r * (r % 2 == 0 ? 1 : -1));
-    
+    }
 
  //专利可视化——申请人
    option1 = {
