@@ -77,8 +77,7 @@ public class PatentController {
 	  /*
 	   * 专利可视化
 	   */
-	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
-	 
+	  @RequestMapping(value={"inventorVisiual"},method={org.springframework.web.bind.annotation.RequestMethod.GET})	 
 	  public ModelAndView inventorVisiual(HttpServletRequest request){
 		  String IPC = request.getParameter("IPC");
 		  ModelAndView mv = new ModelAndView("patent/analyse");
@@ -207,6 +206,151 @@ public class PatentController {
 //		  mv.addObject("result",result);
 		return mv;
 	  }
+	  
+	  
+	  /*
+	   * 专利可视化，进行了优化。
+	   */
+	  @RequestMapping(value={"inventorVisiual2"},method={org.springframework.web.bind.annotation.RequestMethod.GET})	 
+	  public ModelAndView inventorVisiual2(HttpServletRequest request){
+		  String IPC = request.getParameter("IPC");
+		  ModelAndView mv = new ModelAndView("patent/analyse");
+		//专利可视化——发明人、专权人  
+		  List<ViewPatentVisual> listPatent1 = PatentService.InventorVisual(IPC);
+		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
+		  int length1 = listPatent1.size();
+		  int length2 = listPatent2.size();
+		  String date1 = null;
+		  String date2;
+		  String date3 = null;
+		  String date4;
+		  String date_inventor = "'";
+		  String date_holder = "'";
+		  String date_inventor_number = "";
+		  String date_holder_number = "";
+		for (ViewPatentVisual viewPatentVisual : listPatent1) {
+			  	length1--;
+			  	date1 = viewPatentVisual.getPatent_inventor();
+			  	date2 = viewPatentVisual.getCounts_inventor();
+			  	date_inventor  += date1;
+			  	date_inventor_number += date2;
+
+			  	if(length1>=1)
+			   {
+				   date_inventor += "','";
+				   date_inventor_number += ",";
+			   }
+			   else{
+				   date_inventor += "'";
+			   }
+			  
+		}
+		for (ViewPatentVisual viewPatentVisual : listPatent2) {
+		  	length2--;
+		  	date3 = viewPatentVisual.getPatent_holder();
+		  	date4 = viewPatentVisual.getCounts_holder();
+		  	date_holder += date3;
+		  	date_holder_number += date4;
+		  	
+			if(length2>=1)
+			   {
+				   date_holder += "','";
+				   date_holder_number += ",";
+			   }
+			   else{
+				   date_holder += "'";
+			   }
+		}
+		
+		//专利可视化——专利申请、发布时间——年份数量统计
+		String date_application_number = "";
+		String date_announcement_number = "";
+		String date5;
+		String date6;
+		
+		 String year = "2008/";
+		 List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(year, IPC);
+		 List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(year, IPC);
+		  
+		for(int month = 1;month <= 12;month ++){
+			  
+			  int length3 = listPatent3.size();
+			  int length4 = listPatent4.size();
+			  //申请时间统计
+			  for (ViewPatentVisual viewPatentVisua : listPatent3) {
+				if (viewPatentVisua.getDate_of_application().contains("2008/")) {
+					
+				}
+				  length3--;
+				  date5 = viewPatentVisua.getCounts_application();
+				  date_application_number += date5;
+
+				  if(length3>=0)
+				   {
+					    date_application_number += ",";
+				   }
+				  
+			  	}
+			//发布时间统计
+			  for (ViewPatentVisual viewPatentVisua : listPatent4) {
+				  length4--;
+				  date6 = viewPatentVisua.getCounts_announcement();
+				  date_announcement_number += date6;
+
+				  if(length4>=0)
+				   {
+					  date_announcement_number += ",";
+				   }
+				  
+			  	}
+			  
+		}
+		
+		  
+		//专利可视化——省市、专权人——气泡图
+		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
+		  int length5 = listPatent5.size();
+		  String date7 = null;
+		  String date8;
+		  String date_province = "'";
+		  //String date_inventor_number = "";
+		  //String date_holder_number = "";
+		for (ViewPatentVisual viewPatentVisual : listPatent5) {
+			  	length5--;
+			  	date7 = viewPatentVisual.getProvince();
+			  	date_province  += date7;
+
+			  	if(length5>=1)
+			   {
+			  		date_province += "','";
+			   }
+			   else{
+				   date_province += "'";
+			   }
+			  
+		}	
+			System.out.println(date_province);	
+		  mv.addObject("date_inventor",date_inventor);
+		  mv.addObject("date_inventor_number", date_inventor_number);
+		  mv.addObject("date_holder",date_holder);
+		  mv.addObject("date_holder_number", date_holder_number);
+		  mv.addObject("date_application_number", date_application_number);
+		  mv.addObject("date_announcement_number", date_announcement_number);
+		  mv.addObject("date_province", date_province);
+//		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
+//		  mv.addObject("holderVisiual",listPatent2);
+//		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);
+//		  mv.addObject("ApplicationVisiual",listPatent3);
+//		  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(IPC);
+//		  mv.addObject("AnnouncementVisiual",listPatent4);
+//		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
+//		  mv.addObject("PopoVisiual",listPatent5);
+//		  mv.addObject("result",result);
+		return mv;
+	  }
+	  
+	  
+	  
 	  /*
 		 * 专利数据逐年变化
 		 */
