@@ -64,7 +64,7 @@ public class PatentHelper {
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
 		String newNumber = "%" + number + "%";
 		String newName = "%" + name + "%";
-		String newIPC = "%" + IPC + "%";
+		String newIPC = IPC + "%";
 		List<PersistencePatent> patents =  mapper.select(newNumber, newName, newIPC);
 		session.close();
 		return patents;
@@ -97,7 +97,7 @@ public class PatentHelper {
 	public static List<PersistencePatent> queryByIPC(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC = "%" + IPC + "%";
+		String newIPC =  IPC + "%";
 		List<PersistencePatent> patents =  mapper.selectByIPC(newIPC);
 		session.close();
 		return patents;
@@ -108,7 +108,7 @@ public class PatentHelper {
 	public static List<PersistencePatentcount> rank_Inventor(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC = "%" + IPC + "%";
+		String newIPC = IPC + "%";
 		List<PersistencePatentcount> rank_inventor = mapper.patent_inventor_desc(newIPC);
 		session.close();
 		return rank_inventor;
@@ -119,7 +119,7 @@ public class PatentHelper {
 	public static List<PersistencePatentcount> rank_Holder(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC = "%" + IPC + "%";
+		String newIPC = IPC + "%";
 		List<PersistencePatentcount> rank_holder = mapper.patent_holder_desc(newIPC);
 		session.close();
 		return rank_holder;
@@ -130,8 +130,8 @@ public class PatentHelper {
 	public static List<PersistencePatentcount> rank_Application(String year,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newyear = "%" + year+"%";
-		String newIPC = "%" + IPC + "%";
+		String newyear = year+"%";
+		String newIPC =  IPC + "%";
 		List<PersistencePatentcount> rank_application = mapper.date_of_application_asc(newyear,newIPC);
 		session.close();
 		return rank_application;
@@ -142,8 +142,8 @@ public class PatentHelper {
 	public static List<PersistencePatentcount> rank_Announcement(String year,String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newyear = "%" + year + "%";
-		String newIPC = "%" + IPC + "%";
+		String newyear =  year + "%";
+		String newIPC =  IPC + "%";
 		List<PersistencePatentcount> rank_announcement = mapper.announcement_date_asc(newyear,newIPC);
 		session.close();
 		return rank_announcement;
@@ -164,7 +164,7 @@ public class PatentHelper {
 	public static List<PersistencePatentcount> popo_ProvinceHolder(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC = "%" + IPC + "%";
+		String newIPC =  IPC + "%";
 		List<PersistencePatentcount> popo_provinceholder = mapper.popo(newIPC);
 		session.close();
 		return popo_provinceholder;
@@ -180,7 +180,7 @@ public class PatentHelper {
 		session.close();
 		return rank_holderpatentnumber;
 	}
-	
+	//这块代码没用到，是用来做通用分页模板的。
 	public static Page<PersistencePatent> getPage() {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);

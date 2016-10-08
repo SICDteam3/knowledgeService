@@ -7,12 +7,18 @@
           <div class="col-sm-2">
                 <select id="second-menu" class="form-control" onchange="selectThirdChild();"></select>	
           </div>
+          
           <div class="col-sm-2">
+                <select id="third-menu" class="form-control" onchange="submitIPC();"></select>
+          </div>
+          
+          <!-- <div class="col-sm-2">
                 <select id="third-menu" class="form-control" onchange="selectForthChild();"></select>
-          </div>
-          <div class="col-sm-2">
+          </div> -->
+          
+          <!-- <div class="col-sm-2">
                 <select id="forth-menu" class="form-control" onchange="submitIPC();"></select>
-          </div>
+          </div> -->
                     
 		</div>
 		
@@ -62,7 +68,7 @@ $(document).ready(
              success: function(data){
             			 document.getElementById("third-menu").options.length=0;              	
              			 for(var i in data){ 
-             			 	 document.getElementById("third-menu").options.add(new Option(data[i].cLASS_NAME, data[i].cLASS_ID));					        
+             			 	 document.getElementById("third-menu").options.add(new Option(data[i].cLASS_NAME, data[i].cLASS_NUMBER));					        
 					      }                                                                      
                       }
          });         
@@ -87,8 +93,8 @@ $(document).ready(
 </script>
 <script>
 	function submitIPC(){
-		var element = document.getElementById("forth-menu");
+		var element = document.getElementById("third-menu");
 		var classId = element.options[element.selectedIndex].value;
-		location.href="${path}/patent/inventorVisiual.html?IPC="+"A";		
+		location.href="${path}/patent/inventorVisiual.html?IPC="+classId;		
 	}
 </script>

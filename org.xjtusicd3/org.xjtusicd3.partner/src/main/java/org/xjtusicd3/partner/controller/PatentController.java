@@ -135,7 +135,7 @@ public class PatentController {
 		String date5;
 		String date6;
 		for(int month = 1;month <= 12;month ++){
-			  String year = "2015年"+ month + "月";
+			  String year = "2008/"+ month;
 			  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(year, IPC);
 			  List<ViewPatentVisual> listPatent4 = PatentService.AnnouncementVisual(year, IPC);
 			  int length3 = listPatent3.size();

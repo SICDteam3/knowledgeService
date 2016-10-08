@@ -18,13 +18,15 @@
                 <li><a href="${path}/patent/companymap.html">企业地图</a></li>
                 <li><a href="${path}/patent/holdermap.html">专家地图</a></li>
                 <li class="dropdown">
+                <li><a href="${path}/patent/analyse.html">专利可视化</a></li>
+              <!--  <li class="dropdown">
                     <a href="${path}/patent/analyse.html" class="dropdown-toggle" data-toggle="dropdown" aria-expanded="false">专利服务 <span class="caret"></span></a>
                     <ul class="dropdown-menu" role="menu">
                         <li><a href="${path}/patent/analyse.html">专利可视化</a></li>
 
                         <li class="divider"></li>
                         <li><a href="${path}/patent/analyse.html">专利地图</a></li>
-                        <li class="divider"></li>
+                        <li class="divider"></li> -->
                     </ul>
                 </li>
             </ul>
@@ -38,7 +40,7 @@
                         <li><a href="${path}/user/userDetail.html">个人信息</a></li>
 
                         <li class="divider"></li>
-                        <li><a href="${path}/user/change.html">信息修改</a></li>
+                        <li><a href="${path}/user/userDetail.html">信息修改</a></li>
                         <li class="divider"></li>
                          <li><a href="${path}/user/logout.html">退出</a></li>
                     </ul>
