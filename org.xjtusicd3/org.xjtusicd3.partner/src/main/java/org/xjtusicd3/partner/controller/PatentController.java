@@ -142,7 +142,7 @@ public class PatentController {
 		String IPC = request.getParameter("IPC");
 		ModelAndView mv = new ModelAndView("patent/analyse");
 		//专利的逐年数量
-		List<ViewPatentVisual> list = PatentService.PatentYearNumber();
+		List<ViewPatentVisual> list = PatentService.PatentYearNumber(IPC);
 		int length = list.size();
 		String date = null;
 		String date1;

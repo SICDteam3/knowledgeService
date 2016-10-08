@@ -133,9 +133,9 @@ public class PatentService {
 	/*
 	 * 专利数据逐年变化
 	 */
-	public static List<ViewPatentVisual> PatentYearNumber(){
+	public static List<ViewPatentVisual> PatentYearNumber(String IPC){
 		List<ViewPatentVisual> list = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcounts = PatentHelper.rank_Patent_yearnumber();
+		List<PersistencePatentcount> persistencePatentcounts = PatentHelper.rank_Patent_yearnumber(IPC);
 		if(persistencePatentcounts ==null){
 			return null;
 		}

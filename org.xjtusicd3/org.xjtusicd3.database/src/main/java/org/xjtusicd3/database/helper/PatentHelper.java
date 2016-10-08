@@ -151,10 +151,11 @@ public class PatentHelper {
 	/*
 	 * 专利数量逐年变化
 	 */
-	public static List<PersistencePatentcount> rank_Patent_yearnumber(){
+	public static List<PersistencePatentcount> rank_Patent_yearnumber(String IPC){
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
 		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		List<PersistencePatentcount> rank_patent_yearnumber = mapper.number_year_patent();
+		String newIPC =  IPC + "%";
+		List<PersistencePatentcount> rank_patent_yearnumber = mapper.number_year_patent(newIPC);
 		session.close();
 		return rank_patent_yearnumber;
 	}

@@ -7,7 +7,12 @@
         </div>
     </div>
     <#include "patent/IPClist.ftl">
-    
+    <div class="row gallery-row">
+
+        <div class="col-sm-12">
+            <div id="main2" style="width: 100%;height: 600px;"></div>
+        </div>
+    </div>
       <div class="row gallery-row">
 
         <div class="col-sm-12">
@@ -30,6 +35,7 @@
 </div>
 <script type="text/javascript">
     // 基于准备好的dom，初始化echarts实例
+    var myChart2 = echarts.init(document.getElementById('main2'));
     var myChart3 = echarts.init(document.getElementById('main3'));
     var myChart4 = echarts.init(document.getElementById('main4'));
     // 指定图表的配置项和数据
@@ -51,7 +57,60 @@ function randomDataArray() {
     return d;
 }
 
-  
+ option2 = {
+    title : {
+        text: '专利数量图',
+        subtext: '数据来源中国知网'
+    },
+    tooltip : {
+        trigger: 'axis'
+    },
+    legend: {
+        data:['年份']
+    },
+    toolbox: {
+        show : true,
+        feature : {
+            mark : {show: true},
+            dataView : {show: true, readOnly: false},
+            magicType : {show: true, type: ['line', 'bar']},
+            restore : {show: true},
+            saveAsImage : {show: true}
+        }
+    },
+    calculable : true,
+    xAxis : [
+        {
+            type : 'category',
+            data : [${date_year}]
+        }
+    ],
+    yAxis : [
+        {
+            type : 'value'
+        }
+    ],
+    series : [
+        {
+            name:'数量',
+            type:'bar',
+            data:[${date_year_number}],
+            markPoint : {
+                data : [
+                    {type : 'max', name: '最大值'},
+                    {type : 'min', name: '最小值'}
+                ]
+            },
+            markLine : {
+                data : [
+                    {type : 'average', name: '平均值'}
+                ]
+            }
+        },
+    
+    ]
+};
+ 
     
 option3 = {
     title : {
@@ -179,6 +238,7 @@ option4 = {
        
 
     // 使用刚指定的配置项和数据显示图表。
+    myChart2.setOption(option2);
     myChart3.setOption(option3);
     myChart4.setOption(option4);
 </script>
