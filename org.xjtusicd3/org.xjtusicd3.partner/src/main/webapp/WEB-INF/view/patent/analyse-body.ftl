@@ -13,6 +13,8 @@
             <div id="main2" style="width: 100%;height: 600px;"></div>
         </div>
     </div>
+
+
       <div class="row gallery-row">
 
         <div class="col-sm-12">
