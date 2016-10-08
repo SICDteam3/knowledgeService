@@ -7,7 +7,7 @@
         </div>
     </div>
 	
-	 <#include "patent/IPClist.ftl">
+	 <#include "patent/ipclist-company.ftl">
     <div class="row gallery-row">
         <div class="col-sm-6">
             <div id="main1" style="width: 100%;height: 600px;"></div>
@@ -18,10 +18,7 @@
 
     </div>
 	
-   
     
-    
-   
     <div class="row gallery-row">
 
 
@@ -220,6 +217,5 @@
 };
     // 使用刚指定的配置项和数据显示图表。
     myChart1.setOption(option1);
-    myChart2.setOption(option2);
-    
+    myChart2.setOption(option2); 
 </script>
