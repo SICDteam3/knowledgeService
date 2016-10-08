@@ -18,13 +18,7 @@
 
     </div>
 	
-    <div class="row gallery-row">
-        <div class="col-sm-12">
-            <div id="main1" style="width: 100%;height: 600px;"></div>
-        </div>
-
-
-    </div>
+   
     
     
    
@@ -45,7 +39,7 @@
 	function random(){
     var r = Math.round(Math.random() * 100);
     return (r * (r % 2 == 0 ? 1 : -1));
-    
+    }
 
  //专利可视化——申请人
    option1 = {
