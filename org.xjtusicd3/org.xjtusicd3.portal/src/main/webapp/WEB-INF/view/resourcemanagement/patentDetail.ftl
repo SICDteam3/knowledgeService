@@ -34,7 +34,7 @@
                   <form class="form-horizontal" action="patentDetail.html" method="post">
                     <div class="form-group">
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%">专利名称：</label>
+                      <label class=" control-label" style="margin-left:38%">专利名称：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label" >${dc.name}</label>
@@ -42,7 +42,7 @@
                     </div>
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%" >专利编号：</label>
+                      <label class=" control-label" style="margin-left:38%" >专利编号：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label">${dc.number}</label>
@@ -51,7 +51,7 @@
                     
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%" >发明人：</label>
+                      <label class=" control-label" style="margin-left:38%" >发明人：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label">${dc.patent_inventor}</label>
@@ -60,7 +60,7 @@
                    
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%">IPC：</label>
+                      <label class=" control-label" style="margin-left:38%">IPC：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class=" control-label" style="text-align:left;WORD-WRAP: break-word;overflow:hidded;">${dc.IPC}</label>
@@ -68,7 +68,7 @@
                     </div>
                      <div class="form-group" >
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%">申请日期：</label>
+                      <label class=" control-label" style="margin-left:38%">申请日期：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class="control-label">${dc.date_of_application}</label>
@@ -77,7 +77,7 @@
                     
                     <div class="form-group">
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%">申请地址：</label>
+                      <label class=" control-label" style="margin-left:38%">申请地址：</label>
                       </div>
                       <div class="col-sm-9">
                         <label class="control-label">${dc.address}</label>
@@ -86,7 +86,7 @@
                     
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:40%">具体描述：</label>
+                      <label class=" control-label" style="margin-left:38%">具体描述：</label>
                       </div>
                       <div class="col-sm-9" >               
                         <label class=" control-label" style="text-align:left; ">${dc.patent_abstract}</label>                                       

@@ -55,6 +55,10 @@ public class PatentMangmentController {
 		ModelAndView mv = new ModelAndView("resourcemanagement/patentManagement");
 		Page<PersistencePatent> page = new Page<PersistencePatent>();
 		PatentService ps=new PatentService();
+		if(patentName==""&&patentTime==""){
+			return mv;
+		}
+		else{
 		//数据字典搜索
 		page = ps.searchPatnet(page,patentName,patentTime);
 		mv.addObject("patentPage",page);
@@ -63,7 +67,8 @@ public class PatentMangmentController {
 		mv.addObject("time", patentTime);
 		//分页处理,每页15行数据		
 		return mv;
-	 }
+		}
+		}
 	
 	
 	/*

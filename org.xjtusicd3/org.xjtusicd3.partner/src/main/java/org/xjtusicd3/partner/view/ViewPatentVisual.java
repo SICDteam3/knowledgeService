@@ -15,13 +15,18 @@ public class ViewPatentVisual {
 	private String annoucement_date;
 	private String IPC;
 	private String province;
+	private String principal_claim;
 	
 	
 	
 	
 	
-	
-	
+	public String getPrincipal_claim() {
+		return principal_claim;
+	}
+	public void setPrincipal_claim(String principal_claim) {
+		this.principal_claim = principal_claim;
+	}
 	public String getDate_year() {
 		return date_year;
 	}

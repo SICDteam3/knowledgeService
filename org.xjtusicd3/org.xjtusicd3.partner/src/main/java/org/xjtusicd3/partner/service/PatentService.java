@@ -71,6 +71,38 @@ public class PatentService {
 		return listPatent;
 	}
 	/*
+	 * 专利查询——专家patent_inventor
+	 */
+	public static List<ViewPatent> selectByPatent_inventor(String patent_inventor){
+		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
+		List<PersistencePatent> persistencePatent = PatentHelper.queryByPatent_inventor(patent_inventor);
+		if (persistencePatent == null) {
+			return null;
+		}
+		for(PersistencePatent persistencePatent2:persistencePatent){
+			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
+			listPatent.add(viewPatent);
+		}
+		return listPatent;
+	}
+	/*
+	 * 专利查询——企业patent_holder
+	 */
+	public static List<ViewPatent> selectByPatent_holder(String patent_holder){
+		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
+		List<PersistencePatent> persistencePatent = PatentHelper.queryByPatent_holder(patent_holder);
+		if (persistencePatent == null) {
+			return null;
+		}
+		for(PersistencePatent persistencePatent2:persistencePatent){
+			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
+			listPatent.add(viewPatent);
+		}
+		return listPatent;
+	}
+	
+	
+	/*
 	 * IPC——专利可视化——发明人
 	 */
 	public static List<ViewPatentVisual> InventorVisual(String IPC){

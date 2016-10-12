@@ -103,6 +103,30 @@ public class PatentHelper {
 		return patents;
 	}
 	/*
+	 * 专利查询——专家patent_inventor
+	 */
+	public static List<PersistencePatent> queryByPatent_inventor(String patent_inventor){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String selectAttr = patent_inventor + "%";
+		List<PersistencePatent> patents =  mapper.selectByPatent_inventor(selectAttr);
+		session.close();
+		return patents;
+	}
+	/*
+	 * 专利查询——企业patent_holder
+	 */
+	public static List<PersistencePatent> queryByPatent_holder(String patent_holder){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String selectAttr = patent_holder + "%";
+		List<PersistencePatent> patents =  mapper.selectByPatent_holder(selectAttr);
+		session.close();
+		return patents;
+	}
+	
+	
+	/*
 	 * IPC——专利可视化——发明人
 	 */
 	public static List<PersistencePatentcount> rank_Inventor(String IPC){
