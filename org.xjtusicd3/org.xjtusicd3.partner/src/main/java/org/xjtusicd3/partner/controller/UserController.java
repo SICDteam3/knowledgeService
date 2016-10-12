@@ -2,6 +2,7 @@ package org.xjtusicd3.partner.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,14 +14,19 @@ import org.xjtusicd3.partner.view.ViewUser;
 @RequestMapping("user")
 @Controller
 public class UserController {
+	
+	static Logger log = Logger.getLogger(UserController.class.getName());
+	
 	@RequestMapping(value="/register",method=RequestMethod.GET)
 	public ModelAndView getRegisterPage(){
+		log.info("进入登录页面");
 		ModelAndView mv = new ModelAndView("user/register");
 		return mv;
 	}
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public ModelAndView logout(HttpSession session){
 		session.invalidate();
+		log.info("");
 		ModelAndView mv = new ModelAndView("user/login");
 		return mv;
 	}
