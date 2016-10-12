@@ -74,6 +74,8 @@ public class UserController {
 				session.setAttribute("session_email", viewUser.getEmail());
 				session.setAttribute("session_phone", viewUser.getPhone());
 				session.setAttribute("user_id", viewUser.getIdNumber());
+				session.setAttribute("session_birth", viewUser.getBirth());
+				session.setAttribute("session_hobby", viewUser.getHobby());
 				
 			}
 			
@@ -119,8 +121,10 @@ public class UserController {
 			Integer idNumber = (Integer)object;
 			String password = (String) user.getPassword();
 			String phone = (String) user.getPhone();
-			
-			
+			String birth=(String) user.getBirth();
+			String hobby=(String) user.getHobby();
+			user.setBirth(birth);
+			user.setHobby(hobby);
 			user.setIdNumber(idNumber);
 			user.setPassword(password);
 			user.setPhone(phone);

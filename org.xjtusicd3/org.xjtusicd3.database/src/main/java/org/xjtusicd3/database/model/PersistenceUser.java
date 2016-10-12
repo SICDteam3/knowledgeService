@@ -22,10 +22,26 @@ public class PersistenceUser {
 	private int idNumber;
 	@TableField(columnName="phone")
 	private String phone;
+	@TableField(columnName="birth")
+	private String birth;
+	@TableField(columnName="hobby")
+	private String hobby;
 	
 	
 	
 	
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public String getHobby() {
+		return hobby;
+	}
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
 	public String getPhone() {
 		return phone;
 	}

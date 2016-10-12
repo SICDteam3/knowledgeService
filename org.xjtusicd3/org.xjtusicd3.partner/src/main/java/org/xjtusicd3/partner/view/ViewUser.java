@@ -9,9 +9,23 @@ public class ViewUser {
 	private String email;
 	private String phone;
 	private int idNumber;
+	private String birth;
+	private String hobby;
 	
 	
 	
+	public String getBirth() {
+		return birth;
+	}
+	public void setBirth(String birth) {
+		this.birth = birth;
+	}
+	public String getHobby() {
+		return hobby;
+	}
+	public void setHobby(String hobby) {
+		this.hobby = hobby;
+	}
 	public int getIdNumber() {
 		return idNumber;
 	}
@@ -49,6 +63,8 @@ public class ViewUser {
 		this.password = persistenceUser.getPassword();
 		this.email = persistenceUser.getEmail();
 		this.phone = persistenceUser.getPhone();
+		this.birth=persistenceUser.getBirth();
+		this.hobby=persistenceUser.getHobby();
 	}
 	
 	public ViewUser(){

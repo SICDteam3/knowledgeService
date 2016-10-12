@@ -7,7 +7,7 @@ import org.xjtusicd3.partner.view.ViewUser;
 
 public class UserService {
 	/*
-	 * ÓÃ»§µÄ×¢²á
+	 * ï¿½Ã»ï¿½ï¿½ï¿½×¢ï¿½ï¿½
 	 */
 	public static void save(ViewUser users) throws Exception{
 		PersistenceUser persistenceUser = new PersistenceUser();
@@ -15,12 +15,14 @@ public class UserService {
 		persistenceUser.setPassword(users.getPassword());
 		persistenceUser.setEmail(users.getEmail());
 		persistenceUser.setPhone(users.getPhone());
+		persistenceUser.setBirth(users.getBirth());
+		persistenceUser.setHobby(users.getHobby());
 		persistenceUser.setType("common");
 		UserHelper.save(persistenceUser);
 		
 	}
 	/*
-	 * ÓÃ»§µÄ¸ü¸Ä
+	 * ï¿½Ã»ï¿½ï¿½Ä¸ï¿½ï¿½ï¿½
 	 */
 	public static void update(ViewUser user) throws Exception{
 		PersistenceUser persistenceUser = convert(user);
@@ -35,7 +37,7 @@ public class UserService {
 		
 	}	
 	/*
-	 * ÓÃ»§µÇÂ¼¼ì²é
+	 * ï¿½Ã»ï¿½ï¿½ï¿½Â¼ï¿½ï¿½ï¿½
 	 */
 	public static ViewUser check(ViewUser user) throws Exception{
 		PersistenceUser persistenceUser = UserHelper.checkUser(user.getUsername(), user.getPassword());
@@ -55,7 +57,7 @@ public class UserService {
 		return vuser;
 	}
 	/*
-	 * ÓÃ»§µÄµÇÂ¼
+	 * ï¿½Ã»ï¿½ï¿½Äµï¿½Â¼
 	 */
 	public static void apply(ViewUser user,String email) throws Exception{
 		PersistenceUser persistenceUser = UserHelper.getUser(email);
