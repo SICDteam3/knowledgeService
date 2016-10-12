@@ -41,7 +41,7 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	/*
 	 * 搜索
 	 */
-	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{0} AND name like #{1} AND IPC like #{2}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{0} AND name like #{1} AND IPC like #{2}"})
 	public  List<PersistencePatent> select(String paramString1,String paramString2,String paramString3);
 	/*
 	 * 搜索-名称
@@ -56,8 +56,19 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	/*
 	 * 搜索-IPC
 	 */
-	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,prinvipal_claim as prinvipal_claim,province as province,legal_status as legal_status FROM patent WHERE IPC like #{0}"})
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE IPC like #{0}"})
 	public abstract List<PersistencePatent> selectByIPC(String paramString);
+	/*
+	 * 搜索—专家patent_inventor
+	 */
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE patent_inventor like #{0}"})
+	public abstract List<PersistencePatent> selectByPatent_inventor(String paramString);
+	/*
+	 * 搜索—企业patent_holder
+	 */
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE patent_holder like #{0}"})
+	public abstract List<PersistencePatent> selectByPatent_holder(String paramString);
+	
 	/*
 	 * 发明人排名由大到小前10
 	 */
@@ -68,6 +79,11 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	 */
 	@Select({"SELECT patent_holder as patent_holder,count(*) as counts_holder FROM patent WHERE IPC LIKE #{0} GROUP BY patent_holder ORDER BY counts_holder DESC LIMIT 10"})
 	public List<PersistencePatentcount> patent_holder_desc(String paramString);
+	/*
+	 * 逐年专利数量
+	 */
+	@Select({"SELECT SUBSTRING(announcement_date FROM 1 FOR 5) as date_year,count(*) as counts_year FROM patent WHERE IPC LIKE #{0} GROUP BY date_year"})
+	public List<PersistencePatentcount> number_year_patent(String paramString);
 	/*
 	 * 申请日期
 	 */

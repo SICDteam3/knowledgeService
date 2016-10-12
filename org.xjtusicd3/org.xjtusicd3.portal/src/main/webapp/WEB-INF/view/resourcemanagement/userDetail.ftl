@@ -16,9 +16,9 @@
   <!-- Page -->
   <div class="page animsition">
 	<div class="page-header">
-      <h1 class="page-title">专利详情</h1>
+      <h1 class="page-title">用户详情</h1>
        <div class="page-header-actions">
-        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round" onclick=" location.href='searchPatent.html?patentName=${patentName}&patentTime=${dc.date_of_application}'"      
+        <button type="button" class="btn btn-sm btn-icon btn-default btn-outline btn-round" onclick=" location.href='userSearch3.html?name=${us.username}'"
            data-toggle="tooltip" >返回</button>
       </div>      
     </div>
@@ -31,74 +31,85 @@
               <div class="example-wrap">
                 
                 <div class="example" style="width:200%;">
-                  <form class="form-horizontal" action="patentDetail.html" method="post">
+                  <form class="form-horizontal" action="pswAlter.html" method="get">
+                  
                     <div class="form-group">
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%">专利名称：</label>
+                      <label class=" control-label" style="margin-left:39%">用户名：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class=" control-label" >${dc.name}</label>
+                        <label class=" control-label" >${us.username}</label>
                       </div>
                     </div>
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%" >专利编号：</label>
+                      <label class=" control-label" style="margin-left:39%" >用户编号：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class=" control-label">${dc.number}</label>
+                        <label  class=" control-label">${us.idNumber}</label>
                       </div>
                     </div>
                     
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%" >发明人：</label>
+                      <label class=" control-label" style="margin-left:39%" >邮箱：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class=" control-label">${dc.patent_inventor}</label>
+                        <label class=" control-label">${us.email}</label>
                       </div>
                     </div>
                    
                     <div class="form-group">
                     <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%">IPC：</label>
+                      <label class=" control-label" style="margin-left:39%">用户类型：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class=" control-label" style="text-align:left;WORD-WRAP: break-word;overflow:hidded;">${dc.IPC}</label>
+                        <label class=" control-label" style="text-align:left;WORD-WRAP: break-word;overflow:hidded;">${us.type}</label>
                       </div>
                     </div>
                      <div class="form-group" >
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%">申请日期：</label>
+                      <label class=" control-label" style="margin-left:39%">电话号码：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class="control-label">${dc.date_of_application}</label>
+                        <label class="control-label">${us.phone}</label>
                       </div>
                     </div>
                     
                     <div class="form-group">
                      <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%">申请地址：</label>
+                      <label class=" control-label" style="margin-left:39%">密码：</label>
                       </div>
                       <div class="col-sm-9">
-                        <label class="control-label">${dc.address}</label>
+                        <label class="control-label">${us.password}</label>
                       </div>
                     </div>
                     
-                    <div class="form-group">
-                    <div class="col-sm-3" style="width:12%;">
-                      <label class=" control-label" style="margin-left:38%">具体描述：</label>
-                      </div>
-                      <div class="col-sm-9" >               
-                        <label class=" control-label" style="text-align:left; ">${dc.patent_abstract}</label>                                       
-                      </div>
-                    </div>
-                     <div class="form-group">
-						<div class="col-sm-9 col-sm-offset-3">
-                      <button type="button" style="float:right"  onclick=" location.href='patentDelete.html?patentId=${dc.patentId}'"class="btn btn-primary">删除 </button>
                     
-               		 </div>
+                    
+                     <div class="col-sm-6">
+                      <div class="col-sm-3" style="display:none;">
+                          <input name="userId" value=${us.idNumber}>                    
+                      </div>
+                     <div class="col-sm-3" style="width:12%;float:right" id="changeButton">
+                      <button type="button" style="float:right;"  onclick="$('#changeButton').hide();$('#inputPassword').show();$('#submitButton').show();" class="btn btn-primary">修改密码 </button>
+                      </div>
+                      
+                       <div class="col-sm-3" id="inputPassword" style="display:none;margin-left:20%;margin-top:1%">
+                          <input name="password" />                    
+                      </div>
+                       <div class="col-sm-3" id="submitButton" style="display:none;float:right;">
+                           <button type="submit" style="float:right;"  onclick=""class="btn btn-primary">提交新密码</button>                    
+                      </div>
                     </div>
-                   
+                  
+                    
+                     <div class="col-sm-6">
+						
+                    <button type="button" style="float:left"  onclick=" location.href='http://localhost:8080/org.xjtusicd3.portal/user/defriend.html?userId=${us.idNumber}'"class="btn btn-primary">拉黑</button>
+               		 
+                    </div>
+                 
                   </form>
                 </div>
                </div>

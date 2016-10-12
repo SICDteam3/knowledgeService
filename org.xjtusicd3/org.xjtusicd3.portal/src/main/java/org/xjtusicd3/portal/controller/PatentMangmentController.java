@@ -55,25 +55,26 @@ public class PatentMangmentController {
 		ModelAndView mv = new ModelAndView("resourcemanagement/patentManagement");
 		Page<PersistencePatent> page = new Page<PersistencePatent>();
 		PatentService ps=new PatentService();
-		//数据字典搜索
 		if(patentName==""&&patentTime==""){
 			return mv;
-		}else{
-		page = ps.searchPatnet(page,patentName,patentTime);
-		mv.addObject("patentPage",page);
-		mv.addObject("currentpage",page.getPageNo());
-		mv.addObject("name", patentName);
-		mv.addObject("time", patentTime);
-		//分页处理,每页15行数据		
-		return mv;
 		}
-	 }
+		else{
+				page = ps.searchPatnet(page,patentName,patentTime);
+				mv.addObject("patentPage",page);
+				mv.addObject("currentpage",page.getPageNo());
+				mv.addObject("name", patentName);
+				mv.addObject("time", patentTime);
+				//分页处理,每页15行数据		
+				return mv;
+			}
+
+		}
 	
 	
 	/*
 	 * 分页查看
 	 * */
-	@RequestMapping(value={"/searchpage"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	@RequestMapping(value="/searchpage",method=RequestMethod.GET)
 	 public ModelAndView checkPatent(int currentpage,String patentName,String patentTime){
 		ModelAndView mv = new ModelAndView("resourcemanagement/patentManagement");
 		Page<PersistencePatent> page = new Page<PersistencePatent>();

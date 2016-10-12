@@ -7,7 +7,7 @@
         </div>
     </div>
     <div class="row gallery-row">
-        <a href="">
+        <a href="${path}/index.html">
             <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="gallery-wrap">
                     <div class="gallery-item gallery-item-square" style="background-image: url('${path}/image/1.png')">
@@ -21,7 +21,7 @@
             </div>
         </a>
 
-        <a href="">
+        <a href="${path}/patent/companymap.html">
             <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="gallery-wrap">
                     <div class="gallery-item gallery-item-square" style="background-image: url('${path}/image/2.png')">
@@ -36,7 +36,7 @@
             </div>
         </a>
 
-        <a href="">
+        <a href="${path}/patent/analyse.html">
             <div class="col col-xs-12 col-sm-4 col-md-4 col-lg-4">
                 <div class="gallery-wrap">
                     <div class="gallery-item gallery-item-square" style="background-image: url('${path}/image/3.png')">

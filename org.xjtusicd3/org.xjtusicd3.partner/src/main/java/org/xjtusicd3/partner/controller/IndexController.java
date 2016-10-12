@@ -89,4 +89,37 @@ public class IndexController {
 		  mv.addObject("listPatentByName",listPatent);
 		return mv;
 	  }
+	  /*
+	   * 专利详情
+	   */  
+	  @RequestMapping(value={"/patentDetail"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView patentDetail(String number){  
+		  ModelAndView mv = new ModelAndView("patent/patentDetail");
+		  List<ViewPatent> listPatent = PatentService.selectByNumber(number);
+		  mv.addObject("lp",listPatent);
+		  return mv;
+	  }
+	  /*
+	   * 专家的专利
+	   */
+	  @RequestMapping(value={"/expertPatent"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView expertPatent(HttpServletRequest request){
+		  String patent_inventor = request.getParameter("patent_inventor");
+		  ModelAndView mv = new ModelAndView("patent/expertPatent");
+		  List<ViewPatent> listPatent = PatentService.selectByPatent_inventor(patent_inventor);
+		  mv.addObject("ep",listPatent);
+		  return mv;
+	  }
+	  /*
+	   * 企业的专利
+	   */
+	  @RequestMapping(value={"/companyPatent"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView companyPatent(HttpServletRequest request){
+		  String patent_holder = request.getParameter("patent_holder");
+		  ModelAndView mv = new ModelAndView("patent/companyPatent");
+		  List<ViewPatent> listPatent = PatentService.selectByPatent_holder(patent_holder);
+		  mv.addObject("cp",listPatent);
+		  return mv;
+	  }
+	  
 }

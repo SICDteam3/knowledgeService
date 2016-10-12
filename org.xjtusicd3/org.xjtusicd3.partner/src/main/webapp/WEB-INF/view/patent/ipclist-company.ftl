@@ -95,6 +95,6 @@ $(document).ready(
 	function submitIPC(){
 		var element = document.getElementById("third-menu");
 		var classId = element.options[element.selectedIndex].value;
-		location.href="${path}/patent/inventorVisiual.html?IPC="+classId;		
+		location.href="${path}/patent/holderVisiual.html?IPC="+classId;		
 	}
 </script>

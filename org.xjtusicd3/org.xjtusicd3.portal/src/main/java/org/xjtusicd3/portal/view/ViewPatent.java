@@ -67,7 +67,7 @@ public class ViewPatent {
 		return IPC;
 	}
 	public void setIPC(String iPC) {
-		IPC = iPC;
+		this.IPC = iPC;
 	}
 	public String getAddress() {
 		return address;
