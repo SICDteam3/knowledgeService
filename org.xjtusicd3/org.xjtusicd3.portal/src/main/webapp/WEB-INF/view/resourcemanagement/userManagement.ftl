@@ -111,7 +111,7 @@
         </tbody></table>
       </div>    
        <nav>
-              <span style="display: inline-block;float: left;width: 80px;margin-top: 27px;margin-left: 30px;">总共 ${patentPage.totalPage} 页</span>
+              <span style="display: inline-block;float: left;width: 6%;margin-top: 3%;margin-left: 40%;">总共 ${patentPage.totalPage} 页</span>
 			  <ul class="pagination pagination-md">
 			  <#list patentPage.pageNo-5 .. patentPage.pageNo+8 as t>
 				<#if (t lt patentPage.totalPage+1)&&(t gt 0)>
@@ -124,7 +124,8 @@
        
       </div>
        <!-- pannel start-->
-     
+     </div>
+  </div>
       
     </div>
   </div>

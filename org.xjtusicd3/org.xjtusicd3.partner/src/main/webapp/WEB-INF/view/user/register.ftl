@@ -63,26 +63,142 @@
                         		</div>
                             </div>
                             <div class="form-bottom">
-			                    <form role="form" action="save.html" method="post" class="login-form">
+			                    <form role="form" action="save.html" method="post" class="login-form" onsubmit="return validate()">
 			                    	<div class="form-group">
 			                    		<label class="sr-only" for="form-username">用户名</label>
-			                        	<input type="text" name="username" value="${session_name}" placeholder="用户名..." class="form-username form-control" id="form-username">
+			                        	<input type="text" name="username" value="${session_name}" placeholder="用户名..." class="form-username form-control" id="username" onChange="check3('username')">
+			                        	 <div id="usernameCheck" style="font-weight:bold;" hidden="true">姓名必须4-8位！</div>
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">密码</label>
-			                        	<input type="password" name="password" placeholder="密码..." class="form-password form-control" id="form-password">
+			                        	<input type="password" name="password" placeholder="密码..." class="form-password form-control" id="password" onChange="check3('password')">
+			                        	<div id="passwordCheck" style=" font-weight:bold;" hidden="true">密码必须6-12位！</div>
 			                        </div>		                        
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">邮箱</label>
-			                        	<input type="text" name="email" placeholder="邮箱" class="form-password form-control" id="form-password">
+			                        	<input type="text" name="email" placeholder="邮箱..." class="form-password form-control" id="email" onChange="check3('email')">
+			                        	<div id="emailCheck" style=" font-weight:bold;" hidden="true">电子邮件名非法！</div>
 			                        </div>
 			                        <div class="form-group">
 			                        	<label class="sr-only" for="form-password">联系方式</label>
-			                        	<input type="text" name="phone" placeholder="联系方式" class="form-password form-control" id="form-password">
+			                        	<input type="text" name="phone" placeholder="联系方式..." class="form-password form-control" id="phone" onChange="check3('phone')">
+			                        	<div id="phoneCheck" style=" font-weight:bold;" hidden="true">手机号必须11位！</div>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">出生日期</label>
+			                        	<input type="date" style="color: #888;height: 50px;background: #f8f8f8;border: 3px solid #ddd;font-family: 'Roboto', sans-serif;font-size: 16px;font-weight: 300;line-height: 50px;" name="birth" placeholder="出生日期..." class="form-password form-control" id="birth" onChange="check3('birth')">
+			                        	<div id="birthCheck" style=" font-weight:bold;" hidden="true">必填项！</div>
+			                        </div>
+			                        <div class="form-group">
+			                        	<label class="sr-only" for="form-password">兴趣爱好</label>
+			                        	<input type="text" name="hobby" placeholder="兴趣爱好..." class="form-password form-control" id="hobby" onChange="check3('hobby')">
+			                        	<div id="hobbyCheck" style=" font-weight:bold;" hidden="true">输入字段位5-20位！</div>
 			                        </div>
 			                        <button type="submit" class="btn">注册</button>
 			                    </form>
 		                    </div>
+		                    
+		                     <script>         
+					          	function check3(str)
+					        	{
+					            	var x = document.getElementById(str);
+					            	var y = document.getElementById(str+"Check");           
+					            	if(str=="username")
+					            	{
+					                	x = x.value.length;
+						                if(x<4) {
+						                    y.hidden = false;
+						                }
+						                else if(x>8){
+						                 	y.hidden = false;
+						                } else{
+						                    y.hidden = true;
+						                }
+						            }
+						            else if(str=="password")
+						            {
+						                x = x.value.length;
+						                if(x<6) {
+						                    y.hidden = false;
+						                }
+						                else if(x>12){
+						                 	y.hidden = false;
+						                } else{
+						                    y.hidden = true;
+						                }
+						            }
+						             else if(str=="email")
+						            {
+						                x = x.value.indexOf("@"); 
+						                if(x == -1)
+						                {
+						                	y.hidden = false;
+						                } 
+										else{
+						            		y.hidden = true;
+						            	}
+						            }        
+						             else if(str=="phone")
+					            	{
+					                	x = x.value.length;
+						                if(x!=11) {
+						                    y.hidden = false;
+						                } else{
+						                    y.hidden = true;
+						                }
+					            	}
+					            	 else if(str=="birth")
+					            	{
+					                	if(x.value=="")
+                    						y.hidden = false;
+                						else
+                    						y.hidden = true;
+					            	}
+					            	 else if(str=="hobby")
+					            	{
+					                	x = x.value.length;
+						                if(x>20) {
+						                    y.hidden = false;
+						                }else if(x<5){
+						                 	y.hidden = false;
+						                }  
+						                else{
+						                    y.hidden = true;
+						                }
+					            	}   
+						            return y.hidden;
+						        	}
+					        
+					        	function validate()
+					        	{
+					            	var arr=["username", "email","password", "phone","birth","hobby"];
+					            	var i = 0;
+					            	submitOK = true;
+						            while(i <6)
+						            {
+						                if(!check3(arr[i]))
+						                {
+						                    alert(arr[i]+" 输入错误!");
+						                    submitOK = false;
+						                    break;
+						                }
+						                i++;
+						            }
+						            if(submitOK)
+						            {
+						                alert("提交成功！");
+						                return true;
+						            }
+						            else
+						            {
+						                alert("提交失败");
+						                return false;
+						            }
+						        }
+								
+						        
+					          </script>
+		                    
                         </div>
                     </div>
                     

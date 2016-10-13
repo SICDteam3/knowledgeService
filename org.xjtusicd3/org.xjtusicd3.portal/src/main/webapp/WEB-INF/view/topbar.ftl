@@ -241,13 +241,7 @@
             </ul>
           </li>
           <#if !session_email??>          
-          	<li>                      
-               <a class="navbar-avatar dropdown-toggle" href="/org.xjtusicd3.portal/user/login3.html">登录 </a>                   
-            </li>
-            <li>
-                <a class="navbar-avatar dropdown-toggle" href="/knowledge/user/register.html">注册</a>               
-            </a>
-          </li>
+          	
           <#else>
           <li class="dropdown">
             <a class="navbar-avatar dropdown-toggle" data-toggle="dropdown" href="#" aria-expanded="false"
@@ -266,7 +260,7 @@
               </li>
               <li class="divider" role="presentation"></li>
               <li role="presentation">
-                <a href="${path}/user/logout.html" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> 退出</a>
+                <a href="javascript:void(0)" role="menuitem"><i class="icon wb-power" aria-hidden="true"></i> 退出</a>
               </li>
             </ul>
           </li>
@@ -277,7 +271,7 @@
         <!-- End Navbar Toolbar Right -->
 
         <div class="navbar-brand navbar-brand-center">
-          <a href="index.html">
+          <a href="javascript:void(0)">
             <img class="navbar-brand-logo" src="${path}/center/assets/images/logo.png" title="Remark">
           </a>
         </div>

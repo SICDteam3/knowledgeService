@@ -2,6 +2,7 @@ package org.xjtusicd3.partner.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.apache.log4j.Logger;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -13,14 +14,19 @@ import org.xjtusicd3.partner.view.ViewUser;
 @RequestMapping("user")
 @Controller
 public class UserController {
+	
+	static Logger log = Logger.getLogger(UserController.class.getName());
+	
 	@RequestMapping(value="/register",method=RequestMethod.GET)
 	public ModelAndView getRegisterPage(){
+		log.info("进入登录页面");
 		ModelAndView mv = new ModelAndView("user/register");
 		return mv;
 	}
 	@RequestMapping(value="/logout",method=RequestMethod.GET)
 	public ModelAndView logout(HttpSession session){
 		session.invalidate();
+		log.info("");
 		ModelAndView mv = new ModelAndView("user/login");
 		return mv;
 	}
@@ -32,6 +38,11 @@ public class UserController {
 			e.printStackTrace();
 		}
 		return "user/login";
+	}
+	@RequestMapping(value="/weChart",method=RequestMethod.GET)
+	public ModelAndView getWeChart(){
+		ModelAndView mv = new ModelAndView("weChart");
+		return mv;
 	}
 //	@RequestMapping(value="/getupdate",method=RequestMethod.GET)
 //	public ModelAndView getupdatePage(){
@@ -74,6 +85,8 @@ public class UserController {
 				session.setAttribute("session_email", viewUser.getEmail());
 				session.setAttribute("session_phone", viewUser.getPhone());
 				session.setAttribute("user_id", viewUser.getIdNumber());
+				session.setAttribute("session_birth", viewUser.getBirth());
+				session.setAttribute("session_hobby", viewUser.getHobby());
 				
 			}
 			
@@ -119,8 +132,10 @@ public class UserController {
 			Integer idNumber = (Integer)object;
 			String password = (String) user.getPassword();
 			String phone = (String) user.getPhone();
-			
-			
+			String birth=(String) user.getBirth();
+			String hobby=(String) user.getHobby();
+			user.setBirth(birth);
+			user.setHobby(hobby);
 			user.setIdNumber(idNumber);
 			user.setPassword(password);
 			user.setPhone(phone);

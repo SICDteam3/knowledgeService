@@ -16,7 +16,7 @@
                         <div class="record-title">
                             <span class="index">${patent_index+1+(patentPage.pageNo-1)*patentPage.pageSize}.</span>
                             <a class="fulltext" href="" target="_blank">全文</a>
-                            <a class="title" href="" target="_blank">${patent.name}</a>
+                            <a class="title" href="http://localhost:8080/org.xjtusicd3.partner/patentDetail.html?number=${patent.number}" target="_blank">${patent.name}</a>
                         </div>
                         <div class="record-subtitle">
                             [${patent.type}]
@@ -47,7 +47,7 @@
         			<div class="hd"><span class="title">相关专家</span></div>
         			<ul class="bd clear">
         			<#list patentPage.results as patent>
-        				<li><a  href="javascript:void;">${patent.patent_inventor}</a></li>
+        				<li><a href="http://localhost:8080/org.xjtusicd3.partner/expertPatent.html?patent_inventor=${patent.patent_inventor}" target="_blank">${patent.patent_inventor}</a></li>
         			</#list>
         			</ul>
         		</div>
@@ -57,7 +57,7 @@
         			<div class="hd"><span class="title">相关企业</span></div>
         			<ul class="bd clear">
         			<#list patentPage.results as patent>
-        				<li><a  href="javascript:void;">${patent.patent_holder}</a></li>
+        				<li><a  href="http://localhost:8080/org.xjtusicd3.partner/companyPatent.html?patent_holder=${patent.patent_holder}" target="_blank">${patent.patent_holder}</a></li>
         			</#list>
         			</ul>
         		</div>

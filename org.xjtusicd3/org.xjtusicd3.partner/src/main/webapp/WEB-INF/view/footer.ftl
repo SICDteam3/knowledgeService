@@ -12,7 +12,9 @@
         <ul class="site-footer-links" style="float: left;">
             <li>© 2016 <span title="0.14856s from github-fe154-cp1-prd.iad.github.net">xxzl</span>, Inc.</li>
             <li><a  data-ga-click="Footer, go to terms, text:terms">邮箱：bestlgc@gmail.com</a></li>
-            <li><a href="${path}/image/weixin.png" data-ga-click="Footer, go to privacy, text:privacy">微信关注</a></li>
+            <li><a href="${path}/user/weChart.html" target="_blank" data-ga-click="Footer, go to privacy, text:privacy">微信关注</a></li>
         </ul>
+       
+        
     </div>
 </div>

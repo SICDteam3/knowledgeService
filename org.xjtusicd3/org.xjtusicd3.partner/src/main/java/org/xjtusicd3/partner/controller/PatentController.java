@@ -55,7 +55,7 @@ public class PatentController {
 		  ModelAndView mv = new ModelAndView("selectByNumber");
 		  List<ViewPatent> listPatent = PatentService.selectByNumber(number);
 		  mv.addObject("listPatentByNumber",listPatent);
-		return mv;
+		  return mv;
 	  }
 	  @RequestMapping(value={"/selectByName"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView selectByName(HttpServletRequest request){
@@ -63,7 +63,7 @@ public class PatentController {
 		  ModelAndView mv = new ModelAndView("selectByName");
 		  List<ViewPatent> listPatent = PatentService.selectByName(name);
 		  mv.addObject("listPatentByName",listPatent);
-		return mv;
+		  return mv;
 	  }
 	  @RequestMapping(value={"/selectByIPC"},method={org.springframework.web.bind.annotation.RequestMethod.POST})
 	  public ModelAndView selectByIPC(HttpServletRequest request){
@@ -71,8 +71,13 @@ public class PatentController {
 		  ModelAndView mv = new ModelAndView("selectByIPC");
 		  List<ViewPatent> listPatent = PatentService.selectByIPC(IPC);
 		  mv.addObject("listPatentByIPC",listPatent);
-		return mv;
+		  return mv;
 	  }
+	  
+	 
+	  
+	  
+	  
 	  /*
 	   *专家 
 	   */

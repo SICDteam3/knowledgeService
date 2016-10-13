@@ -69,13 +69,13 @@
             <thead>
               <tr role="row">
               <th class="sorting_asc" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 35%;" aria-label="Name: activate to sort column descending" aria-sort="ascending">标题</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 35%;" aria-label="Position: activate to sort column ascending">发明人</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 35%;" aria-label="Office: activate to sort column ascending">IPC</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 15%;" aria-label="Age: activate to sort column ascending">申请日期</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:15%;" aria-label="Date: activate to sort column ascending">发行日期</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:15%;" aria-label="Salary: activate to sort column ascending">专利号</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:10%;" aria-label="Salary: activate to sort column ascending">详情</th>
-              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 10%;" aria-label="Salary: activate to sort column ascending">删除</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 20%;" aria-label="Position: activate to sort column ascending">发明人</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 45%;" aria-label="Office: activate to sort column ascending">IPC</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 16%;" aria-label="Age: activate to sort column ascending">申请日期</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:16%;" aria-label="Date: activate to sort column ascending">发行日期</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:20%;" aria-label="Salary: activate to sort column ascending">专利号</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width:8%;" aria-label="Salary: activate to sort column ascending">详情</th>
+              <th class="sorting" tabindex="0" aria-controls="DataTables_Table_0" rowspan="1" colspan="1" style="width: 8%;" aria-label="Salary: activate to sort column ascending">删除</th>
               </tr>
             </thead>
             
@@ -87,7 +87,7 @@
                 <td id="ipc">${patent.IPC}</td>
                 <td style="width: 120px">${patent.date_of_application}</td>
                 <td style="width: 120px">${patent.announcement_date}</td>
-                <td>${patent.patentId}</td>
+                <td>${patent.number}</td>
                 <td><a href="http://localhost:8080/org.xjtusicd3.portal/patent/patentDetail.html?patentId=${patent.patentId}">详情</a></td>               
                 <td><a href="http://localhost:8080/org.xjtusicd3.portal/patent/patentDelete.html?patentId=${patent.patentId}">删除</a></td>
               </tr>            
@@ -96,7 +96,7 @@
           </table></div></div>
           
           <nav>
-              <span style="display: inline-block;float: left;width: 80px;margin-top: 27px;margin-left: 30px;">总共 ${patentPage.totalPage} 页</span>
+              <span style="display: inline-block;float: left;width:6%;margin-top: 3%;margin-left: 40%;">总共 ${patentPage.totalPage} 页</span>
 			  <ul class="pagination pagination-md">
 			  <#list patentPage.pageNo-5 .. patentPage.pageNo+8 as t>
 				<#if (t lt patentPage.totalPage+1)&&(t gt 0)>
