@@ -54,7 +54,36 @@ public class PatentService {
 		}
 		return listPatent;
 	}
-	
+	/*
+	 * 专利查询——发明人名称
+	 */
+	public static List<ViewPatent> selectByInventorName(String name){
+		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
+		List<PersistencePatent> persistencePatent = PatentHelper.queryByInventorName(name);
+		if (persistencePatent == null) {
+			return null;
+		}
+		for(PersistencePatent persistencePatent2:persistencePatent){
+			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
+			listPatent.add(viewPatent);
+		}
+		return listPatent;
+	}
+	/*
+	 * 专利查询——企业名称
+	 */
+	public static List<ViewPatent> selectByHolderName(String name){
+		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
+		List<PersistencePatent> persistencePatent = PatentHelper.queryByHolderName(name);
+		if (persistencePatent == null) {
+			return null;
+		}
+		for(PersistencePatent persistencePatent2:persistencePatent){
+			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
+			listPatent.add(viewPatent);
+		}
+		return listPatent;
+	}
 
 	/*
 	 * 专利查询——IPC

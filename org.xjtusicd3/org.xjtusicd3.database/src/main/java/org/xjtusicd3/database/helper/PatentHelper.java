@@ -92,6 +92,28 @@ public class PatentHelper {
 		return patents;
 	}
 	/*
+	 * 专利查询——发明人名称
+	 */
+	public static List<PersistencePatent> queryByInventorName(String name){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newName = "%" + name + "%";
+		List<PersistencePatent> patents =  mapper.selectByPatent_inventor(newName);
+		session.close();
+		return patents;
+	}
+	/*
+	 * 专利查询——企业名称
+	 */
+	public static List<PersistencePatent> queryByHolderName(String name){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newName = "%" + name + "%";
+		List<PersistencePatent> patents =  mapper.selectByPatent_holder(newName);
+		session.close();
+		return patents;
+	}
+	/*
 	 * 专利查询——IPC
 	 */
 	public static List<PersistencePatent> queryByIPC(String IPC){

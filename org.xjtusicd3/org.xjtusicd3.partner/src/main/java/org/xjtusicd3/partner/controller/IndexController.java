@@ -39,14 +39,14 @@ public class IndexController {
 		}else if (searchType.equals("2")) {
 			page = PatentService.selectByNumber(context,page);
 		}
-//		//专家名称搜索
-//		else if (searchType.equals("3")) {
-//			page = PatentService.selectByInventorName(context,page);
-//		}
-//		//企业名称搜索
-//		else if (searchType.equals("4")) {
-//			page = PatentService.selectByHolderName(context,page);
-//		}
+		//专家名称搜索
+		else if (searchType.equals("3")) {
+			page = PatentService.selectByInventorName(context,page);
+		}
+		//企业名称搜索
+		else if (searchType.equals("4")) {
+			page = PatentService.selectByHolderName(context,page);
+		}
 		mv.addObject("patentPage",page);
 		mv.addObject("content",context);
 		mv.addObject("currentpage",page.getPageNo());
