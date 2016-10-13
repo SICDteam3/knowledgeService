@@ -208,31 +208,31 @@ public class PatentController {
 		}
 		
 		  
-		//专利可视化——省市
-		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
-		  int length5 = listPatent5.size();
-		  String date8;
-		  String date_province_number = "";
-		  //String date_inventor_number = "";
-		  //String date_holder_number = "";
-		for (ViewPatentVisual viewPatentVisual : listPatent5) {
-			  	length5--;
-			  	date8 = viewPatentVisual.getCounts_province();
-			  	date_province_number += date8;
-
-			  	if(length5>=1)
-			   {
-			  		date_province_number += ",";
-			   }
-			   else{
-			   }
-			  
-		}	
+//		//专利可视化——省市
+//		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
+//		  int length5 = listPatent5.size();
+//		  String date8;
+//		  String date_province_number = "";
+//		  //String date_inventor_number = "";
+//		  //String date_holder_number = "";
+//		for (ViewPatentVisual viewPatentVisual : listPatent5) {
+//			  	length5--;
+//			  	date8 = viewPatentVisual.getCounts_province();
+//			  	date_province_number += date8;
+//
+//			  	if(length5>=1)
+//			   {
+//			  		date_province_number += ",";
+//			   }
+//			   else{
+//			   }
+//			  
+//		}	
 		  mv.addObject("date_year",date_year);
 		  mv.addObject("date_year_number", date_year_number);
 		  mv.addObject("date_application_number", date_application_number);
 		  mv.addObject("date_announcement_number", date_announcement_number);
-		  mv.addObject("date_province_number",date_province_number);
+		  //mv.addObject("date_province_number",date_province_number);
 		  return mv;
 	  }
 	  
@@ -336,36 +336,13 @@ public class PatentController {
 		}
 		
 		  
-		//专利可视化——省市、专权人——气泡图
-		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
-		  int length5 = listPatent5.size();
-		  String date7 = null;
-		  String date8;
-		  String date_province = "'";
-		  //String date_inventor_number = "";
-		  //String date_holder_number = "";
-		for (ViewPatentVisual viewPatentVisual : listPatent5) {
-			  	length5--;
-			  	date7 = viewPatentVisual.getProvince();
-			  	date_province  += date7;
-
-			  	if(length5>=1)
-			   {
-			  		date_province += "','";
-			   }
-			   else{
-				   date_province += "'";
-			   }
-			  
-		}	
-			System.out.println(date_province);	
+	
 		  mv.addObject("date_inventor",date_inventor);
 		  mv.addObject("date_inventor_number", date_inventor_number);
 		  mv.addObject("date_holder",date_holder);
 		  mv.addObject("date_holder_number", date_holder_number);
 		  mv.addObject("date_application_number", date_application_number);
 		  mv.addObject("date_announcement_number", date_announcement_number);
-		  mv.addObject("date_province", date_province);
 //		  List<ViewPatentVisual> listPatent2 = PatentService.HolderVisual(IPC);
 //		  mv.addObject("holderVisiual",listPatent2);
 //		  List<ViewPatentVisual> listPatent3 = PatentService.ApplicationVisual(IPC);

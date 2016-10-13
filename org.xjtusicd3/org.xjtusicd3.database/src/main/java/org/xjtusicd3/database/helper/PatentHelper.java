@@ -92,6 +92,28 @@ public class PatentHelper {
 		return patents;
 	}
 	/*
+	 * IPC——专利可视化——发明人
+	 */
+	public static List<PersistencePatentcount> rank_Inventor(String IPC){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newIPC = IPC + "%";
+		List<PersistencePatentcount> rank_inventor = mapper.patent_inventor_desc(newIPC);
+		session.close();
+		return rank_inventor;
+	}
+	/*
+	 * IPC——专利可视化——专权人
+	 */
+	public static List<PersistencePatentcount> rank_Holder(String IPC){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newIPC = IPC + "%";
+		List<PersistencePatentcount> rank_holder = mapper.patent_holder_desc(newIPC);
+		session.close();
+		return rank_holder;
+	}
+	/*
 	 * 专利查询——发明人名称
 	 */
 	public static List<PersistencePatent> queryByInventorName(String name){
@@ -193,17 +215,7 @@ public class PatentHelper {
 		session.close();
 		return number_province;
 	}
-	/*
-	 * IPC——专利可视化——省市和专权人气泡图
-	 */
-	public static List<PersistencePatentcount> popo_ProvinceHolder(String IPC){
-		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
-		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
-		String newIPC =  IPC + "%";
-		List<PersistencePatentcount> popo_provinceholder = mapper.popo(newIPC);
-		session.close();
-		return popo_provinceholder;
-	}
+	
 	/*
 	 * IPC——专利可视化——企业专利数量
 	 */
