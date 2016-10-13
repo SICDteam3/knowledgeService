@@ -100,36 +100,7 @@ public class PatentService {
 		}
 		return listPatent;
 	}
-	/*
-	 * IPC——专利可视化——发明人
-	 */
-	public static List<ViewPatentVisual> InventorVisual(String IPC){
-		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Inventor(IPC);
-		if (persistencePatentcount == null) {
-			return null;
-		}
-		for(PersistencePatentcount persistencePatentcounts2:persistencePatentcount){
-			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcounts2);
-			listPatentVisual.add(viewPatentVisual);
-		}
-		return listPatentVisual;
-	}
-	/*
-	 * IPC——专利可视化——专权人
-	 */
-	public static List<ViewPatentVisual> HolderVisual(String IPC){
-		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Holder(IPC);
-		if (persistencePatentcount == null) {
-			return null;
-		}
-		for(PersistencePatentcount persistencePatentcounts2:persistencePatentcount){
-			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcounts2);
-			listPatentVisual.add(viewPatentVisual);
-		}
-		return listPatentVisual;
-	}
+
 	/*
 	 * IPC——专利可视化——申请时间
 	 */
@@ -237,6 +208,24 @@ public class PatentService {
 		int count = PatentHelper.getCount2(context);
 		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
 		List<PersistencePatent> results = PatentHelper.getPageList2((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
+		page.setResults(results);		
+		page.setTotalPage(totalPage);
+		page.setTotalRecord(count);
+		return page;
+	}
+	public static Page<PersistencePatent> selectByInventorName(String context, Page<PersistencePatent> page) {
+		int count = PatentHelper.getCount3(context);
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
+		List<PersistencePatent> results = PatentHelper.getPageList3((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
+		page.setResults(results);		
+		page.setTotalPage(totalPage);
+		page.setTotalRecord(count);
+		return page;
+	}
+	public static Page<PersistencePatent> selectByHolderName(String context, Page<PersistencePatent> page) {
+		int count = PatentHelper.getCount4(context);
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
+		List<PersistencePatent> results = PatentHelper.getPageList4((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
 		page.setResults(results);		
 		page.setTotalPage(totalPage);
 		page.setTotalRecord(count);

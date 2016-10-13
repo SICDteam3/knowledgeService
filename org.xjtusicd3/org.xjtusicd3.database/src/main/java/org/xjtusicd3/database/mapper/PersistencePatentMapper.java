@@ -117,6 +117,12 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 
 	@Select({"SELECT count(*) FROM patent WHERE number like #{0}"})
 	public int selectByNumberCount(String newName);
+	
+	@Select({"SELECT count(*) FROM patent WHERE patent_inventor like #{0}"})
+	public int selectByInventorCount(String newName);
+	
+	@Select({"SELECT count(*) FROM patent WHERE patent_holder like #{0}"})
+	public int selectByHolderCount(String newName);
 
 
 	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE name like #{2} limit #{0},#{1}"})
@@ -125,7 +131,12 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE number like #{2} limit #{0},#{1}"})
 	public List<PersistencePatent> selectPageByName2(int pageNo, int pageSize, String context);
 
-
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE patent_inventor like #{2} limit #{0},#{1}"})
+	public List<PersistencePatent> selectPageByName3(int pageNo, int pageSize, String context);
+	
+	@Select({"SELECT patentId as patentId,number as number,name as name,patent_inventor as patent_inventor,patent_holder as patent_holder,date_of_application as date_of_application,announcement_date as announcement_date,patent_abstract as patent_abstract,IPC as IPC,type as type,address as address,patent_agency as patent_agency,principal_claim as principal_claim,province as province,legal_status as legal_status FROM patent WHERE patent_holder like #{2} limit #{0},#{1}"})
+	public List<PersistencePatent> selectPageByName4(int pageNo, int pageSize, String context);
+	
 	@Select({"SELECT count(*) FROM patent WHERE name like #{0} AND date_of_application like #{1}"})
 	public int selectByNameCount1(String patentName, String patentTime);
 
