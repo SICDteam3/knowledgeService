@@ -9,7 +9,6 @@ import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.database.model.PersistencePatentcount;
 import org.xjtusicd3.partner.view.ViewPatent;
 import org.xjtusicd3.partner.view.ViewPatentVisual;
-import org.xjtusicd3.sphinx.helper.PatentSphinxHelper;
 
 public class PatentService {
 	public static List<ViewPatent> select(String number,String name,String IPC){
@@ -72,38 +71,6 @@ public class PatentService {
 		}
 		return listPatent;
 	}
-	/*
-	 * 专利查询——专家patent_inventor
-	 */
-	public static List<ViewPatent> selectByPatent_inventor(String patent_inventor){
-		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
-		List<PersistencePatent> persistencePatent = PatentHelper.queryByPatent_inventor(patent_inventor);
-		if (persistencePatent == null) {
-			return null;
-		}
-		for(PersistencePatent persistencePatent2:persistencePatent){
-			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
-			listPatent.add(viewPatent);
-		}
-		return listPatent;
-	}
-	/*
-	 * 专利查询——企业patent_holder
-	 */
-	public static List<ViewPatent> selectByPatent_holder(String patent_holder){
-		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
-		List<PersistencePatent> persistencePatent = PatentHelper.queryByPatent_holder(patent_holder);
-		if (persistencePatent == null) {
-			return null;
-		}
-		for(PersistencePatent persistencePatent2:persistencePatent){
-			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
-			listPatent.add(viewPatent);
-		}
-		return listPatent;
-	}
-	
-	
 	/*
 	 * IPC——专利可视化——发明人
 	 */
@@ -226,22 +193,10 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	
-	//搜索数据库
-	/*
+	
 	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
 		int count = PatentHelper.getCount(context);
 		List<PersistencePatent> results = PatentHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
-		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
-		page.setResults(results);
-		page.setTotalRecord(count);
-		page.setTotalPage(totalPage);
-		return page;
-	}
-	*/
-	//搜索索引库
-	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) throws Exception {
-		int count = PatentSphinxHelper.getCount(context);
-		List<PersistencePatent> results = PatentSphinxHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
 		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
 		page.setResults(results);
 		page.setTotalRecord(count);
