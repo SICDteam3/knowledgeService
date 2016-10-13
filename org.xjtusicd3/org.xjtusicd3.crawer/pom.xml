@@ -9,10 +9,75 @@
   </parent>
   <artifactId>org.xjtusicd3.crawer</artifactId>
   <name>org.xjtusicd3.crawer</name>
-  <url>http://maven.apache.org</url>
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
   </properties>
+  <repositories>  	   	    
+        <repository>  
+            <id>io.spring.repo.maven.release</id>  
+            <url>http://repo.spring.io/release/</url>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>  
+        </repository>  
+        <repository>  
+            <id>io.spring.repo.maven.milestone</id>  
+            <url>http://repo.spring.io/milestone/</url>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>  
+        </repository>  
+        <repository>  
+            <id>jboss-public-repository-group</id>  
+            <name>JBoss Public Repository Group</name>  
+            <url>http://repository.jboss.org/nexus/content/groups/public/</url>  
+            <layout>default</layout>  
+            <releases>  
+                <enabled>true</enabled>  
+                <updatePolicy>never</updatePolicy>  
+            </releases>  
+            <snapshots>  
+                <enabled>true</enabled>  
+                <updatePolicy>never</updatePolicy>  
+            </snapshots>  
+        </repository>  
+        <repository>  
+            <id>jboss-deprecated</id>  
+            <name>JBoss Deprecated</name>  
+            <url>https://repository.jboss.org/nexus/content/repositories/deprecated/</url>  
+            <layout>default</layout>  
+            <releases>  
+                <enabled>true</enabled>  
+                <updatePolicy>never</updatePolicy>  
+            </releases>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>  
+        </repository>  
+        <repository>  
+            <id>jboss-maven2-brew</id>  
+            <name>JBoss Maven 2 Brew Repository</name>  
+            <url>http://repository.jboss.org/maven2-brew/</url>  
+            <layout>default</layout>  
+            <releases> 
+                <enabled>true</enabled>  
+                <updatePolicy>never</updatePolicy>  
+            </releases>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>  
+        </repository>  
+  
+        
+        <repository>  
+            <id>central</id>  
+            <name>Central Repository</name>  
+            <url>http://repo1.maven.org/maven2/</url>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>  
+        </repository>  
+    </repositories> 
   <dependencies>
     <dependency>
       <groupId>junit</groupId>
@@ -20,5 +85,23 @@
       <version>3.8.1</version>
       <scope>test</scope>
     </dependency>
+    <dependency>
+	    <groupId>org.jsoup</groupId>
+	    <artifactId>jsoup</artifactId>
+	    <version>1.7.2</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
+	<dependency>
+	    <groupId>org.apache.httpcomponents</groupId>
+	    <artifactId>httpclient</artifactId>
+	    <version>4.5.2</version>
+	</dependency>
+	<!-- https://mvnrepository.com/artifact/net.sourceforge.htmlcleaner/htmlcleaner -->
+	<dependency>
+	    <groupId>net.sourceforge.htmlcleaner</groupId>
+	    <artifactId>htmlcleaner</artifactId>
+	    <version>2.13</version>
+	</dependency>
+	
   </dependencies>
 </project>

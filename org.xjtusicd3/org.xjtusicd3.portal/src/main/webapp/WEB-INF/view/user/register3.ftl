@@ -71,27 +71,115 @@
             <img class="brand-img" src="${path}/center/assets/images/logo-blue.png" alt="...">
             <h2 class="brand-text font-size-18">XXZL</h2>
           </div>
-          <form method="post" action="save.html" id="registerForm">
+          <form method="post" action="save.html" id="registerForm" onsubmit="return validate()">         
             <div class="form-group form-material floating">
-              <input type="text" class="form-control" name="userName" />
+              <input type="text" class="form-control" name="userName" id="userName" onChange="check3('userName')"/>
               <label class="floating-label">用户名</label>
+              <div id="userNameCheck" style="font-weight:bold;" hidden="true">姓名必须4-8位！</div>
             </div>
             <div class="form-group form-material floating">
-              <input type="email" class="form-control" name="userEmail" id="email"/>
+              <input type="email" class="form-control" name="userEmail" id="email" onChange="check3('email')"/>
               <label class="floating-label">邮箱</label>
-            </div>
+              <div id="emailCheck" style=" font-weight:bold;" hidden="true">电子邮件名非法！</div>
+            </div> 
             <div class="form-group form-material floating">
-              <input type="password" class="form-control" name="passWord" />
+              <input type="password" class="form-control" name="passWord" id="passWord" onChange="check3('passWord')"/>
               <label class="floating-label">密码</label>
+              <div id="passWordCheck" style=" font-weight:bold;" hidden="true">密码必须6-12位！</div>
             </div>
             <div class="form-group form-material floating">
-              <input type="password" class="form-control" name="PasswordCheck" />
+              <input type="password" class="form-control" name="passWordCheck1" id="passWordCheck1" onChange="check3('passWordCheck1')"/>
               <label class="floating-label">再次输入密码</label>
+              <div id="passWordCheck1Check" style=" font-weight:bold;" hidden="true">两次输入密码不同！</div>
             </div>
-
-            <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40" onclick="check();">注册</button>
+            <table>
+          <button type="submit" class="btn btn-primary btn-block btn-lg margin-top-40" >注册</button>
+          
           </form>
-          <p>已经有账号，快去 <a href="login.html">登录</a></p>
+          <script>         
+          	function check3(str)
+        	{
+            	var x = document.getElementById(str);
+            	var y = document.getElementById(str+"Check");           
+            	if(str=="userName")
+            	{
+                	x = x.value.length;
+	                if(x<4) {
+	                    y.hidden = false;
+	                }
+	                else if(x>8){
+	                 	y.hidden = false;
+	                } else{
+	                    y.hidden = true;
+	                }
+	            }
+	             else if(str=="email")
+	            {
+	                x = x.value.indexOf("@"); 
+	                if(x == -1)
+	                {
+	                	y.hidden = false;
+	                } 
+					else{
+	            		y.hidden = true;
+	            	}
+	            }       
+	            else if(str=="passWord")
+	            {
+	                x = x.value.length;
+	                if(x<6) {
+	                    y.hidden = false;
+	                }
+	                else if(x>12){
+	                 	y.hidden = false;
+	                } else{
+	                    y.hidden = true;
+	                }
+	            }
+	            
+	             else if(str=="passWordCheck1")
+            	{
+                	var z = document.getElementById("passWord").value;
+                	x = x.value;
+               		if(x != z)
+                    	y.hidden = false;
+                	else
+                    	y.hidden = true;
+            	}   
+	            return y.hidden;
+	        	}
+        
+        	function validate()
+        	{
+            	var arr=["userName", "email","passWord", "passWordCheck"];
+            	var i = 0;
+            	submitOK = true;
+	            while(i <4)
+	            {
+	                if(!check3(arr[i]))
+	                {
+	                    alert(arr[i]+" 输入错误!");
+	                    submitOK = false;
+	                    break;
+	                }
+	                i++;
+	            }
+	            if(submitOK)
+	            {
+	                alert("提交成功！");
+	                return true;
+	            }
+	            else
+	            {
+	                alert("提交失败");
+	                return false;
+	            }
+	        }
+			
+	        
+          </script>
+          
+          <p>已经有账号，快去 <a href="login.html" onclick="login">登录</a></p>
         </div>
       </div>
 
@@ -137,7 +225,9 @@
 
   <script src="${path}/global/js/components/jquery-placeholder.min.js"></script>
   <script src="${path}/global/js/components/material.min.js"></script>
+  
   <script>
+ 	
   	function check(){
   		var email = $('#email').val();
   		$.ajax({
@@ -158,7 +248,9 @@
 		}
 	});
    }
+  
   </script>
+  
   <script>
     (function(document, window, $) {
       'use strict';

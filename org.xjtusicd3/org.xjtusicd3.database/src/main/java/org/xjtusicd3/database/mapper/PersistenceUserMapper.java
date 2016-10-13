@@ -11,23 +11,23 @@ import org.xjtusicd3.database.model.PersistenceUser;
 
 
 public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>{
-	@Select("select userEmail as email,userName as username,passWord as password,user_type as type,flag as flag,userId as idNumber,phone as phone from user where username=#{email};")
+	@Select("select userEmail as email,userName as username,passWord as password,user_type as type,flag as flag,userId as idNumber,phone as phone,birth as birth,hobby as hobby from user where username=#{email};")
 	PersistenceUser findByName(String name);
 	
-	@Select("select userEmail as email,userName as username,passWord as password,user_type as type,flag as flag,userId as idNumber,phone as phone from user where email=#{email};")
+	@Select("select userEmail as email,userName as username,passWord as password,user_type as type,flag as flag,userId as idNumber,phone as phone ,birth as birth,hobby as hobby from user where email=#{email};")
 	PersistenceUser findByEmail(String email);
 	
 	@Select("select id_number as idNumber from user_table where email=#{email};")
 	int findIdByEmail(String email);
 
 	
-	@Select("select userId as userId ,userName as userName,userEmail as userEmail,passWord as passWord,user_type as user_type,flag as flag,phone as phone from user;")
+	@Select("select userId as userId ,userName as userName,userEmail as userEmail,passWord as passWord,user_type as user_type,flag as flag, phone as phone, birth as birth, hobby as hobby from user;")
 	List<PersistenceUser> searchUser();
 
-	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where userName like #{name} AND flag=0;")
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag, phone as phone ,birth as birth,hobby as hobby from user where userName like #{name} AND flag=0;")
 	List<PersistenceUser> searchUser1(String name);
 
-	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where flag=1;")
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone ,birth as birth,hobby as hobby from user where flag=1;")
 	List<PersistenceUser> blackSearch();
 
 	@Update("UPDATE user SET flag = 1 WHERE userId = #{0}")
@@ -36,7 +36,7 @@ public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>
 	@Update("UPDATE user SET flag = 0 WHERE userId = #{0}")
 	void userRecover(String userId);
 
-	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where userId=#{userId};")
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone ,birth as birth,hobby as hobby from user where userId=#{userId};")
 	PersistenceUser searchUserById(String userId);
 
 	@Update("UPDATE user SET passWord = #{1} WHERE userId = #{0}")
@@ -45,7 +45,7 @@ public interface PersistenceUserMapper extends IBaseDao<PersistenceUser, String>
 	@Select({"SELECT count(*) FROM user WHERE userName like #{name} AND flag=0"})
 	int selectByNameCount(String userName);
 
-	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone from user where userName like #{0} AND flag=0 limit #{1},#{2};")
+	@Select("select userId as idNumber ,userName as userName,userEmail as email,passWord as passWord,user_type as type,flag as flag,phone as phone,birth as birth,hobby as hobby from user where userName like #{0} AND flag=0 limit #{1},#{2};")
 	List<PersistenceUser> searchUser3(String name1, int i, int pageSize);
 }
 

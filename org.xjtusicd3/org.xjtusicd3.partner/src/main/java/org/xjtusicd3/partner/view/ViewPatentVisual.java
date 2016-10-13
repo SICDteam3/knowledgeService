@@ -16,6 +16,7 @@ public class ViewPatentVisual {
 	private String annoucement_date;
 	private String IPC;
 	private String province;
+	private String principal_claim;
 	
 	
 	
@@ -23,11 +24,18 @@ public class ViewPatentVisual {
 	
 	
 	
+		
 	public String getCounts_province() {
 		return counts_province;
 	}
 	public void setCounts_province(String counts_province) {
 		this.counts_province = counts_province;
+	}
+	public String getPrincipal_claim() {
+		return principal_claim;
+	}
+	public void setPrincipal_claim(String principal_claim) {
+		this.principal_claim = principal_claim;
 	}
 	public String getDate_year() {
 		return date_year;

@@ -29,7 +29,12 @@ public class IndexController {
 		Page<PersistencePatent> page = new Page<PersistencePatent>();
 		//专利名搜索
 		if (searchType.equals("1")) {
-			page = PatentService.selectByName(context,page);
+			try {
+				page = PatentService.selectByName(context,page);
+			} catch (Exception e) {
+				mv = new ModelAndView("error");
+				e.printStackTrace();
+			}
 		//专利号搜索
 		}else if (searchType.equals("2")) {
 			page = PatentService.selectByNumber(context,page);
@@ -57,7 +62,12 @@ public class IndexController {
 		page.setPageNo(currentpage);
 		//专利名搜索
 		if (searchtype.equals("1")) {
-			page = PatentService.selectByName(content,page);
+			try {
+				page = PatentService.selectByName(content,page);
+			} catch (Exception e) {
+				mv = new ModelAndView("error");
+				e.printStackTrace();
+			}
 		//专利号搜索
 		}else if (searchtype.equals("2")) {
 			page = PatentService.selectByNumber(content,page);
@@ -97,4 +107,37 @@ public class IndexController {
 		  mv.addObject("listPatentByName",listPatent);
 		return mv;
 	  }
+	  /*
+	   * 专利详情
+	   */  
+	  @RequestMapping(value={"/patentDetail"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView patentDetail(String number){  
+		  ModelAndView mv = new ModelAndView("patent/patentDetail");
+		  List<ViewPatent> listPatent = PatentService.selectByNumber(number);
+		  mv.addObject("lp",listPatent);
+		  return mv;
+	  }
+	  /*
+	   * 专家的专利
+	   */
+	  @RequestMapping(value={"/expertPatent"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView expertPatent(HttpServletRequest request){
+		  String patent_inventor = request.getParameter("patent_inventor");
+		  ModelAndView mv = new ModelAndView("patent/expertPatent");
+		  List<ViewPatent> listPatent = PatentService.selectByPatent_inventor(patent_inventor);
+		  mv.addObject("ep",listPatent);
+		  return mv;
+	  }
+	  /*
+	   * 企业的专利
+	   */
+	  @RequestMapping(value={"/companyPatent"},method={org.springframework.web.bind.annotation.RequestMethod.GET})
+	  public ModelAndView companyPatent(HttpServletRequest request){
+		  String patent_holder = request.getParameter("patent_holder");
+		  ModelAndView mv = new ModelAndView("patent/companyPatent");
+		  List<ViewPatent> listPatent = PatentService.selectByPatent_holder(patent_holder);
+		  mv.addObject("cp",listPatent);
+		  return mv;
+	  }
+	  
 }

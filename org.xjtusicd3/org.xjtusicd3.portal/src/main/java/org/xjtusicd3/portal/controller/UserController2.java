@@ -3,6 +3,7 @@ package org.xjtusicd3.portal.controller;
 
 import javax.servlet.http.HttpSession;
 
+import org.eclipse.jetty.util.security.Credential.MD5;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -31,6 +32,9 @@ public class UserController2 {
 	@RequestMapping(value="save",method=RequestMethod.POST)
 	public String save(ViewUser user) {
 		try {
+			
+			user.setPassWord(MD5.digest(user.getPassWord()));
+			System.out.println(user.getPassWord()+"mima");
 			UserService2.save(user);
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -72,6 +76,7 @@ public class UserController2 {
 	public ModelAndView loginCheck(ViewUser user,HttpSession session) {
 		ModelAndView mv = null;
 		try {
+			user.setPassWord(MD5.digest(user.getPassWord()));
 			ViewUser viewUser = UserService2.check(user);
 			if (viewUser==null) {
 				mv = new ModelAndView("user/login3");
