@@ -44,6 +44,16 @@ public class UserController {
 		ModelAndView mv = new ModelAndView("weChart");
 		return mv;
 	}
+	@RequestMapping(value="/aboutUs",method=RequestMethod.GET)
+	public ModelAndView getAboutUs(){
+		ModelAndView mv = new ModelAndView("aboutUs");
+		return mv;
+	}
+	@RequestMapping(value="/contact",method=RequestMethod.GET)
+	public ModelAndView getContact(){
+		ModelAndView mv = new ModelAndView("contact");
+		return mv;
+	}
 //	@RequestMapping(value="/getupdate",method=RequestMethod.GET)
 //	public ModelAndView getupdatePage(){
 //		ModelAndView mv = new ModelAndView("update");

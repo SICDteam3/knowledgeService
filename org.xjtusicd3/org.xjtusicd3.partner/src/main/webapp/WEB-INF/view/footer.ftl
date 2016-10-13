@@ -2,8 +2,8 @@
 <div class="container-fluid" style="width: 1170px;">
     <div class="site-footer" role="contentinfo">
         <ul class="site-footer-links" style="float: right!important">
-            <li><a  data-ga-click="Footer, go to contact, text:contact">联系 xxzl</a></li>
-            <li><a  data-ga-click="Footer, go to api, text:api">关于我们</a></li>
+            <li><a  href="${path}/user/contact.html" target="_blank" data-ga-click="Footer, go to contact, text:contact">联系 xxzl</a></li>
+            <li><a  href="${path}/user/aboutUs.html" target="_blank" data-ga-click="Footer, go to api, text:api">关于我们</a></li>
             <li><a  data-ga-click="Footer, go to blog, text:blog">帮助</a></li>
         </ul>
         <a href="https://github.com" aria-label="Homepage" class="site-footer-mark" title="GitHub">
