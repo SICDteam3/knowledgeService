@@ -432,7 +432,7 @@ option = {
     },
     series : [
         {
-            name: 'pm2.5',
+            name: '',
             type: 'scatter',
             coordinateSystem: 'geo',
             data: convertedData[0],

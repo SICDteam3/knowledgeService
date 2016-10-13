@@ -227,6 +227,20 @@ public class PatentHelper {
 		session.close();
 		return rank_holderpatentnumber;
 	}
+	
+	/*
+	 * 接下来的代码真的非常恶心
+	 */
+	public static List<PersistencePatentcount> number_Beijing(String IPC){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newaddress = "%"+"北京"+"%";
+		String newIPC = IPC + "%";
+		List<PersistencePatentcount> number_beijing = mapper.number_provinces(newIPC,newaddress);
+		session.close();
+		return number_beijing;
+	}
+	
 	//这块代码没用到，是用来做通用分页模板的。
 	public static Page<PersistencePatent> getPage() {
 		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);

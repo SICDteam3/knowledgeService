@@ -239,7 +239,10 @@ public class PatentService {
 		}
 		return listPatent;
 	}
-	
+	/*
+	 * 接下来的代码非常的恶心
+	 */
+	//public static List<ViewPatentVisual>
 	
 	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
 		int count = PatentHelper.getCount(context);

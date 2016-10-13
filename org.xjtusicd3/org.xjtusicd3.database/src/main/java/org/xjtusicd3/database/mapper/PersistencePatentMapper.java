@@ -109,8 +109,12 @@ public interface PersistencePatentMapper extends IBaseDao<PersistencePatent, Str
 	 */
 	@Select({"SELECT SUBSTRING(announcement_date FROM 1 FOR 5) AS date_year,count(*) as counts_year FROM patent WHERE patent_holder=#{0} GROUP BY date_year"})
 	public List<PersistencePatentcount> number_holderpatent(String paramString);
-
-
+	/*
+	 * 接下来的部分非常的恶心
+	 */
+	@Select({"SELECT count(*) FROM patent WHERE IPC LIKE #{0} AND address LIKE #{1}"})
+	public List<PersistencePatentcount> number_provinces(String pramString1,String paramString2);
+	
 	@Select({"SELECT count(*) FROM patent WHERE name like #{0}"})
 	public int selectByNameCount(String newName);
 
