@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.junit.Test;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
@@ -202,25 +203,23 @@ public class PatentController {
 		}
 		
 		  
-		//专利可视化——省市、专权人——气泡图
+		//专利可视化——省市
 		  List<ViewPatentVisual> listPatent5 = PatentService.PopoVisual(IPC);
 		  int length5 = listPatent5.size();
-		  String date7 = null;
 		  String date8;
-		  String date_province = "'";
+		  String date_province_number = "";
 		  //String date_inventor_number = "";
 		  //String date_holder_number = "";
 		for (ViewPatentVisual viewPatentVisual : listPatent5) {
 			  	length5--;
-			  	date7 = viewPatentVisual.getProvince();
-			  	date_province  += date7;
+			  	date8 = viewPatentVisual.getCounts_province();
+			  	date_province_number += date8;
 
 			  	if(length5>=1)
 			   {
-			  		date_province += "','";
+			  		date_province_number += ",";
 			   }
 			   else{
-				   date_province += "'";
 			   }
 			  
 		}	
@@ -228,6 +227,7 @@ public class PatentController {
 		  mv.addObject("date_year_number", date_year_number);
 		  mv.addObject("date_application_number", date_application_number);
 		  mv.addObject("date_announcement_number", date_announcement_number);
+		  mv.addObject("date_province_number",date_province_number);
 		  return mv;
 	  }
 	  
@@ -406,6 +406,10 @@ public class PatentController {
 		  mv.addObject("date_year_number", date_year_number);
 		  return mv;
 	  }
+	  
+	  
+	 
+	 
 	  }
 	 
 

@@ -54,6 +54,7 @@ public class PatentService {
 		}
 		return listPatent;
 	}
+	
 
 	/*
 	 * 专利查询——IPC
@@ -133,6 +134,22 @@ public class PatentService {
 	/*
 	 * 专利数据逐年变化
 	 */
+	public static List<ViewPatentVisual> PatentProvinceNumber(String IPC){
+		List<ViewPatentVisual> list = new ArrayList<ViewPatentVisual>();
+		List<PersistencePatentcount> persistencePatentcounts = PatentHelper.number_Province(IPC);
+		if(persistencePatentcounts ==null){
+			return null;
+		}
+		for(PersistencePatentcount persistencePatentcount:persistencePatentcounts){
+			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcount);
+			list.add(viewPatentVisual);
+		}
+		return list;
+	}
+	
+    /*
+     * 专利各个省份数量
+     */
 	public static List<ViewPatentVisual> PatentYearNumber(String IPC){
 		List<ViewPatentVisual> list = new ArrayList<ViewPatentVisual>();
 		List<PersistencePatentcount> persistencePatentcounts = PatentHelper.rank_Patent_yearnumber(IPC);

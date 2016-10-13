@@ -160,6 +160,17 @@ public class PatentHelper {
 		return rank_patent_yearnumber;
 	}
 	/*
+	 *专利省份地图数量 
+	 */
+	public static List<PersistencePatentcount> number_Province(String IPC){
+		SqlSession session = SqlSessionManager.getSqlSessionFactory().openSession(true);
+		PersistencePatentMapper mapper = session.getMapper(PersistencePatentMapper.class);
+		String newIPC = IPC +"%";
+		List<PersistencePatentcount> number_province = mapper.number_province(newIPC);
+		session.close();
+		return number_province;
+	}
+	/*
 	 * IPC——专利可视化——省市和专权人气泡图
 	 */
 	public static List<PersistencePatentcount> popo_ProvinceHolder(String IPC){
