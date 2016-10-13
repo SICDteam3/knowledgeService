@@ -9,6 +9,7 @@ import org.xjtusicd3.database.model.PersistencePatent;
 import org.xjtusicd3.database.model.PersistencePatentcount;
 import org.xjtusicd3.partner.view.ViewPatent;
 import org.xjtusicd3.partner.view.ViewPatentVisual;
+import org.xjtusicd3.sphinx.helper.PatentSphinxHelper;
 
 public class PatentService {
 	public static List<ViewPatent> select(String number,String name,String IPC){
@@ -176,10 +177,22 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	
-	
+	//搜索数据库
+	/*
 	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) {
 		int count = PatentHelper.getCount(context);
 		List<PersistencePatent> results = PatentHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
+		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
+		page.setResults(results);
+		page.setTotalRecord(count);
+		page.setTotalPage(totalPage);
+		return page;
+	}
+	*/
+	//搜索索引库
+	public static Page<PersistencePatent> selectByName(String context, Page<PersistencePatent> page) throws Exception {
+		int count = PatentSphinxHelper.getCount(context);
+		List<PersistencePatent> results = PatentSphinxHelper.getPageList((page.getPageNo()-1)*page.getPageSize(),page.getPageSize(),context);
 		int totalPage = (int) Math.ceil((double)count/page.getPageSize());
 		page.setResults(results);
 		page.setTotalRecord(count);

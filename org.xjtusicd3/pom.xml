@@ -13,13 +13,20 @@
     <module>org.xjtusicd3.crawer</module>
     <module>org.xjtusicd3.database</module>
     <module>org.xjtusicd3.common</module>
+    <module>org.xjtusicd3.sphinx</module>
   </modules>
   
   <repositories>  	   	    
         <repository>  
-            <id>central</id>  
-            <name>Central Repository</name>  
-            <url>http://repo1.maven.org/maven2/</url>  
+            <id>io.spring.repo.maven.release</id>  
+            <url>http://repo.spring.io/release/</url>  
+            <snapshots>  
+                <enabled>false</enabled>  
+            </snapshots>  
+        </repository>  
+        <repository>  
+            <id>io.spring.repo.maven.milestone</id>  
+            <url>http://repo.spring.io/milestone/</url>  
             <snapshots>  
                 <enabled>false</enabled>  
             </snapshots>  
@@ -65,16 +72,11 @@
             </snapshots>  
         </repository>  
   
+        
         <repository>  
-            <id>io.spring.repo.maven.release</id>  
-            <url>http://repo.spring.io/release/</url>  
-            <snapshots>  
-                <enabled>false</enabled>  
-            </snapshots>  
-        </repository>  
-        <repository>  
-            <id>io.spring.repo.maven.milestone</id>  
-            <url>http://repo.spring.io/milestone/</url>  
+            <id>central</id>  
+            <name>Central Repository</name>  
+            <url>http://repo1.maven.org/maven2/</url>  
             <snapshots>  
                 <enabled>false</enabled>  
             </snapshots>  

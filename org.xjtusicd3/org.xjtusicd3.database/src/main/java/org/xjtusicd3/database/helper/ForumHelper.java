@@ -6,10 +6,8 @@ import org.apache.ibatis.session.SqlSession;
 import org.xjtusicd3.database.logic.SqlSessionManager;
 import org.xjtusicd3.database.mapper.PersistenceForumListMapper;
 import org.xjtusicd3.database.mapper.PersistenceForumReplyMapper;
-import org.xjtusicd3.database.mapper.PersistencePatentMapper;
 import org.xjtusicd3.database.model.PersistenceForumList;
 import org.xjtusicd3.database.model.PersistenceForumReply;
-import org.xjtusicd3.database.model.PersistencePatent;
 
 public class ForumHelper {
 	
