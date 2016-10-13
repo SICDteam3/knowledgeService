@@ -132,6 +132,36 @@ public class PatentService {
 		return listPatentVisual;
 	}
 	/*
+	 * IPC——专利可视化——发明人
+	 */
+	public static List<ViewPatentVisual> InventorVisual(String IPC){
+		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Inventor(IPC);
+		if (persistencePatentcount == null) {
+			return null;
+		}
+		for(PersistencePatentcount persistencePatentcounts2:persistencePatentcount){
+			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcounts2);
+			listPatentVisual.add(viewPatentVisual);
+		}
+		return listPatentVisual;
+	}
+	/*
+	 * IPC——专利可视化——专权人
+	 */
+	public static List<ViewPatentVisual> HolderVisual(String IPC){
+		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
+		List<PersistencePatentcount> persistencePatentcount = PatentHelper.rank_Holder(IPC);
+		if (persistencePatentcount == null) {
+			return null;
+		}
+		for(PersistencePatentcount persistencePatentcounts2:persistencePatentcount){
+			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcounts2);
+			listPatentVisual.add(viewPatentVisual);
+		}
+		return listPatentVisual;
+	}
+	/*
 	 * 专利数据逐年变化
 	 */
 	public static List<ViewPatentVisual> PatentProvinceNumber(String IPC){
@@ -162,21 +192,7 @@ public class PatentService {
 		}
 		return list;
 	}
-	/*
-	 * IPC——专利可视化——省市和专权人气泡图
-	 */
-	public static List<ViewPatentVisual> PopoVisual(String IPC){
-		List<ViewPatentVisual> listPatentVisual = new ArrayList<ViewPatentVisual>();
-		List<PersistencePatentcount> persistencePatentcount = PatentHelper.popo_ProvinceHolder(IPC);
-		if (persistencePatentcount == null) {
-			return null;
-		}
-		for(PersistencePatentcount persistencePatentcounts2:persistencePatentcount){
-			ViewPatentVisual viewPatentVisual = new ViewPatentVisual(persistencePatentcounts2);
-			listPatentVisual.add(viewPatentVisual);
-		}
-		return listPatentVisual;
-	}
+
 	/*
 	 * IPC——专利可视化——企业专利数量
 	 */
@@ -191,6 +207,37 @@ public class PatentService {
 			listPatentVisual.add(viewPatentVisual);
 		}
 		return listPatentVisual;
+	}
+	
+	/*
+	 * 专利查询——专家patent_inventor
+	 */
+	public static List<ViewPatent> selectByPatent_inventor(String patent_inventor){
+		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
+		List<PersistencePatent> persistencePatent = PatentHelper.queryByPatent_inventor(patent_inventor);
+		if (persistencePatent == null) {
+			return null;
+		}
+		for(PersistencePatent persistencePatent2:persistencePatent){
+			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
+			listPatent.add(viewPatent);
+		}
+		return listPatent;
+	}
+	/*
+	 * 专利查询——企业patent_holder
+	 */
+	public static List<ViewPatent> selectByPatent_holder(String patent_holder){
+		List<ViewPatent> listPatent = new ArrayList<ViewPatent>();
+		List<PersistencePatent> persistencePatent = PatentHelper.queryByPatent_holder(patent_holder);
+		if (persistencePatent == null) {
+			return null;
+		}
+		for(PersistencePatent persistencePatent2:persistencePatent){
+			ViewPatent viewPatent = new ViewPatent(persistencePatent2);
+			listPatent.add(viewPatent);
+		}
+		return listPatent;
 	}
 	
 	
