@@ -9,12 +9,19 @@ public class PersistencePatentcount {
 	private String counts_holder;
 	private String counts_application;
 	private String counts_announcement;
+	private String counts_province;
 	private String date_of_application;
 	private String announcement_date;
 	private String province;
 	
 	
 	
+	public String getCounts_province() {
+		return counts_province;
+	}
+	public void setCounts_province(String counts_province) {
+		this.counts_province = counts_province;
+	}
 	public String getDate_year() {
 		return date_year;
 	}

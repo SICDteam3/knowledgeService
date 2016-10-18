@@ -11,6 +11,7 @@ public class ViewPatentVisual {
 	private String counts_holder;
 	private String counts_application;
 	private String counts_announcement;
+	private String counts_province;
 	private String date_of_application;
 	private String annoucement_date;
 	private String IPC;
@@ -21,6 +22,15 @@ public class ViewPatentVisual {
 	
 	
 	
+	
+	
+		
+	public String getCounts_province() {
+		return counts_province;
+	}
+	public void setCounts_province(String counts_province) {
+		this.counts_province = counts_province;
+	}
 	public String getPrincipal_claim() {
 		return principal_claim;
 	}
@@ -117,15 +127,18 @@ public class ViewPatentVisual {
 		this.province = patentcount.getProvince();
 		this.date_year = patentcount.getDate_year();
 		this.counts_year = patentcount.getCounts_year();
+		this.counts_province = patentcount.getCounts_province();
 	}
 	@Override
 	public String toString() {
 		return "ViewPatentVisual [patent_inventor=" + patent_inventor + ", patent_holder=" + patent_holder
 				+ ", date_year=" + date_year + ", counts_year=" + counts_year + ", counts_inventor=" + counts_inventor
 				+ ", counts_holder=" + counts_holder + ", counts_application=" + counts_application
-				+ ", counts_announcement=" + counts_announcement + ", date_of_application=" + date_of_application
-				+ ", annoucement_date=" + annoucement_date + ", IPC=" + IPC + ", province=" + province + "]";
+				+ ", counts_announcement=" + counts_announcement + ", counts_province=" + counts_province
+				+ ", date_of_application=" + date_of_application + ", annoucement_date=" + annoucement_date + ", IPC="
+				+ IPC + ", province=" + province + "]";
 	}
+	
 	
 	
 	

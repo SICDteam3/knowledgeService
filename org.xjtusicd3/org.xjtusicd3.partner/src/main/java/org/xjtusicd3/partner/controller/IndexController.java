@@ -29,11 +29,24 @@ public class IndexController {
 		Page<PersistencePatent> page = new Page<PersistencePatent>();
 		//专利名搜索
 		if (searchType.equals("1")) {
-			page = PatentService.selectByName(context,page);
+			try {
+				page = PatentService.selectByName(context,page);
+			} catch (Exception e) {
+				mv = new ModelAndView("error");
+				e.printStackTrace();
+			}
 		//专利号搜索
 		}else if (searchType.equals("2")) {
 			page = PatentService.selectByNumber(context,page);
-		}						
+		}
+		//专家名称搜索
+		else if (searchType.equals("3")) {
+			page = PatentService.selectByInventorName(context,page);
+		}
+		//企业名称搜索
+		else if (searchType.equals("4")) {
+			page = PatentService.selectByHolderName(context,page);
+		}
 		mv.addObject("patentPage",page);
 		mv.addObject("content",context);
 		mv.addObject("currentpage",page.getPageNo());
@@ -49,7 +62,12 @@ public class IndexController {
 		page.setPageNo(currentpage);
 		//专利名搜索
 		if (searchtype.equals("1")) {
-			page = PatentService.selectByName(content,page);
+			try {
+				page = PatentService.selectByName(content,page);
+			} catch (Exception e) {
+				mv = new ModelAndView("error");
+				e.printStackTrace();
+			}
 		//专利号搜索
 		}else if (searchtype.equals("2")) {
 			page = PatentService.selectByNumber(content,page);

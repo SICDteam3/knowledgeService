@@ -21,9 +21,8 @@ public class IPCController {
 		List<PersistenceIPC>firstLevelIpc = IPCService.getFirstLevel();
 		if (firstLevelIpc == null || firstLevelIpc.size()==0) {
 			return null;
-		}				
+		}			
 		String result = JsonUtil.toJsonString(firstLevelIpc);
-		
 		System.out.println(result);
 		return result;
 	 }

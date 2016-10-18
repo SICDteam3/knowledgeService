@@ -48,6 +48,7 @@
 		    <artifactId>org.xjtusicd3.database</artifactId>
 		    <version>0.0.1-SNAPSHOT</version>
 		</dependency>
+		
 		<dependency>
 		    <groupId>org.xjtusicd3</groupId>
 		    <artifactId>org.xjtusicd3.common</artifactId>
